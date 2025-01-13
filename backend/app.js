@@ -11,7 +11,7 @@ const port = 3000
 connectDB()
 
 app.use(cors({
-    origin: 'http://localhost:5173', // Replace with your frontend's URL
+    origin: '*', // Replace with your frontend's URL
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
     credentials: true // Allow cookies and authorization headers
 }));
