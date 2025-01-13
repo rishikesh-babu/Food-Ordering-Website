@@ -1,5 +1,4 @@
 import { createBrowserRouter } from "react-router-dom";
-import { UserLayout } from "../layout/userLayout";
 import ErrorPage from "../pages/shared/ErrorPage";
 import Home from "../pages/user/Home";
 import { UserProtectedRoutes } from "./UserProtectedRoutes";
@@ -14,6 +13,7 @@ import CreateFood from "../pages/admin/CreateFood";
 import UserLogin from "../pages/user/UserLogin";
 import UserSignup from "../pages/user/UserSignup";
 import Cart from "../pages/user/Cart";
+import { UserLayout } from "../layout/UserLayout";
 
 const router = createBrowserRouter([
     {
