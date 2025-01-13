@@ -3,7 +3,9 @@ const cors = require('cors')
 const { apiRouter } = require('./routes')
 const { connectDB } = require('./config/db')
 const cookieParser = require('cookie-parser')
+const dotenv = require('dotenv')
 
+dotenv.config()
 const app = express()
 const port = 3000
 connectDB()
