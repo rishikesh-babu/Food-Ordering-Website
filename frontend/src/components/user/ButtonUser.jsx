@@ -1,6 +1,8 @@
-import { MinusSquare, PlusSquare } from "lucide-react";
+import { LogOut, MinusSquare, PlusSquare } from "lucide-react";
 import toast from "react-hot-toast";
 import axiosInstance from "../../config/axiosInstance";
+import { useDispatch } from "react-redux";
+import { clearUserData } from "../../redux/features/userSlice";
 
 function IncreaseQuantityButton({ foodId, updateCartDetails }) {
     function addtocart(foodId) {
@@ -64,13 +66,40 @@ function DecreaseQuantityButton({ foodId, updateCartDetails }) {
             className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-200 hover:bg-gray-300 cursor-pointer"
             onClick={() => removeFromCart(foodId)}
         >
-            <MinusSquare
-                strokeWidth={2}
-                size={24}
-                className="text-gray-600"
-            />
+            <MinusSquare strokeWidth={2} size={24} className="text-gray-600" />
         </div>
     );
 }
 
-export { IncreaseQuantityButton, DecreaseQuantityButton };
+function LogoutButton() {
+
+    const dispatch = useDispatch()
+
+    function logout() {
+        toast.promise(
+            axiosInstance({
+                method: 'POST',
+                url: 'user/logout'
+            })
+                .then((res) => {
+                    console.log('res :>> ', res);
+                    toast.success(res?.data?.message)
+                    dispatch(clearUserData())                
+                })
+                .catch((err) => {
+                    console.log('err :>> ', err);
+                })
+        )
+    }
+    
+    return (
+        <div className="mt-3 text-center">
+            <button onClick={logout} className="btn bg-gray-400">
+                <LogOut />
+                <span className="text-lg"> Logout </span>
+            </button>
+        </div>
+    );
+}
+
+export { IncreaseQuantityButton, DecreaseQuantityButton, LogoutButton };

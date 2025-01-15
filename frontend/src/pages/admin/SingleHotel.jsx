@@ -56,21 +56,6 @@ function SingleHotel() {
             </div>
 
             <div className="m-7 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-    {
-        hotelDetails?.foodItems?.map((item, index) => (
-            <FoodCard
-                image={item?.foodId?.image}
-                name={item?.foodId?.name}
-                price={item?.foodId?.price}
-                key={index}
-                className="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105"
-            />
-        ))
-    }
-</div>
-
-
-            {/* <div className="m-7 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {
                     hotelDetails?.foodItems?.map((item, index) => (
                         <FoodCard
@@ -78,41 +63,12 @@ function SingleHotel() {
                             name={item?.foodId?.name}
                             price={item?.foodId?.price}
                             key={index}
+                            className="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105"
                         />
                     ))
                 }
-            </div> */}
+            </div>
         </div>
-
-
-
-        // <div>
-        //     <div className='bg-gray-700 p-14 grid grid-cols-2'>
-        //         <div className='self-stretch'>
-        //             <img
-        //                 className='size-fit rounded-xl'
-        //                 src={hotelDetails?.image}
-        //                 alt="Image"
-        //             />
-        //         </div>
-        //         <div className='text-white m-7 flex flex-col justify-around'>
-        //             <div className='text-3xl'>
-        //                 {hotelDetails?.name}
-        //             </div>
-        //             <div className='text-lg'>
-        //                 {hotelDetails?.address}
-        //             </div>
-        //         </div>
-        //     </div>
-        //     <div className='m-7'>
-        //         <AddFoodItem hotelId={hotelId} />
-        //     </div>
-        //     <div>
-        //         {
-        //             hotelDetails?.foodItems?.map((item, index) => <FoodCard image={item?.foodId?.image} name={item?.foodId?.name} price={item?.foodId?.price} key={index} /> )
-        //         }
-        //     </div>
-        // </div>
     )
 }
 

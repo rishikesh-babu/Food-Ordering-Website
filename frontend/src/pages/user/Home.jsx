@@ -3,12 +3,12 @@ import axiosInstance from '../../config/axiosInstance'
 import { UserFoodCard, UserHotelCard } from '../../components/user/CardsUser'
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { saveCartDetails } from '../../redux/features/cartSlice'
 
 function Home() {
 
-    // const { cartDetails } = useSelector((state) => state.cart)
+    const { cartDetails } = useSelector((state) => state.cart)
     const [hotelDetails, setHotelDetails] = useState([])
     const [foodDetails, setFoodDetails] = useState()
     const navigate = useNavigate()
@@ -76,7 +76,7 @@ function Home() {
 
     return (
 
-        <div className="p-6 mt-20 bg-gray-50 rounded-lg shadow-lg">
+        <div className="p-6 bg-gray-50 rounded-lg shadow-lg">
             <div className="text-2xl font-bold text-gray-800 mb-6">
                 Popular Restaurants
             </div>
@@ -87,6 +87,7 @@ function Home() {
                         name={item.name}
                         address={item.address}
                         image={item.image}
+                        hotelId={item._id}
                     />
                 ))}
             </div>

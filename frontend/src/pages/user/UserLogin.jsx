@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -8,19 +8,24 @@ import { saveUserData } from "../../redux/features/userSlice";
 function UserLogin() {
     const [loginData, setLoginData] = useState({});
     const [showPassword, setShowPassword] = useState(false);
-    const { isUserAuth } = useSelector((state) => state.admin);
+    const { isUserAuth } = useSelector((state) => state.user);
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (isUserAuth) {
+            navigate("/");
+        }
+    }, [isUserAuth]);
 
     function handleLoginData(event) {
         setLoginData({
             ...loginData,
             [event.target.name]: event.target.value,
         });
-        console.log("loginData :>> ", loginData);
     }
 
-    function handlelogin(event) {
+    function handleLogin(event) {
         event.preventDefault();
         toast.promise(
             axiosInstance({
@@ -29,87 +34,90 @@ function UserLogin() {
                 data: loginData,
             })
                 .then((res) => {
-                    console.log("res :>> ", res);
                     toast.success(res?.data?.message);
                     dispatch(saveUserData(res?.data?.data));
                     navigate("/");
                 })
                 .catch((err) => {
-                    console.log("err :>> ", err);
-                    toast.error(err.response.data.message);
+                    toast.error(err.response?.data?.message || "Login failed.");
                 }),
             {
-                loading: "Logging......",
+                loading: "Logging in...",
             }
         );
     }
 
     return (
-        <div>
-            <div className="hero bg-base-200 min-h-screen">
-                <div className="hero-content flex-col lg:flex-row-reverse">
-                    <div className="text-center lg:text-left">
-                        <h1 className="text-5xl font-bold">Login now!</h1>
-                        <p className="py-6">
-                        Welcome back! Access your favorite meals and enjoy effortless food ordering 
+        <div className="hero bg-base-200 min-h-screen flex items-center justify-center">
+            <div className="hero-content flex-col lg:flex-row-reverse gap-12">
+                {/* Hero Text */}
+                <div className="text-center lg:text-left max-w-md">
+                    <h1 className="text-5xl font-bold text-gray-800">Login Now!</h1>
+                    <p className="py-6 text-gray-600">
+                        Welcome back! Access your favorite meals and enjoy effortless food ordering
                         with a single click. Don't miss out on exciting offers tailored just for you.
-                        </p>
-                    </div>
-                    <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-                        <form className="card-body">
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Email</span>
-                                </label>
-                                <input
-                                    type="email"
-                                    name="email"
-                                    onChange={handleLoginData}
-                                    placeholder="email"
-                                    className="input input-bordered"
-                                    required
-                                />
-                            </div>
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Password</span>
-                                </label>
-                                <input
-                                    type={showPassword ? "text" : "password"}
-                                    name="password"
-                                    onChange={handleLoginData}
-                                    placeholder="password"
-                                    className="input input-bordered"
-                                    required
-                                />
-                                <div className="flex justify-between mt-1">
-                                    <button
-                                        type="button"
-                                        className="btn btn-xs btn-ghost"
-                                        onClick={() => navigate('/signup')}
-                                    >
-                                        Signup?
-                                    </button>
-                                    <button
-                                        type="button"
-                                        className="btn btn-xs btn-ghost"
-                                        onClick={() => setShowPassword(!showPassword)}
-                                    >
-                                        {showPassword ? "Hide" : "Show"}
-                                    </button>
-                                </div>
-                            </div>
-                            <div className="form-control mt-6">
+                    </p>
+                </div>
+
+                {/* Login Form */}
+                <div className="card bg-white w-full max-w-sm shadow-lg rounded-lg p-6">
+                    <form onSubmit={handleLogin} className="space-y-4">
+                        {/* Email Input */}
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text font-semibold">Email</span>
+                            </label>
+                            <input
+                                type="email"
+                                name="email"
+                                onChange={handleLoginData}
+                                placeholder="Enter your email"
+                                className="input input-bordered w-full"
+                                required
+                            />
+                        </div>
+
+                        {/* Password Input */}
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text font-semibold">Password</span>
+                            </label>
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                name="password"
+                                onChange={handleLoginData}
+                                placeholder="Enter your password"
+                                className="input input-bordered w-full"
+                                required
+                            />
+                            <div className="flex justify-between items-center mt-2 text-sm">
                                 <button
-                                    onClick={handlelogin}
-                                    type="submit"
-                                    className="btn btn-primary"
+                                    type="button"
+                                    className="btn btn-link text-gray-600 hover:text-gray-800"
+                                    onClick={() => navigate("/signup")}
                                 >
-                                    Login
+                                    Signup?
+                                </button>
+                                <button
+                                    type="button"
+                                    className="btn btn-link text-gray-600 hover:text-gray-800"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                >
+                                    {showPassword ? "Hide Password" : "Show Password"}
                                 </button>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+
+                        {/* Login Button */}
+                        <div className="form-control mt-6">
+                            <button
+                                type="submit"
+                                className="btn btn-primary w-full font-semibold"
+                            >
+                                Login
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

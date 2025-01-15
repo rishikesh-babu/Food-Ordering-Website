@@ -14,6 +14,9 @@ import UserLogin from "../pages/user/UserLogin";
 import UserSignup from "../pages/user/UserSignup";
 import Cart from "../pages/user/Cart";
 import { UserLayout } from "../layout/UserLayout";
+import UserProfile from "../pages/user/UserProfile";
+import SingleFoodUser from "../pages/user/SingleFoodUser";
+import SingleHotelUser from "../pages/user/SingleHotelUser";
 
 const router = createBrowserRouter([
     {
@@ -38,9 +41,11 @@ const router = createBrowserRouter([
             },
             {
                 path: 'hotel/:hotelId',
+                element: <SingleHotelUser />
             },
             {
                 path: 'food/:foodId',
+                element: <SingleFoodUser />
             },
             {
                 path: 'user',
@@ -48,6 +53,7 @@ const router = createBrowserRouter([
                 children: [
                     {
                         path: 'profile',
+                        element: <UserProfile />
                     },
                     {
                         path: 'cart',

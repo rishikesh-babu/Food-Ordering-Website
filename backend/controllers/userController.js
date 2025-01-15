@@ -85,6 +85,10 @@ async function checkUser(req, res, next) {
         const userId = req.user.id
         const userExist = await User.findById(userId)
 
+        if (!userExist) {
+            return res.status(400).json({ message: 'User does not exist' })
+        }
+
         console.log('userExist :>> ', userExist);
 
         res.status(200).json({ message: 'User checked', data: userExist })

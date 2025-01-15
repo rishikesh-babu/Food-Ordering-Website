@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axiosInstance from "../../config/axiosInstance";
 import { useDispatch, useSelector } from "react-redux";
 import { saveCartDetails } from "../../redux/features/cartSlice";
+import { clearUserData } from "../../redux/features/userSlice";
+import toast from "react-hot-toast";
 
 function UserHeader() {
-    
+
     const { cartDetails, cartLength } = useSelector((state) => state.cart)
     const navigete = useNavigate();
     const dispatch = useDispatch()
@@ -27,8 +29,27 @@ function UserHeader() {
                 console.log('err :>> ', err);
             })
     }
-    
-    console.log('cartDetails :>> ', cartDetails);
+
+    function logout() {
+            toast.promise(
+                axiosInstance({
+                    method: 'POST',
+                    url: 'user/logout'
+                })
+                    .then((res) => {
+
+                        console.log('res :>> ', res);
+                        toast.success(res?.data?.message)
+                        dispatch(clearUserData())
+                    })
+                    .catch((err) => {
+                        console.log('err :>> ', err);
+                    }),
+                {
+                    loading: 'Logout....'
+                }
+            )
+    }
 
     return (
         <div className="navbar bg-base-100 fixed top-0 left-0 w-full z-10">
@@ -95,16 +116,15 @@ function UserHeader() {
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
                     >
                         <li>
-                            <a className="justify-between">
+                            <Link to={'/user/profile'}>
                                 Profile
-                                {/* <span className="badge">New</span> */}
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a>Settings</a>
+                            <a> Wishlist </a>
                         </li>
                         <li>
-                            <a>Logout</a>
+                            <span onClick={logout}>Logout</span>
                         </li>
                     </ul>
                 </div>

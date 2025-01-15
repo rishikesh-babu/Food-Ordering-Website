@@ -18,7 +18,7 @@ async function createHotel(req, res, next) {
         
         const hotelExist = await Hotel.findOne({ name })
 
-        console.log('hotelExist :>> ', hotelExist);
+        // console.log('hotelExist :>> ', hotelExist);
 
         if (hotelExist) {
             return res.status(400).json({ message: 'Hotel already exists' })
@@ -50,7 +50,7 @@ async function getAllHotel(req, res, next) {
 
         const hotelsExist = await Hotel.find()
 
-        console.log('hotelsExist :>> ', hotelsExist);
+        // console.log('hotelsExist :>> ', hotelsExist);
 
         res.status(200).json({ message: 'Hotels fetched', data: hotelsExist })
 
@@ -81,7 +81,7 @@ async function createFood(req, res, next) {
             public_id: name
         })).url
 
-        console.log('imageUrl :>> ', imageUrl);
+        // console.log('imageUrl :>> ', imageUrl);
 
         const newFood = new Food({
             name,
@@ -92,14 +92,14 @@ async function createFood(req, res, next) {
         })
         await newFood.save()
         
-        console.log('newFood._id :>> ', newFood._id);
+        // console.log('newFood._id :>> ', newFood._id);
         
         hotelExist.foodItems.push({
             foodId: newFood._id,
         })
 
         await hotelExist.save()
-        console.log('hotelExist :>> ', hotelExist);
+        // console.log('hotelExist :>> ', hotelExist);
 
 
         res.status(201).json({ message: 'Food created', data: newFood })
@@ -151,7 +151,7 @@ async function getAllFood(req, res, next) {
         console.log('Routes: All food')
 
         const foodItems = await Food.find().limit(10)
-        console.log('foodItems :>> ', foodItems);
+        // console.log('foodItems :>> ', foodItems);
 
         res.status(200).json({ message: 'Food items fetched', data: foodItems })
     } catch (err) {

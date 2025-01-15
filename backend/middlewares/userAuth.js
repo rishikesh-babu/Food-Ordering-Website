@@ -4,9 +4,9 @@ const { User } = require('../model/userModel')
 async function userAuth(req, res, next) {
     try {
         console.log('Routes: user auth')
-        
+
         const token = req.cookies.token
-        
+
         if (!token) {
             return res.status(401).json({ message: 'Unauthorized user' })
         }
@@ -18,15 +18,20 @@ async function userAuth(req, res, next) {
             return res.status(401).json({ message: 'Unauthorized user' })
         }
 
-        const userId = decodedToken.id
-        const userExist = await User.findById(userId).select('-password')
+        const role = decodedToken.role
 
-        if (!userExist) {
-            return res.status(401).json({ message: 'Unauthorized user' })
+        console.log('roll :>> ', role);
+        if (role !== 'user') {
+            return res.status(401).json({ message: 'Unauthorized User' })
         }
+        // const userExist = await User.findById(userId).select('-password')
+
+        // if (!userExist) {
+        //     return res.status(401).json({ message: 'Unauthorized user' })
+        // }
 
         req.user = decodedToken
-        
+
         next()
 
     } catch (err) {
