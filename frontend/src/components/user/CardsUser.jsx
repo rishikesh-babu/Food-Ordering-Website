@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { DecreaseQuantityButton, IncreaseQuantityButton } from "./ButtonUser"
 import { saveCartDetails } from "../../redux/features/cartSlice";
 import { Link, useNavigate } from "react-router-dom";
+import { Heart } from "lucide-react";
 
 function UserHotelCard({ name, image, address, hotelId }) {
 
@@ -55,8 +56,14 @@ function UserFoodCard({ name, image, price, foodId, addToCart }) {
                 <div className="text-xl font-bold text-blue-800">
                     {name ?? 'Name'}
                 </div>
-                <div className="text-lg font-medium text-gray-700 mt-2">
-                    ${price ?? 'price'}
+                <div className="flex flex-row items-center justify-around my-3">
+                    <span className="text-lg font-medium text-gray-700">
+                        ${price ?? 'price'}
+                    </span>
+                    <div>
+                        {/* <Heart fill="red"/> */}
+                        {/* <Heart /> */}
+                    </div>
                 </div>
                 <div className="text-lg font-semibold">
                     <button
@@ -68,8 +75,6 @@ function UserFoodCard({ name, image, price, foodId, addToCart }) {
                 </div>
             </div>
         </div>
-
-
     )
 }
 

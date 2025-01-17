@@ -2,10 +2,15 @@ import React, { useState } from "react";
 import { LoginInput } from "../../components/user/Input";
 import toast from "react-hot-toast";
 import axiosInstance from "../../config/axiosInstance";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { saveUserData } from "../../redux/features/userSlice";
 
 function UserSignup() {
 
     const [signupData, setSignupData] = useState({})
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     function handleSignupData(event) {
         setSignupData({
@@ -31,7 +36,9 @@ function UserSignup() {
             })
                 .then((res) => {
                     console.log('res :>> ', res);
+                    dispatch(saveUserData(res?.data?.data))
                     toast.success(res?.data?.message)
+                    navigate('/')
                 })
                 .catch((err) => {
                     console.log('err :>> ', err);

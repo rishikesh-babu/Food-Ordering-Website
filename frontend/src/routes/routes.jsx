@@ -17,6 +17,8 @@ import { UserLayout } from "../layout/UserLayout";
 import UserProfile from "../pages/user/UserProfile";
 import SingleFoodUser from "../pages/user/SingleFoodUser";
 import SingleHotelUser from "../pages/user/SingleHotelUser";
+import PaymentSuccess from "../pages/user/PaymentSuccess";
+import PaymentCancel from "../pages/user/PaymentCancel";
 
 const router = createBrowserRouter([
     {
@@ -58,6 +60,14 @@ const router = createBrowserRouter([
                     {
                         path: 'cart',
                         element: <Cart />
+                    },
+                    {
+                        path: 'payment/success',
+                        element: <PaymentSuccess />
+                    },
+                    {
+                        path: 'payment/cancel',
+                        element: <PaymentCancel />
                     },
                     {
                         path: 'order',

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axiosInstance from '../../config/axiosInstance'
 import { ProfileModal } from '../../components/user/Modal'
-import { LogoutButton } from '../../components/user/ButtonUser'
+import { EditProfileButton, LogoutButton } from '../../components/user/ButtonUser'
 
 function UserProfile() {
 
@@ -57,8 +57,9 @@ function UserProfile() {
                         <span className="font-semibold">Address:</span> {profileDetails?.address || "N/A"}
                     </div>
                 </div>
-                <div>
+                <div className='flex flex-row items-center justify-between flex-wrap'>
                     <LogoutButton />
+                    <EditProfileButton />
                 </div>
             </div>
         </div>

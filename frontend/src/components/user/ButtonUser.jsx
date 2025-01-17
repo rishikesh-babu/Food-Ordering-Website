@@ -1,4 +1,4 @@
-import { LogOut, MinusSquare, PlusSquare } from "lucide-react";
+import { Edit, LogOut, MinusSquare, PlusSquare } from "lucide-react";
 import toast from "react-hot-toast";
 import axiosInstance from "../../config/axiosInstance";
 import { useDispatch } from "react-redux";
@@ -102,4 +102,15 @@ function LogoutButton() {
     );
 }
 
-export { IncreaseQuantityButton, DecreaseQuantityButton, LogoutButton };
+function EditProfileButton() {
+    return(
+        <div className="mt-3 text-center">
+            <button className="btn bg-gray-400">
+                <Edit />
+                <span className="text-lg"> Edit </span>
+            </button>
+        </div>
+    )
+}
+
+export { IncreaseQuantityButton, DecreaseQuantityButton, LogoutButton, EditProfileButton };
