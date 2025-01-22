@@ -39,7 +39,9 @@ async function addToWishList(req, res, next) {
         })
 
         await wishlist.save()
-        res.status(200).json({ message: `${foodExist.name} added to wishlist`, data: wishlist })
+
+        const updatedWishlist = await Wishlist.findOne({ userId }).populate('foodItems.foodId')
+        res.status(200).json({ message: `${foodExist.name} added to wishlist`, data: updatedWishlist })
 
     } catch (err) {
         next(err)
@@ -53,7 +55,7 @@ async function getWishlist(req, res, next) {
         const userId = req.user.id
         console.log('userId :>> ', userId);
 
-        const wishlist = await Wishlist.findOne({ userId })
+        const wishlist = await Wishlist.findOne({ userId }).populate('foodItems.foodId')
 
         if (!wishlist) {
             return res.status(404).json({ message: 'Wish List is empty' })
@@ -82,13 +84,17 @@ async function removeFromWishlist(req, res, next) {
         console.log('userId :>> ', userId);
         console.log('foodId :>> ', foodId);
 
-        const wishlist = await Wishlist.findOne({ userId })
-        if (!wishlist) {
-            return res.status(400).json({ message: 'Wish list not found' })
+        if (!foodId) {
+            return res.status(400).json({ message: 'Required foodId' })
         }
 
         if (!foodExist) {
             return res.status(400).json({ message: 'Food not found' })
+        }
+
+        const wishlist = await Wishlist.findOne({ userId }).populate('foodItems.foodId')
+        if (!wishlist) {
+            return res.status(400).json({ message: 'Wish list not found' })
         }
 
         console.log('wishlist :>> ', wishlist);
@@ -99,10 +105,11 @@ async function removeFromWishlist(req, res, next) {
         }
 
         const foodItems = wishlist.foodItems.filter(
-            item => item.foodId.toString() !== foodId
+            item => item.foodId._id.toString() !== foodId
         )
 
         wishlist.foodItems = foodItems
+        console.log('wishlist :>> ', wishlist);
         await wishlist.save()
 
         res.status(200).json({ message: `${foodExist.name} removed from wish`, data: wishlist })

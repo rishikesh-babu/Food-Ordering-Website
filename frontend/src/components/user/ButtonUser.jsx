@@ -3,6 +3,7 @@ import toast from "react-hot-toast";
 import axiosInstance from "../../config/axiosInstance";
 import { useDispatch } from "react-redux";
 import { clearUserData } from "../../redux/features/userSlice";
+import { useNavigate } from "react-router-dom";
 
 function IncreaseQuantityButton({ foodId, updateCartDetails }) {
     function addtocart(foodId) {
@@ -39,7 +40,6 @@ function IncreaseQuantityButton({ foodId, updateCartDetails }) {
 
 function DecreaseQuantityButton({ foodId, updateCartDetails }) {
     function removeFromCart(foodId) {
-        console.log("foodId :>> ", foodId);
         toast.promise(
             axiosInstance({
                 method: "DELETE",
@@ -113,4 +113,32 @@ function EditProfileButton() {
     )
 }
 
-export { IncreaseQuantityButton, DecreaseQuantityButton, LogoutButton, EditProfileButton };
+function UpdateProfile({ handleSubmit }) {
+    return (
+        <div className="flex justify-center mt-6">
+            <button
+                onClick={handleSubmit}
+                className="px-6 py-3 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 transition-all duration-200"
+            >
+                Update  
+            </button>
+        </div>
+    );
+}
+
+function BackButton() {
+    const navigate = useNavigate()
+    return (
+        <div className="flex justify-center mt-6">
+            <button
+                onClick={() => navigate(-1)}
+                className="px-6 py-3 bg-gray-200 text-gray-800 font-medium rounded-lg shadow-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 transition-all duration-200"
+            >
+                Back
+            </button>
+        </div>
+    );
+}
+
+
+export { IncreaseQuantityButton, DecreaseQuantityButton, LogoutButton, EditProfileButton, UpdateProfile, BackButton };

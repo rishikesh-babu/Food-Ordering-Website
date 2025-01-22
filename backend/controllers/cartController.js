@@ -44,9 +44,9 @@ async function addToCart(req, res, next) {
 
         await cartExist.save()
 
-        console.log('cartExist :>> ', cartExist);
+        let updatedCart = await Cart.findOne({ userId }).populate('cartItems.foodId')
 
-        res.status(200).json({ message: `${foodExist.name} add to cart`, data: cartExist })
+        res.status(200).json({ message: `${foodExist.name} add to cart`, data: updatedCart })
         
     } catch (err) {
         next(err)

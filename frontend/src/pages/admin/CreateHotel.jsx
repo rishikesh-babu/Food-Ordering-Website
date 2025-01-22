@@ -32,7 +32,6 @@ function CreateHotel() {
         formData.append('image', selectedFile)
 
         toast.promise(
-
             axiosInstance({
                 method: 'POST',
                 url: '/hotel/create-hotel',

@@ -19,6 +19,8 @@ import SingleFoodUser from "../pages/user/SingleFoodUser";
 import SingleHotelUser from "../pages/user/SingleHotelUser";
 import PaymentSuccess from "../pages/user/PaymentSuccess";
 import PaymentCancel from "../pages/user/PaymentCancel";
+import Wishlist from "../pages/user/Wishlist";
+import UserProfileEdit from "../pages/user/UserProfileEdit";
 
 const router = createBrowserRouter([
     {
@@ -74,6 +76,11 @@ const router = createBrowserRouter([
                     },
                     {
                         path: 'wishlist',
+                        element: <Wishlist />
+                    },
+                    {
+                        path: 'profile/edit',
+                        element: <UserProfileEdit />
                     },
                 ]
             },

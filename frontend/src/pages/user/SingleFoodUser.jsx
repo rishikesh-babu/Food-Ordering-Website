@@ -3,18 +3,33 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axiosInstance from '../../config/axiosInstance';
 import { MoveLeft } from 'lucide-react';
 import toast from 'react-hot-toast';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { saveCartDetails } from '../../redux/features/cartSlice';
+import { DecreaseQuantityButton, IncreaseQuantityButton } from '../../components/user/ButtonUser';
 
 function SingleFoodUser() {
+
     const [foodDetails, setFoodDetails] = useState({});
+    const { cartDetails } = useSelector((state) => state.cart)
     const { foodId } = useParams();
     const navigate = useNavigate();
     const dispatch = useDispatch()
 
+    const isInCart = cartDetails?.cartItems?.filter((items) => {
+        console.log('items?.foodId?._id :>> ', items?.foodId?._id);
+        console.log('foodId :>> ', foodId);
+        if (items?.foodId?._id === foodId) {
+            return foodId
+        }
+    })
+
     useEffect(() => {
         getFoodDetails();
     }, []);
+
+    function updateCartDetails(newCartDetails) {
+        dispatch(saveCartDetails(newCartDetails))
+    }
 
     function getFoodDetails() {
         axiosInstance({
@@ -85,9 +100,28 @@ function SingleFoodUser() {
                         {foodDetails?.description}
                     </p>
 
-                    <button onClick={addToCart} className="btn bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md transition-all duration-200 ease-in-out transform hover:scale-105">
-                        Add to Cart
-                    </button>
+                    <div className="text-lg font-semibold">
+                        {
+                            isInCart?.[0] ? (
+                                <div className="flex flex-row items-center gap-3">
+                                    <div className="flex items-center">
+                                        <DecreaseQuantityButton foodId={foodId} updateCartDetails={updateCartDetails} />
+                                    </div>
+                                    <div className="text-lg font-medium"> {isInCart?.[0]?.quantity}</div>
+                                    <div className="flex items-center">
+                                        <IncreaseQuantityButton foodId={foodId} updateCartDetails={updateCartDetails} />
+                                    </div>
+                                </div>
+                            ) : (
+                                <button
+                                    className="btn bg-blue-500 hover:bg-blue-600 text-white font-medium px-6 py-2 rounded-lg shadow-md transition-all duration-200 ease-in-out transform hover:scale-105"
+                                    onClick={() => addToCart(foodId)}
+                                >
+                                    Add
+                                </button>
+                            )
+                        }
+                    </div>
                 </div>
             </div>
         </div>

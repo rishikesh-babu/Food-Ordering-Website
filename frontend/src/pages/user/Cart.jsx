@@ -10,8 +10,13 @@ import { CartSkelton } from "../../components/user/Skelton";
 
 function Cart() {
 
-    const [cartDetails, isCartLoading, cartErr] = getFetch('cart/get-cart-items')
+    const [cartData, isCartLoading, cartErr] = getFetch('cart/get-cart-items', saveCartDetails)
+    const { cartDetails } = useSelector((state) => state.cart)
     const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(saveCartDetails(cartDetails))
+    }, [cartDetails])
 
     function updateCartDetails(newCartDetails) {
         dispatch(saveCartDetails(newCartDetails))

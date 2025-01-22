@@ -3,6 +3,11 @@ import { DecreaseQuantityButton, IncreaseQuantityButton } from "./ButtonUser"
 import { saveCartDetails } from "../../redux/features/cartSlice";
 import { Link, useNavigate } from "react-router-dom";
 import { Heart } from "lucide-react";
+import axiosInstance from "../../config/axiosInstance";
+import { useEffect, useState } from "react";
+import getFetch from "../../hooks/getFetch";
+import { savewishlistData } from "../../redux/features/wishlistSlice";
+import toast from "react-hot-toast";
 
 function UserHotelCard({ name, image, address, hotelId }) {
 
@@ -31,15 +36,68 @@ function UserHotelCard({ name, image, address, hotelId }) {
 
 function UserFoodCard({ name, image, price, foodId, addToCart }) {
 
-    const { cartDetails } = useSelector((state) => state.cart)
     const dispatch = useDispatch()
-    const navigate = useNavigate()
 
-    const foodIndex = cartDetails?.cartItems?.findIndex((item) => item?.foodId?._id === foodId)
+    const { cartDetails } = useSelector((state) => state.cart)
+    const { wishlistData } = useSelector((state) => state.wishlist)
+    const isInWishlist = wishlistData?.foodItems?.filter((items) => items?.foodId?._id === foodId)
+    const isInCart = cartDetails?.cartItems?.filter((items) => items?.foodId?._id === foodId)
+
+    console.log('wishlistData :>> ', wishlistData);
+    console.log('isInWishlist :>> ', isInWishlist);
+
+    useEffect(() => {
+
+    }, [cartDetails])
+
+    function addToWishlist() {
+        toast.promise(
+            axiosInstance({
+                method: 'POST',
+                url: '/wishlist/add-to-wishlist',
+                data: { foodId }
+            })
+                .then((res) => {
+                    console.log('res :>> ', res);
+                    toast.success(res?.data?.message)
+                    dispatch(savewishlistData(res?.data?.data))
+                })
+                .catch((err) => {
+                    console.log('err :>> ', err);
+                    toast.error(err?.response?.data?.message)
+                }),
+            {
+                loading: 'Saving to wishlist.....'
+            }
+        )
+    }
+
+    function removeFromWishlist() {
+        toast.promise(
+            axiosInstance({
+                method: 'POST',
+                url: '/wishlist/remove-from-wishlist',
+                data: { foodId }
+            })
+                .then((res) => {
+                    console.log('res :>> ', res);
+                    toast.success(res?.data?.message)
+                    dispatch(savewishlistData(res?.data?.data))
+                })
+                .catch((err) => {
+                    console.log('err :>> ', err);
+                    toast.error(err?.response?.data?.message)
+                }),
+            {
+                loading: 'Removing from wishlist.....'
+            }
+        )
+    }
 
     function updateCartDetails(newCartDetails) {
         dispatch(saveCartDetails(newCartDetails))
     }
+
 
     return (
         <div className="p-6 bg-gradient-to-r from-blue-50 to-white rounded-lg shadow-lg flex flex-col md:flex-row items-center gap-6">
@@ -52,7 +110,7 @@ function UserFoodCard({ name, image, price, foodId, addToCart }) {
                     />
                 </Link>
             </div>
-            <div className="text-center md:text-left">
+            <div className="text-center md:text-left ">
                 <div className="text-xl font-bold text-blue-800">
                     {name ?? 'Name'}
                 </div>
@@ -60,18 +118,42 @@ function UserFoodCard({ name, image, price, foodId, addToCart }) {
                     <span className="text-lg font-medium text-gray-700">
                         ${price ?? 'price'}
                     </span>
-                    <div>
-                        {/* <Heart fill="red"/> */}
-                        {/* <Heart /> */}
+                    <div className="cursor-pointer hover:scale-110">
+                        {
+                            isInWishlist?.[0] ?
+                                (
+                                    <div onClick={removeFromWishlist}>
+                                        <Heart fill="red" />
+                                    </div>
+                                ) : (
+                                    <div onClick={addToWishlist}>
+                                        <Heart />
+                                    </div>
+                                )
+                        }
                     </div>
                 </div>
                 <div className="text-lg font-semibold">
-                    <button
-                        className="btn bg-blue-500 hover:bg-blue-600 text-white font-medium px-6 py-2 rounded-lg shadow-md transition-all duration-200 ease-in-out transform hover:scale-105"
-                        onClick={() => addToCart(foodId)}
-                    >
-                        Add
-                    </button>
+                    {
+                        isInCart?.[0] ? (
+                            <div className="flex flex-row justify-center items-center gap-3">
+                                <div className="flex items-center">
+                                    <DecreaseQuantityButton foodId={foodId} updateCartDetails={updateCartDetails} />
+                                </div>
+                                <div className="text-lg font-medium"> {isInCart?.[0]?.quantity}</div>
+                                <div className="flex items-center">
+                                    <IncreaseQuantityButton foodId={foodId} updateCartDetails={updateCartDetails} />
+                                </div>
+                            </div>
+                        ) : (
+                            <button
+                                className="btn bg-blue-500 hover:bg-blue-600 text-white font-medium px-6 py-2 rounded-lg shadow-md transition-all duration-200 ease-in-out transform hover:scale-105"
+                                onClick={() => addToCart(foodId)}
+                            >
+                                Add
+                            </button>
+                        )
+                    }
                 </div>
             </div>
         </div>

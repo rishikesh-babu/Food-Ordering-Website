@@ -11,6 +11,7 @@ const cartSlice = createSlice({
     reducers: {
         saveCartDetails: (state, action) => {
             state.cartDetails = action.payload
+            console.log('state.cartDetails :>> ', state.cartDetails);
             state.cartLength = state.cartDetails?.cartItems?.length
         },
         clearCartDetails: (state, action) => {

@@ -5,50 +5,52 @@ import { useDispatch, useSelector } from "react-redux";
 import { saveCartDetails } from "../../redux/features/cartSlice";
 import { clearUserData } from "../../redux/features/userSlice";
 import toast from "react-hot-toast";
+import getFetch from "../../hooks/getFetch";
+import { savewishlistData } from "../../redux/features/wishlistSlice";
 
 function UserHeader() {
 
-    const { cartDetails, cartLength } = useSelector((state) => state.cart)
+    const [cartDetails, isCartLoading, cartErr] = getFetch('cart/get-cart-items', saveCartDetails)
+    const [wishlistDetails, isWishloading, wishlistErr] = getFetch('/wishlist/get-wishlist', savewishlistData)
+    const { userData } = useSelector((state) => state.user)
+    const { cartLength } = useSelector((state) => state.cart)
     const navigete = useNavigate();
     const dispatch = useDispatch()
 
-    useEffect(() => {
-        getCartItems()
-    }, [])
 
-    function getCartItems() {
-        axiosInstance({
-            method: 'GET',
-            url: 'cart/get-cart-items'
-        })
-            .then((res) => {
-                console.log('res :>> ', res);
-                dispatch(saveCartDetails(res?.data?.data))
-            })
-            .catch((err) => {
-                console.log('err :>> ', err);
-            })
-    }
+    // function getCartItems() {
+    //     axiosInstance({
+    //         method: 'GET',
+    //         url: 'cart/get-cart-items'
+    //     })
+    //         .then((res) => {
+    //             console.log('res :>> ', res);
+    //             dispatch(saveCartDetails(res?.data?.data))
+    //         })
+    //         .catch((err) => {
+    //             console.log('err :>> ', err);
+    //         })
+    // }
 
     function logout() {
-            toast.promise(
-                axiosInstance({
-                    method: 'POST',
-                    url: 'user/logout'
-                })
-                    .then((res) => {
+        toast.promise(
+            axiosInstance({
+                method: 'POST',
+                url: 'user/logout'
+            })
+                .then((res) => {
 
-                        console.log('res :>> ', res);
-                        toast.success(res?.data?.message)
-                        dispatch(clearUserData())
-                    })
-                    .catch((err) => {
-                        console.log('err :>> ', err);
-                    }),
-                {
-                    loading: 'Logout....'
-                }
-            )
+                    console.log('res :>> ', res);
+                    toast.success(res?.data?.message)
+                    dispatch(clearUserData())
+                })
+                .catch((err) => {
+                    console.log('err :>> ', err);
+                }),
+            {
+                loading: 'Logout....'
+            }
+        )
     }
 
     return (
@@ -107,7 +109,7 @@ function UserHeader() {
                         <div className="w-10 rounded-full">
                             <img
                                 alt="Tailwind CSS Navbar component"
-                                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                                src={userData?.image}
                             />
                         </div>
                     </div>
@@ -121,7 +123,9 @@ function UserHeader() {
                             </Link>
                         </li>
                         <li>
-                            <a> Wishlist </a>
+                            <Link to={'/user/wishlist'}>
+                                Wishlist
+                            </Link>
                         </li>
                         <li>
                             <span onClick={logout}>Logout</span>
