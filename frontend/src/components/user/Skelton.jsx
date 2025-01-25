@@ -162,4 +162,82 @@ function WishlistSkelton() {
     )
 }
 
-export { WishlistSkelton, PopularHotelSkelton, PopularFoodSkelton, CartSkelton, ProfilePicSkelton }
+function SingleHotelSkelton() {
+    return (
+        <div>
+            <div className="bg-gray-700 p-2 grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div className="self-stretch flex justify-center">
+                    <div className="w-full h-60 rounded-xl bg-gray-500 animate-pulse"></div>
+                </div>
+                <div className="text-white flex flex-col justify-center m-7 space-y-4">
+                    <div className="text-3xl font-semibold bg-gray-600 h-8 w-1/2 animate-pulse"></div>
+                    <div className="text-lg text-gray-500 h-6 w-3/4 animate-pulse"></div>
+                </div>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                {[...Array(6)].map((_, index) => (
+                    <div className="p-3 sm:p-6 bg-gradient-to-r from-blue-50 to-white rounded-lg shadow-lg grid grid-cols-2 items-center gap-6">
+                        <div className="flex-shrink-0">
+                            <div className="size-28 md:h-32 md:w-32 rounded-xl bg-gray-300 animate-pulse border-2 border-blue-500 shadow-md"></div>
+                        </div>
+                        <div className="text-left md:text-left">
+                            <div className="text-lg sm:text-xl font-bold bg-gray-300 h-6 w-1/2 animate-pulse rounded"></div>
+                            <div className="flex flex-row items-center justify-between my-3">
+                                <span className="text-lg font-medium bg-gray-300 h-6 w-1/4 animate-pulse rounded"></span>
+                                <div className="h-6 w-6 bg-gray-300 rounded-full animate-pulse"></div>
+                            </div>
+                            <div className="text-lg font-semibold">
+                                <div className="btn bg-gray-300 h-10 w-24 rounded-lg animate-pulse"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                ))}
+            </div>
+        </div>
+
+    )
+}
+
+function SingleFoodSkelton() {
+    return (
+        <div className="container mx-auto p-5">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {/* Image Placeholder */}
+                <div className="flex">
+                    <div className="w-full max-w-lg h-64 bg-gray-300 rounded-lg shadow-lg animate-pulse"></div>
+                </div>
+
+                {/* Content Placeholder */}
+                <div className="space-y-6">
+                    {/* Title Placeholder */}
+                    <div className="h-8 w-1/2 bg-gray-300 rounded animate-pulse"></div>
+
+                    {/* Price and Cart Controls */}
+                    <div className="flex justify-between items-center">
+                        <div className="h-6 w-1/4 bg-gray-300 rounded animate-pulse"></div>
+                        <div className="flex flex-row items-center gap-3">
+                            <div className="h-10 w-10 bg-gray-300 rounded-full animate-pulse"></div>
+                            <div className="h-6 w-6 bg-gray-300 animate-pulse"></div>
+                            <div className="h-10 w-10 bg-gray-300 rounded-full animate-pulse"></div>
+                        </div>
+                    </div>
+
+                    {/* Description Placeholder */}
+                    <div className="space-y-3">
+                        <div className="h-6 w-full bg-gray-300 rounded animate-pulse"></div>
+                        <div className="h-6 w-3/4 bg-gray-300 rounded animate-pulse"></div>
+                        <div className="h-6 w-2/3 bg-gray-300 rounded animate-pulse"></div>
+                    </div>
+
+                    {/* Go Back Button Placeholder */}
+                    <div className="my-3">
+                        <div className="btn h-10 w-32 bg-gray-200 rounded-lg animate-pulse"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export { WishlistSkelton, PopularHotelSkelton, PopularFoodSkelton, CartSkelton, ProfilePicSkelton, SingleHotelSkelton, SingleFoodSkelton }

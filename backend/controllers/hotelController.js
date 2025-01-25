@@ -8,9 +8,9 @@ async function createHotel(req, res, next) {
 
         const { name, address } = req.body
 
-        console.log('name :>> ', name);
-        console.log('address :>> ', address);
-        console.log('req.file :>> ', req.file);
+        // console.log('name :>> ', name);
+        // console.log('address :>> ', address);
+        // console.log('req.file :>> ', req.file);
 
         if (!name || !address || !req.file) {
             return res.status(400).json({ message: 'All fields are required' })

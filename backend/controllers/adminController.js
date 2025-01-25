@@ -82,7 +82,7 @@ async function checkAdmin(req, res, next) {
         console.log('Routes: check admin')
 
         const adminId = req.user.id
-        const adminExist = await Admin.findById(adminId)
+        const adminExist = await Admin.findById(adminId).select('-password')
 
         console.log('adminExist :>> ', adminExist);
 

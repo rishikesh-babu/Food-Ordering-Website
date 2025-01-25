@@ -10,10 +10,11 @@ import { savewishlistData } from "../../redux/features/wishlistSlice";
 
 function UserHeader() {
 
-    const [cartDetails, isCartLoading, cartErr] = getFetch('cart/get-cart-items', saveCartDetails)
+    const [cartData, isCartLoading, cartErr] = getFetch('cart/get-cart-items', saveCartDetails)
     const [wishlistDetails, isWishloading, wishlistErr] = getFetch('/wishlist/get-wishlist', savewishlistData)
     const { userData } = useSelector((state) => state.user)
     const { cartLength } = useSelector((state) => state.cart)
+    const { cartDetails } = useSelector((state) => state.cart)
     const navigete = useNavigate();
     const dispatch = useDispatch()
 
@@ -56,10 +57,11 @@ function UserHeader() {
     return (
         <div className="navbar bg-base-100 fixed top-0 left-0 w-full z-10">
             <div className="flex-1">
-                <a href="/" className="btn btn-ghost text-2xl font-bold">
-                    {" "}
-                    Food Express{" "}
-                </a>
+                <div className="btn btn-ghost text-2xl font-bold">
+                    <Link to={'/'}>
+                        Food Express
+                    </Link>
+                </div>
             </div>
             <div className="flex-none">
                 <div className="dropdown dropdown-end">
@@ -79,7 +81,7 @@ function UserHeader() {
                                     d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                                 />
                             </svg>
-                            <span className="badge badge-sm indicator-item">{cartLength}</span>
+                            <span className="badge badge-sm indicator-item">{cartLength ?? 0}</span>
                         </div>
                     </div>
                     <div

@@ -8,6 +8,7 @@ import { AddFoodItem } from '../../components/admin/ButtonAdmin'
 function SingleHotel() {
 
     const [hotelDetails, setHotelDetails] = useState({})
+
     const { hotelId } = useParams()
     const navigate = useNavigate()
 

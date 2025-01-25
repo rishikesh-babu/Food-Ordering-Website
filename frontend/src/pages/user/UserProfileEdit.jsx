@@ -51,7 +51,7 @@ function UserProfileEdit() {
                     toast.error(err?.response?.data?.message)
                 }),
             {
-                loading: 'Updating profile please wait'
+                loading: 'Updating profile please wait...'
             }
         )
     }

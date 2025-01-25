@@ -61,7 +61,7 @@ async function getCartItems(req, res, next) {
         const cartExist = await Cart.findOne({ userId }).populate('cartItems.foodId')
 
         if (!cartExist) {
-            return res.status(400).json({ message: 'Cart is empty' })
+            return res.status(200).json({ message: 'Cart is empty' })
         }
 
         return res.status(200).json({ message: 'Cart item fetched', data: cartExist })
@@ -121,4 +121,27 @@ async function removeFromCart(req, res, next) {
     }
 }
 
-module.exports = { addToCart, getCartItems, removeFromCart }
+async function deleteCart(req, res, next) {
+    try {
+        console.log('Routes: Delete cart')
+
+        const userId = req.user.id
+        
+        console.log('userId :>> ', userId);
+
+        const cartExist = await Cart.findOne({ userId })
+
+        console.log('cartExist :>> ', cartExist);
+        if (!cartExist) {
+            return res.status(404).json({ message: 'Cart does not exist' })
+        }
+
+        await Cart.deleteOne({ userId })
+        
+        return res.status(200).json({ message: 'Cart Cleard Successfully' })
+    } catch (err) {
+        next(err)
+    }
+}
+
+module.exports = { addToCart, getCartItems, removeFromCart, deleteCart }

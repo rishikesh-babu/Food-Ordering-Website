@@ -11,7 +11,7 @@ router.use((req, res, next) => {
 })
 
 router.post('/create-hotel', adminAuth, upload.single('image'), createHotel)
-router.post('/3.', adminAuth, upload.single('image'), createFood)
+router.post('/create-food/:hotelId', adminAuth, upload.single('image'), createFood)
 
 router.put('/update-hotel/:hotelId')
 router.put('/update-food/:foodId')

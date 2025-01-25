@@ -8,6 +8,7 @@ import { saveCartDetails } from "../../redux/features/cartSlice";
 import getFetch from "../../hooks/getFetch";
 import { PopularFoodSkelton, PopularHotelSkelton } from "../../components/user/Skelton";
 import { savewishlistData } from "../../redux/features/wishlistSlice";
+import HomePageCarousel from "../../components/user/Carousel";
 
 function Home() {
     console.log('Home render')
@@ -19,7 +20,7 @@ function Home() {
     const [hotelDetails, isHotelLoading, hotelErr] = getFetch("hotel/get-all-hotels");
     const [wishlistDetails, isWishloading, wishlistErr] = getFetch('/wishlist/get-wishlist', savewishlistData)
     const [foodDetails, isFoodLoading, foodErr] = getFetch("hotel/get-all-food");
-    const [cartDetails, isCartLoading, cartErr] = getFetch('/cart/add-to-cart', saveCartDetails)
+    const [cartDetails, isCartLoading, cartErr] = getFetch('/cart/get-cart-items', saveCartDetails)
 
     console.log('wishlistDetails :>> ', wishlistDetails);
     function addToCart(foodId) {
@@ -53,14 +54,19 @@ function Home() {
     return (
         <div>
             <div className="p-6 bg-gray-50 rounded-lg shadow-lg">
-                <div className="text-2xl font-bold text-gray-800 mb-6">
+                {/* <HomePageCarousel /> */}
+                <div className="text-2xl font-bold text-gray-800 mb-3">
                     Popular Restaurants
                 </div>
+                <div className="text-gray-500">
+                    Select Your favourite restaurant special dish and make your day happy...
+                </div>
+                <hr />
                 {
                     isHotelLoading ? (
                         <PopularHotelSkelton />
                     ) : (
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                        <div className="mt-5 flex gap-5 overflow-y-hidden overflow-x-auto scroll-container scroll-smooth">
                             {hotelDetails?.map((item, index) => (
                                 <UserHotelCard
                                     key={index}
@@ -73,9 +79,13 @@ function Home() {
                         </div>
                     )
                 }
-                <div className="text-2xl font-bold text-gray-800 mb-6">
+                <div className="text-2xl font-bold text-gray-800 mb-3 mt-6">
                     Popular Food
                 </div>
+                <div className="text-gray-500">
+                    Here are some popular food items add then to cart and purchase....
+                </div>
+                <hr className="my-3" />
                 {
                     isFoodLoading ? (
                         <PopularFoodSkelton />

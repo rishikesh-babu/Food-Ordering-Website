@@ -83,7 +83,7 @@ async function checkUser(req, res, next) {
         console.log('Routes: check user')
 
         const userId = req.user.id
-        const userExist = await User.findById(userId)
+        const userExist = await User.findById(userId).select('-password')
 
         if (!userExist) {
             return res.status(400).json({ message: 'User does not exist' })
@@ -136,10 +136,10 @@ async function userProfilePicUpdate(req, res, next) {
 
         const uniqueName = `${userExist.name}_${userId}`
 
-        console.log('userId :>> ', userId);
-        console.log('userExist :>> ', userExist);
-        console.log('uniqueName :>> ', uniqueName);
-        console.log('req.file :>> ', req.file);
+        // console.log('userId :>> ', userId);
+        // console.log('userExist :>> ', userExist);
+        // console.log('uniqueName :>> ', uniqueName);
+        // console.log('req.file :>> ', req.file);
     
         if (req.file) {
             const imageExist = userExist.image

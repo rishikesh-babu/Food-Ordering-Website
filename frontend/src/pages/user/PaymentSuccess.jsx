@@ -1,9 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { CheckCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import axiosInstance from "../../config/axiosInstance";
+import { useDispatch } from "react-redux";
+import { clearCartDetails } from "../../redux/features/cartSlice";
 
 function PaymentSuccess() {
     const navigate = useNavigate();
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        clearCart()
+    }, [])
+
+    function clearCart() {
+        axiosInstance({
+            method: 'DELETE',
+            url: '/cart/delete-cart'
+        })
+            .then((res) => {
+                console.log('res :>> ', res);
+                dispatch(clearCartDetails())
+            })
+            .catch((err) => {
+                console.log('err :>> ', err);
+            })
+    }
 
     return (
         <div className="min-h-screen bg-green-50 flex items-center justify-center">
