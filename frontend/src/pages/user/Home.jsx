@@ -66,7 +66,7 @@ function Home() {
                     isHotelLoading ? (
                         <PopularHotelSkelton />
                     ) : (
-                        <div className="mt-5 flex gap-5 overflow-y-hidden overflow-x-auto scroll-container scroll-smooth">
+                        <div className="my-5 flex gap-5 overflow-y-hidden overflow-x-auto overflow-visible scroll-container scroll-smooth ">
                             {hotelDetails?.map((item, index) => (
                                 <UserHotelCard
                                     key={index}

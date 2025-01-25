@@ -78,15 +78,15 @@ function Cart() {
             ) : (
                 <div>
                     {!cartDetails ? (
-                        <div className="flex flex-col items-center justify-center min-h-screen p-6 bg-gray-50">
-                            <div className="flex flex-col items-center justify-center space-y-6 bg-white p-8 rounded-lg shadow-lg max-w-lg w-full">
+                        <div className="flex flex-col items-center justify-center min-h-screen p-6 bg-red-50">
+                            <div className="flex flex-col items-center justify-center space-y-6 bg-white p-8 rounded-xl shadow-xl max-w-lg w-full">
                                 {/* Title */}
-                                <div className="text-2xl md:text-3xl font-extrabold text-gray-800 text-center">
+                                <div className="text-2xl md:text-3xl font-serif text-gray-800 text-center">
                                     Oops! Your cart is empty
                                 </div>
 
                                 {/* Subtitle */}
-                                <p className="text-gray-500 text-base md:text-lg text-center px-4">
+                                <p className="text-gray-500 text-pretty md:text-lg text-center px-4">
                                     It seems like you haven’t added anything to your cart yet.
                                     Explore our products and start adding your favorites!
                                 </p>

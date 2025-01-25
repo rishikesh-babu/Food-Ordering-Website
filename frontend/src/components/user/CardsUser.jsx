@@ -15,7 +15,7 @@ function UserHotelCard({ name, image, address, hotelId }) {
     return (
         <div
             onClick={() => navigate(`/hotel/${hotelId}`)}
-            className="py-6 sm:p-6 min-w-72 bg-gradient-to-r from-blue-50 to-white rounded-lg shadow-lg flex flex-col xl:flex-row items-center gap-6 transition-transform transform hover:scale-105 hover:shadow-xl"
+            className="py-6 sm:p-6 min-w-72 bg-gradient-to-r from-blue-50 to-white rounded-lg shadow-lg flex flex-col xl:flex-row items-center gap-6 transition-transform transform hover:scale-105 shadow-xl hover:shadow-2xl"
         >
             <div className="flex-shrink-0">
                 <img
@@ -100,7 +100,7 @@ function UserFoodCard({ name, image, price, foodId, addToCart }) {
     }
 
     return (
-        <div className="p-3 sm:p-6 bg-gradient-to-r from-blue-50 to-white rounded-lg shadow-lg grid grid-cols-2 items-center gap-6">
+        <div className="p-3 sm:p-6 bg-gradient-to-r from-blue-50 to-white rounded-lg shadow-xl grid grid-cols-2 items-center gap-6">
             <div className="flex-shrink-0">
                 <Link to={`/food/${foodId}`}>
                     <img
