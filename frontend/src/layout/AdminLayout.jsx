@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
 import AdminHeader from '../components/admin/AdminHeader'
 import AdminFooter from '../components/admin/AdminFooter'
@@ -10,7 +10,9 @@ import toast from 'react-hot-toast'
 console.log('This is admin layout')
 
 function AdminLayout() {
+
     const { isAdminAuth, adminData } = useSelector((state) => state.admin)
+    const { sideBarToggle } = useSelector((state) => state.sideBar)
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
@@ -38,14 +40,16 @@ function AdminLayout() {
 
     return (
         <div className='flex'>
-            <div className='w-2/12 bg-gray-200 '>
+            <div
+                className={`bg-gray-200 transition-all duration-300 ease-in-out transform ${sideBarToggle && isAdminAuth ? 'translate-x-0 w-64' : '-translate-x-full w-0'}`}
+            >
                 <SideBar />
             </div>
-            <div className='w-full'>
-                <div>
+            <div className=''>
+                <div className='fixed top-0 w-full z-10 shadow-lg'>
                     <AdminHeader />
                 </div>
-                <div className='min-h-96'>
+                <div className='min-h-96 mt-20'>
                     <Outlet />
                 </div>
                 <div>

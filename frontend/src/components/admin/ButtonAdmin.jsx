@@ -28,7 +28,7 @@ function CreateFoodButton({ handleSubmit }) {
 }
 
 function FoodRemoveButton() {
-    return <button className="btn btn-error">Delete</button>;
+    return <button className="btn btn-error">Remove</button>;
 }
 
 function AddFoodItem({ hotelId }) {

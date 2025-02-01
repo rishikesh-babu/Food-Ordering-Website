@@ -63,7 +63,7 @@ function SingleFoodUser() {
                 .catch((err) => {
                     console.log("err :>> ", err);
                     toast.error(err?.response?.data?.message);
-                    if (err?.response?.data?.message === "Unauthorized user") {
+                    if (err?.response?.data?.message === "Unauthorized User" || 'jwt expeired') {
                         navigate("/login");
                     }
                 }),

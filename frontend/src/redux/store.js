@@ -3,13 +3,15 @@ import adminReducer from "./features/adminSilce";
 import userReducer from "./features/userSlice";
 import cartReducer from "./features/cartSlice";
 import wishlistReducer from "./features/wishlistSlice";
+import sideBarReducer from "./features/sideBarSlice";
 
 const store = configureStore({
     reducer: {
         admin: adminReducer,
         user: userReducer,
         cart: cartReducer,
-        wishlist: wishlistReducer
+        wishlist: wishlistReducer,
+        sideBar: sideBarReducer,
     }
 })
 

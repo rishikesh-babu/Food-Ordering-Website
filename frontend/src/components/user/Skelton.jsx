@@ -117,48 +117,33 @@ function ProfilePicSkelton() {
 function WishlistSkelton() {
     return (
         <div className="max-w-screen-lg mx-auto p-6">
-            <h1 className="text-3xl font-bold text-center mb-8 text-gray-800">Your Cart</h1>
-
-            {/* Skeleton loader for the cart items */}
-            <div className="space-y-6">
-                {Array.from({ length: 3 }).map((_, index) => (
-                    <div
-                        key={index}
-                        className="p-6 bg-gradient-to-r from-gray-100 to-white rounded-lg shadow-lg flex flex-col md:flex-row items-center gap-6 animate-pulse"
-                    >
-                        {/* Image Skeleton */}
-                        <div className="flex-shrink-0">
-                            <div className="h-24 w-24 bg-gray-300 rounded-xl"></div>
-                        </div>
-
-                        {/* Cart Item Details Skeleton */}
-                        <div className="text-center md:text-left w-full">
-                            {/* Name Skeleton */}
-                            <div className="h-6 w-3/4 bg-gray-300 rounded mb-2"></div>
-
-                            {/* Price Skeleton */}
-                            <div className="h-4 w-1/2 bg-gray-300 rounded mb-3"></div>
-
-                            {/* Quantity Selector Skeleton */}
-                            <div className="flex flex-row items-center justify-around my-3">
-                                <div className="h-6 w-12 bg-gray-300 rounded"></div>
-                                <div className="h-6 w-12 bg-gray-300 rounded mx-3"></div>
-                                <div className="h-6 w-12 bg-gray-300 rounded"></div>
-                            </div>
-
-                            {/* Remove from cart button skeleton */}
-                            <div className="h-6 w-24 bg-gray-300 rounded-lg"></div>
-                        </div>
-                    </div>
-                ))}
-            </div>
-
-            {/* Skeleton for the total amount and checkout section */}
-            <div className="mt-8 p-6 bg-gradient-to-r from-gray-100 to-white rounded-lg shadow-lg flex justify-between items-center animate-pulse">
-                <div className="h-6 w-1/4 bg-gray-300 rounded"></div> {/* Total Price Skeleton */}
-                <div className="h-8 w-32 bg-gray-300 rounded-lg"></div> {/* Checkout Button Skeleton */}
-            </div>
+        <h1 className="text-3xl font-bold text-center mb-8 text-gray-800">
+          Wishlist
+        </h1>
+        <div className="space-y-6">
+          {Array(4) // Assuming 4 skeleton cards for demonstration
+            .fill(0)
+            .map((_, index) => (
+              <div
+                key={index}
+                className="p-3 sm:p-6 bg-gradient-to-r from-gray-100 to-gray-50 rounded-lg shadow-xl grid grid-cols-2 items-center gap-6 animate-pulse"
+              >
+                <div className="flex-shrink-0">
+                  <div className="h-28 w-28 md:h-32 md:w-32 bg-gray-300 rounded-xl"></div>
+                </div>
+                <div className="space-y-3">
+                  <div className="h-6 bg-gray-300 rounded w-3/4"></div>
+                  <div className="flex items-center justify-between">
+                    <div className="h-6 bg-gray-300 rounded w-1/4"></div>
+                    <div className="h-6 w-6 bg-gray-300 rounded-full"></div>
+                  </div>
+                  <div className="h-10 bg-gray-300 rounded w-1/2"></div>
+                </div>
+              </div>
+            ))}
         </div>
+      </div>
+      
     )
 }
 

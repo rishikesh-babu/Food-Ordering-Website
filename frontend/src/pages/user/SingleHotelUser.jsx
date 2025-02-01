@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axiosInstance from '../../config/axiosInstance'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { UserFoodCard } from '../../components/user/CardsUser'
 import toast from 'react-hot-toast'
 import { saveCartDetails } from '../../redux/features/cartSlice'
@@ -13,6 +13,7 @@ function SingleHotelUser() {
     const [hotelDetails, setHotelDetails] = useState()
     const { hotelId } = useParams()
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     useEffect(() => {
         getSingleHotel()
@@ -47,7 +48,7 @@ function SingleHotelUser() {
                 .catch((err) => {
                     console.log('err :>> ', err);
                     toast.error(err?.response?.data?.message)
-                    if (err?.response?.data?.message === "Unauthorized user") {
+                    if (err?.response?.data?.message === 'Unauthorized user') {
                         navigate('/login')
                     }
                 }),

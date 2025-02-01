@@ -33,8 +33,8 @@ function SingleHotel() {
     }
     return (
 
-        <div className="p-14">
-            <div className="bg-gray-700 p-2 grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div className="p-3">
+            <div className="bg-gray-700 p-2 grid grid-cols-1 md:grid-cols-2 gap-10 rounded-xl">
                 <div className="self-stretch flex justify-center">
                     <img
                         className="w-full h-auto rounded-xl object-cover"
@@ -56,7 +56,7 @@ function SingleHotel() {
                 <AddFoodItem hotelId={hotelId} />
             </div>
 
-            <div className="m-7 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 {
                     hotelDetails?.foodItems?.map((item, index) => (
                         <FoodCard

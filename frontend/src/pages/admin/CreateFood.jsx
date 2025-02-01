@@ -4,6 +4,7 @@ import { ImageTag, InputTag } from '../../components/admin/InputAdmin'
 import { CreateFoodButton } from '../../components/admin/ButtonAdmin'
 import toast from 'react-hot-toast'
 import axiosInstance from '../../config/axiosInstance'
+import { BackButton } from '../../components/user/ButtonUser'
 
 function CreateFood() {
 
@@ -107,11 +108,12 @@ function CreateFood() {
                         className="p-3 border border-gray-300 rounded-lg"
                     />
                 </div>
-                <div className="mt-6 flex justify-center">
+                <div className="mt-6 grid grid-cols-2 sm:justify-items-start">
                     <CreateFoodButton
                         handleSubmit={handleSubmit}
                         className="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
+                    <BackButton />
                 </div>
             </div>
         </div>

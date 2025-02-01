@@ -66,7 +66,7 @@ function Home() {
                     isHotelLoading ? (
                         <PopularHotelSkelton />
                     ) : (
-                        <div className="my-5 flex gap-5 overflow-y-hidden overflow-x-auto overflow-visible scroll-container scroll-smooth ">
+                        <div className="py-4 flex gap-5 overflow-y-hidden overflow-x-visible">
                             {hotelDetails?.map((item, index) => (
                                 <UserHotelCard
                                     key={index}

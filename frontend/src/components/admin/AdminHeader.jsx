@@ -1,10 +1,15 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { toggleSideBar } from '../../redux/features/sideBarSlice'
 
 function AdminHeader() {
+
+    const dispatch = useDispatch()
+
     return (
         <div className="navbar bg-base-100">
             <div className="flex-none">
-                <button className="btn btn-square btn-ghost">
+                <button onClick={() => dispatch(toggleSideBar())} className="btn btn-square btn-ghost">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -19,9 +24,9 @@ function AdminHeader() {
                 </button>
             </div>
             <div className="flex-1">
-                <a className="btn btn-ghost text-2xl">Food Express Admin </a>
+                <a className="btn btn-ghost text-2xl font-semibold">Food Express Admin </a>
             </div>
-            <div className="flex-none">
+            {/* <div className="flex-none">
                 <button className="btn btn-square btn-ghost">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -35,7 +40,7 @@ function AdminHeader() {
                             d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
                     </svg>
                 </button>
-            </div>
+            </div> */}
         </div>
     )
 }

@@ -44,7 +44,7 @@ function UserProfile() {
   // }
 
   return (
-    <div className="flex flex-col items-center bg-gray-50 min-h-screen py-8 px-4">
+    <div className="flex flex-col items-center bg-gray-100 min-h-screen py-8 px-4">
       <div className="text-3xl font-semibold text-gray-800 mb-8">Profile</div>
       <div className="p-6 bg-white shadow-lg rounded-xl max-w-fit">
         {profilePicLoading ? (
