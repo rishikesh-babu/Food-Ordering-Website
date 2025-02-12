@@ -28,6 +28,7 @@ function SingleFoodUser() {
 
     useEffect(() => {
         getFoodDetails();
+        window.scroll(0, 0)
     }, []);
 
     function updateCartDetails(newCartDetails) {

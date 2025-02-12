@@ -11,7 +11,7 @@ import { savewishlistData } from "../../redux/features/wishlistSlice";
 import HomePageCarousel from "../../components/user/Carousel";
 
 function Home() {
-    console.log('Home render')
+    // console.log('Home render')
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -22,7 +22,11 @@ function Home() {
     const [foodDetails, isFoodLoading, foodErr] = getFetch("hotel/get-all-food");
     const [cartDetails, isCartLoading, cartErr] = getFetch('/cart/get-cart-items', saveCartDetails)
 
-    console.log('wishlistDetails :>> ', wishlistDetails);
+    useEffect(() => {
+        window.scroll(0, 0)
+    }, [])
+
+    // console.log('wishlistDetails :>> ', wishlistDetails);
     function addToCart(foodId) {
         toast.promise(
             axiosInstance({
@@ -36,7 +40,7 @@ function Home() {
                     toast.success(res?.data?.message);
                 })
                 .catch((err) => {
-                    console.log("err :>> ", err);
+                    // console.log("err :>> ", err);
                     toast.error(err?.response?.data?.message);
                     if (
                         err?.response?.data?.message === "Unauthorized user" ||

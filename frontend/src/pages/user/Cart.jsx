@@ -22,23 +22,15 @@ function Cart() {
         dispatch(saveCartDetails(cartDetails));
     }, [cartDetails]);
 
+    useEffect(() => {
+        if (!isCartLoading) {
+            window.scrollTo(0, 0)
+        }
+    }, [isCartLoading])
+
     function updateCartDetails(newCartDetails) {
         dispatch(saveCartDetails(newCartDetails));
     }
-
-    // function getCartDetails() {
-    //     axiosInstance({
-    //         method: "GET",
-    //         url: "cart/get-cart-items",
-    //     })
-    //         .then((res) => {
-    //             console.log("res :>> ", res);
-    //             dispatch(saveCartDetails(res?.data?.data))
-    //         })
-    //         .catch((err) => {
-    //             console.log("err :>> ", err);
-    //         });
-    // }
 
     async function makePayment() {
         const stripe = await loadStripe(

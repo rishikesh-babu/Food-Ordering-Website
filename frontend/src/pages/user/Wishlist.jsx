@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { UserFoodCard } from "../../components/user/CardsUser";
 import getFetch from "../../hooks/getFetch";
@@ -16,7 +16,11 @@ function Wishlist() {
     const dispatch = useDispatch()
     const navigete = useNavigate()
 
-    console.log('wishlistLoading :>> ', wishlistLoading);
+    useEffect(() => {
+        window.scroll(0, 0)
+    }, [])
+
+    // console.log('wishlistLoading :>> ', wishlistLoading);
 
     function addToCart(foodId) {
         toast.promise(

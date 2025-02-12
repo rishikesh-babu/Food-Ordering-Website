@@ -40,10 +40,8 @@ function AdminLayout() {
 
     return (
         <div className='flex'>
-            <div
-                className={`bg-gray-200 transition-all duration-300 ease-in-out transform ${sideBarToggle && isAdminAuth ? 'translate-x-0 w-64' : '-translate-x-full w-0'}`}
-            >
-                <SideBar />
+            <div>
+                {(sideBarToggle && isAdminAuth) && <SideBar />}
             </div>
             <div className=''>
                 <div className='fixed top-0 w-full z-10 shadow-lg'>
