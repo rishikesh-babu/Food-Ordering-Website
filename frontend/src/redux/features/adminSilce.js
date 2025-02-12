@@ -12,9 +12,6 @@ const adminSlice = createSlice({
         saveAdminData: (state, action) => {
             state.isAdminAuth = true 
             state.adminData = action.payload
-            console.log('action.payload :>> ', action.payload);
-            console.log('state.adminData :>> ', state.adminData);
-            console.log('state.isAdminAuth :>> ', state.isAdminAuth);
         },
         clearAdminData: (state, action) => {
             state.isAdminAuth = false

@@ -35,14 +35,14 @@ function SingleHotel() {
 
         <div className="p-3">
             <div className="bg-gray-700 p-2 grid grid-cols-1 md:grid-cols-2 gap-10 rounded-xl">
-                <div className="self-stretch flex justify-center">
+                <div className="flex justify-center">
                     <img
-                        className="w-full h-auto rounded-xl object-cover"
+                        className="size-fit rounded-xl"
                         src={hotelDetails?.image}
                         alt="Hotel Image"
                     />
                 </div>
-                <div className="text-white flex flex-col justify-center m-7 space-y-4">
+                <div className="text-white flex flex-col text-center md:text-left justify-center m-7 space-y-4">
                     <div className="text-3xl font-semibold">
                         {hotelDetails?.name}
                     </div>

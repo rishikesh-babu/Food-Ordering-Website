@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../config/axiosInstance";
 import { saveUserData } from "../../redux/features/userSlice";
+import { Eye, EyeOff } from "lucide-react";
 
 function UserLogin() {
     const [loginData, setLoginData] = useState({});
@@ -103,7 +104,7 @@ function UserLogin() {
                                     className="btn btn-link text-gray-600 hover:text-gray-800"
                                     onClick={() => setShowPassword(!showPassword)}
                                 >
-                                    {showPassword ? "Hide Password" : "Show Password"}
+                                    {showPassword ? <EyeOff /> : <Eye />}
                                 </button>
                             </div>
                         </div>

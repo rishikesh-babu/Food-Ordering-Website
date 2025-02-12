@@ -12,7 +12,7 @@ function HotelCard({ name, image, hotelId }) {
     return (
         <div
             onClick={gotToSingleHotel}
-            className="hover:bg-gray-100 transition-all duration-200 cursor-pointer m-5 p-4 rounded-lg shadow-md grid grid-cols-1 md:grid-cols-3 justify-items-center items-center gap-6"
+            className="my-5 p-4 hover:bg-gray-100 transition-all duration-200 cursor-pointer rounded-lg shadow-md grid grid-cols-1 md:grid-cols-3 justify-items-center items-center gap-6"
         >
             <div className="flex justify-center">
                 <img
@@ -25,7 +25,7 @@ function HotelCard({ name, image, hotelId }) {
                 {name}
             </div>
             <div className="flex justify-center md:justify-end">
-                <HotelRemoveButton />
+                {/* <HotelRemoveButton /> */}
             </div>
         </div>
     )
@@ -48,7 +48,7 @@ function FoodCard({ name, image, price }) {
                     <div className="text-green-600 mt-1">${price}</div>
                 </div>
                 <div>
-                    <FoodRemoveButton />
+                    {/* <FoodRemoveButton /> */}
                 </div>
             </div>
         </div>

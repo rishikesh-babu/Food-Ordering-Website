@@ -39,18 +39,48 @@ function AdminLayout() {
     }
 
     return (
-        <div className='flex'>
-            <div>
-                {(sideBarToggle && isAdminAuth) && <SideBar />}
-            </div>
-            <div className=''>
-                <div className='fixed top-0 w-full z-10 shadow-lg'>
+
+        // <div className="flex h-screen">
+        //     {/* Sidebar - Animated & Scrollable */}
+        //     <div className={`bg-gray-200 border-r shadow-lg overflow-y-auto transition-all duration-300 ${sideBarToggle && isAdminAuth ? "w-64" : "w-0 overflow-hidden"}`}>
+        //         <SideBar />
+        //     </div>
+
+        //     {/* Main Content - Header Fixed, Body Scrollable */}
+        //     <div className="flex flex-col overflow-y-auto">
+        //         {/* Fixed Header */}
+        //         <div className="fixed top-0 w-full bg-white shadow-lg z-10">
+        //             <AdminHeader />
+        //         </div>
+
+        //         {/* Scrollable Content */}
+        //         <div className="mt-16 p-4">
+        //             <Outlet />
+        //         </div>
+
+        //         {/* Footer */}
+        //         <div className="w-full bg-gray-100 shadow-inner">
+        //             <AdminFooter />
+        //         </div>
+        //     </div>
+        // </div>
+
+
+
+        <div className='flex h-screen overflow-hidden'>
+            {
+                <div className={`bg-gray-200 overflow-y-auto  text-nowrap ${(sideBarToggle && isAdminAuth) ? 'w-64' : 'w-0 opacity-0'} duration-300`}>
+                    <SideBar />
+                </div>
+            }
+            <div className='flex flex-col overflow-y-auto w-screen'>
+                <div className='fixed w-full shadow-lg '>
                     <AdminHeader />
                 </div>
-                <div className='min-h-96 mt-20'>
+                <div className='flex-1 mt-20 w-full'>
                     <Outlet />
                 </div>
-                <div>
+                <div className='w-full'>
                     <AdminFooter />
                 </div>
             </div>

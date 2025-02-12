@@ -23,8 +23,8 @@ function AdminHeader() {
                     </svg>
                 </button>
             </div>
-            <div className="flex-1">
-                <a className="btn btn-ghost text-2xl font-semibold">Food Express Admin </a>
+            <div className="">
+                <a className="btn btn-ghost text-3xl font-semibold">Food Express Admin </a>
             </div>
         </div>
     )

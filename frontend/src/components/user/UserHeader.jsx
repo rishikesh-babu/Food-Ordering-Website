@@ -18,21 +18,6 @@ function UserHeader() {
     const navigete = useNavigate();
     const dispatch = useDispatch()
 
-
-    // function getCartItems() {
-    //     axiosInstance({
-    //         method: 'GET',
-    //         url: 'cart/get-cart-items'
-    //     })
-    //         .then((res) => {
-    //             console.log('res :>> ', res);
-    //             dispatch(saveCartDetails(res?.data?.data))
-    //         })
-    //         .catch((err) => {
-    //             console.log('err :>> ', err);
-    //         })
-    // }
-
     function logout() {
         toast.promise(
             axiosInstance({
@@ -110,7 +95,6 @@ function UserHeader() {
                     >
                         <div className="w-10 rounded-full">
                             <img
-                                alt="Tailwind CSS Navbar component"
                                 src={userData?.image}
                             />
                         </div>
