@@ -2,12 +2,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { DecreaseQuantityButton, IncreaseQuantityButton } from "./ButtonUser";
 import { saveCartDetails } from "../../redux/features/cartSlice";
 import { Link, useNavigate } from "react-router-dom";
-import { Heart } from "lucide-react";
+import { Heart, Trash2 } from "lucide-react";
 import axiosInstance from "../../config/axiosInstance";
 import { useEffect, useState } from "react";
 import getFetch from "../../hooks/getFetch";
 import { savewishlistData } from "../../redux/features/wishlistSlice";
 import toast from "react-hot-toast";
+import Swal from "sweetalert2";
+import { saveOrderDetails } from "../../redux/features/orderSlice";
 
 function UserHotelCard({ name, image, address, hotelId }) {
     const navigate = useNavigate();
@@ -25,7 +27,9 @@ function UserHotelCard({ name, image, address, hotelId }) {
                 />
             </div>
             <div className="text-center xl:text-left ">
-                <div className="text-lg sm:text-lg text-wrap font-bold text-blue-800">{name ?? "Name"}</div>
+                <div className="text-lg sm:text-lg text-wrap font-bold text-blue-800">
+                    {name ?? "Name"}
+                </div>
                 <div className="sm:text-lg text-balance font-medium text-gray-700 mt-2">
                     {address ?? "address"}
                 </div>
@@ -36,7 +40,7 @@ function UserHotelCard({ name, image, address, hotelId }) {
 
 function UserFoodCard({ name, image, price, foodId, addToCart }) {
     const dispatch = useDispatch();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const { cartDetails } = useSelector((state) => state.cart);
     const { wishlistData } = useSelector((state) => state.wishlist);
@@ -67,8 +71,11 @@ function UserFoodCard({ name, image, price, foodId, addToCart }) {
                 .catch((err) => {
                     console.log("err :>> ", err);
                     toast.error(err?.response?.data?.message);
-                    if (err?.response?.data?.message === 'Unauthorized User' || "jwt expired") {
-                        navigate('/login')
+                    if (
+                        err?.response?.data?.message === "Unauthorized User" ||
+                        "jwt expired"
+                    ) {
+                        navigate("/login");
                     }
                 }),
             {
@@ -203,4 +210,70 @@ function CartCard({ name, price, quantity, image, foodId, updateCartDetails }) {
     );
 }
 
-export { UserHotelCard, UserFoodCard, CartCard };
+function OrderListCard({ items }) {
+    const navigate = useNavigate();
+    const dispatch = useDispatch()
+
+    function deleteOrder() {
+        
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to undo this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#3085d6",
+            confirmButtonText: "Yes, delete it!"
+        })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    toast.promise(
+                        axiosInstance({
+                            method: 'DELETE',
+                            url: `order/delete-order/${items?._id}`
+                        })
+                        .then((res) => {
+                            dispatch(saveOrderDetails(res?.data?.data))
+                            console.log("Order deleted!"); // Replace with delete logic
+                            Swal.fire("Deleted!", "Your item has been removed.", "success");
+                        })
+                        .catch((err) => {
+                            toast.error("Something went wrong!")
+                        }),
+                        {
+                            loading: 'Deleting order'
+                        }
+                    )
+                }
+            });
+    };
+
+    return (
+        <div
+            className="m-1 mt-2 p-2 sm:my-4 border rounded-md shadow-md"
+        // onClick={() => navigate(`/user/order/${items?._id}`)}
+        >
+            <div className="grid grid-cols-[80px_1fr]">
+                <span className="mr-2 text-lg font-semibold">Address:</span>
+                <span className="text-lg">{items?.address}</span>
+            </div>
+            <div className="grid grid-cols-[80px_1fr]">
+                <span className="mr-2 text-lg font-semibold">Date:</span>
+                <span className="text-lg">
+                    {items?.date.slice(0, 10).split("-").reverse().join("-")}
+                </span>
+            </div>
+            <div className="grid grid-cols-[80px_1fr]">
+                <span className="mr-2 text-lg font-semibold">Price:</span>
+                <span className="text-lg">${items?.price}</span>
+            </div>
+            <button className="mt-2 hover:scale-105"
+                onClick={deleteOrder}
+            >
+                <Trash2 />
+            </button>
+        </div>
+    );
+}
+
+export { UserHotelCard, UserFoodCard, CartCard, OrderListCard };

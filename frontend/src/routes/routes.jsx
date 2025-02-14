@@ -21,6 +21,8 @@ import PaymentSuccess from "../pages/user/PaymentSuccess";
 import PaymentCancel from "../pages/user/PaymentCancel";
 import Wishlist from "../pages/user/Wishlist";
 import UserProfileEdit from "../pages/user/UserProfileEdit";
+import Order from "../pages/user/Order";
+import SingleOrder from "../pages/user/SingleOrder";
 
 const router = createBrowserRouter([
     {
@@ -72,7 +74,12 @@ const router = createBrowserRouter([
                         element: <PaymentCancel />
                     },
                     {
-                        path: 'order',
+                        path: 'orders',
+                        element: <Order />
+                    },
+                    {
+                        path: 'order/:orderId',
+                        element: <SingleOrder />
                     },
                     {
                         path: 'wishlist',

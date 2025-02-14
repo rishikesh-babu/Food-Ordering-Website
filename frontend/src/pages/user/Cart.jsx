@@ -15,6 +15,7 @@ function Cart() {
         saveCartDetails
     );
     const { cartDetails } = useSelector((state) => state.cart);
+    const { userData } = useSelector((state) => state.user)
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -32,7 +33,25 @@ function Cart() {
         dispatch(saveCartDetails(newCartDetails));
     }
 
+    function addToOrderList() {
+        axiosInstance({
+            method: 'POST',
+            url: '/order/add-order',
+            data: {
+                address: userData?.address,
+                price: cartDetails?.totalPrice
+            }
+        })
+            .then((res) => {
+                console.log('res :>> ', res);
+            })
+            .catch((err) => {
+                console.log('err :>> ', err);
+            })
+    }
+
     async function makePayment() {
+        addToOrderList()
         const stripe = await loadStripe(
             import.meta.env.VITE_STRIPE_Publishable_key
         );
@@ -112,6 +131,16 @@ function Cart() {
                                         key={index}
                                     />
                                 ))}
+                            </div>
+
+                            {/* Address section */}
+                            <div className="p-2 border-2 rounded-md shadow-md">
+                                <div className="text-lg font-semibold">
+                                    Address
+                                </div>
+                                <div className="text-lg font-mono">
+                                    {userData?.address}
+                                </div>
                             </div>
 
                             {/* Total Price Section */}

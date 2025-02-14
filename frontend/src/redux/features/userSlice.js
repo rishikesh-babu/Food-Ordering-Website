@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
-    isUserAuth: false,
+    isUserAuth: true,
     userData: {}
 }
 
@@ -12,9 +12,6 @@ const userSlice = createSlice({
         saveUserData: (state, action) => {
             state.isUserAuth = true 
             state.userData = action.payload
-            console.log('action.payload :>> ', action.payload);
-            console.log('state.userData :>> ', state.userData);
-            console.log('state.isUserAuth :>> ', state.isUserAuth);
         },
         clearUserData: (state, action) => {
             state.isUserAuth = false

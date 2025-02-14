@@ -109,6 +109,11 @@ function UserHeader() {
                             </Link>
                         </li>
                         <li>
+                            <Link to={'/user/orders'}>
+                                Orders
+                            </Link>
+                        </li>
+                        <li>
                             <Link to={'/user/wishlist'}>
                                 Wishlist
                             </Link>

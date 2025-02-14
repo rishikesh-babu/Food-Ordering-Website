@@ -101,7 +101,7 @@ function UserLogin() {
                                 </button>
                                 <button
                                     type="button"
-                                    className="btn btn-link text-gray-600 hover:text-gray-800"
+                                    className="btn btn-link text-gray-600 hover:scale-105 absolute top-40 right-4"
                                     onClick={() => setShowPassword(!showPassword)}
                                 >
                                     {showPassword ? <EyeOff /> : <Eye />}

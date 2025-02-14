@@ -12,15 +12,20 @@ const orderSchema = mongoose.Schema(
                 foodId: {
                     type: mongoose.Types.ObjectId,
                     ref: 'Food',
-                    required: true
-                },
-                price: {
-                    type: Number,
-                    required: true
+                    required: true,
                 }
             }],
-            total: {
+            price: {
                 type: Number,
+                required: true,
+            },
+            date: {
+                type: Date,
+                required: true,
+                default: Date.now
+            },
+            address: {
+                type : String,
                 required: true,
             }
         }],
@@ -29,3 +34,6 @@ const orderSchema = mongoose.Schema(
         timestamps: true,
     }
 )
+
+const Order = mongoose.model('Order', orderSchema)
+module.exports = { Order }

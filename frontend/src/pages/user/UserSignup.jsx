@@ -152,13 +152,6 @@ function UserSignup() {
                             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                         />
                     </div>
-                    {/* <div className="text-sm text-center text-gray-500 mt-4">
-                        Already have an account?{" "}
-                        <a href="/login" className="text-blue-500 hover:underline">
-                            Login
-                        </a>
-                    
-                    </div> */}
                     <div className="mt-3">
                         <button
                             type="submit"
@@ -167,7 +160,6 @@ function UserSignup() {
                         >
                             Signup
                         </button>
-
                     </div>
                 </form>
             </div>

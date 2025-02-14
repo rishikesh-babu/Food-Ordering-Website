@@ -5,6 +5,7 @@ const { hotelRouter } = require('./hotelRoutes')
 const { wishListRouter } = require('./wishListRouter')
 const { cartRouter } = require('./cartRoutes')
 const { paymentRouter } = require('./paymentRoutes')
+const { orderRouter } = require('./orderRoutes')
 const router = express.Router()
 
 router.use((req, res, next) => {
@@ -15,6 +16,7 @@ router.use((req, res, next) => {
 router.use('/user', userRouter)
 router.use('/admin', adminRouter)
 router.use('/hotel', hotelRouter)
+router.use('/order', orderRouter)
 router.use('/wishlist', wishListRouter)
 router.use('/cart', cartRouter)
 router.use('/payment', paymentRouter) 
