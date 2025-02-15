@@ -17,6 +17,7 @@ function UserLogin() {
         if (isUserAuth) {
             navigate("/");
         }
+        window.scroll(0, 0)
     }, [isUserAuth]);
 
     function handleLoginData(event) {
