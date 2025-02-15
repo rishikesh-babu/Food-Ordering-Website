@@ -17,8 +17,7 @@ router.get('/check-user', userAuth, checkUser)
 
 router.get('/profile', userAuth, userProfile)
 router.put('/reset-password')
-router.put('/update-profile')
-router.put('/update-profile-pic', userAuth, upload.single('image'), userProfilePicUpdate)
+router.put('/update-profile', userAuth, upload.single('image'), userProfilePicUpdate)
 
 const userRouter = router
 module.exports = { userRouter }

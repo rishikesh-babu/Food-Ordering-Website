@@ -74,7 +74,7 @@ function AdminLayout() {
                 </div>
             }
             <div className='flex flex-col overflow-y-auto w-screen'>
-                <div className='fixed w-full shadow-lg '>
+                <div className='fixed w-full shadow-lg z-10'>
                     <AdminHeader />
                 </div>
                 <div className='flex-1 mt-20 w-full'>

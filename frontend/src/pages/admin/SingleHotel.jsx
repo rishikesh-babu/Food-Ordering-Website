@@ -35,7 +35,7 @@ function SingleHotel() {
 
         <div className="p-3">
             <div className="bg-gray-700 p-2 grid grid-cols-1 md:grid-cols-2 gap-10 rounded-xl">
-                <div className="flex justify-center">
+                <div className="flex justify-center items-center">
                     <img
                         className="size-fit rounded-xl"
                         src={hotelDetails?.image}
@@ -55,14 +55,14 @@ function SingleHotel() {
             <div className="m-7">
                 <AddFoodItem hotelId={hotelId} />
             </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="m-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-7">     
                 {
                     hotelDetails?.foodItems?.map((item, index) => (
                         <FoodCard
                             image={item?.foodId?.image}
                             name={item?.foodId?.name}
                             price={item?.foodId?.price}
+                            foodId={item?.foodId?._id}
                             key={index}
                             className="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105"
                         />

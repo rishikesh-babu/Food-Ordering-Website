@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { saveAdminData } from "../../redux/features/adminSilce";
+import { Eye, EyeOff } from "lucide-react";
 
 function AdminLogin() {
     const [loginData, setLoginData] = useState({});
@@ -58,20 +59,20 @@ function AdminLogin() {
     return (
         <div>
             <div className="hero bg-base-200 min-h-screen">
-                <div className="hero-content flex-col lg:flex-row-reverse">
-                    <div className="text-center lg:text-left">
+                <div className="hero-content flex-col lg:flex-row-reverse gap-12">
+                    <div className="text-center lg:text-left sm:max-w-md">
                         <h1 className="text-5xl font-bold">Login now!</h1>
-                        <p className="py-6">
-                            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-                            excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-                            et a id nisi.
+                        <p className="py-6 text-wrap">
+                            Access your dashboard to manage users, monitor orders, and keep things running smoothly.
+                            Secure authentication ensures only authorized personnel can make changes.
+                            Please log in to continue.
                         </p>
                     </div>
                     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
                         <form className="card-body">
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Email</span>
+                                    <span className="label-text font-semibold">Email</span>
                                 </label>
                                 <input
                                     type="email"
@@ -84,7 +85,7 @@ function AdminLogin() {
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Password</span>
+                                    <span className="label-text font-semibold">Password</span>
                                 </label>
                                 <input
                                     type={showPassword ? "text" : "password"}
@@ -97,10 +98,10 @@ function AdminLogin() {
                                 <div className="flex justify-end mt-1">
                                     <button
                                         type="button"
-                                        className="btn btn-xs btn-ghost"
+                                        className="btn btn-link text-gray-600 hover:scale-105 absolute top-40 right-7"
                                         onClick={() => setShowPassword(!showPassword)}
                                     >
-                                        {showPassword ? "Hide" : "Show"}
+                                        {showPassword ? <EyeOff /> : <Eye />}
                                     </button>
                                 </div>
                             </div>

@@ -23,6 +23,7 @@ import Wishlist from "../pages/user/Wishlist";
 import UserProfileEdit from "../pages/user/UserProfileEdit";
 import Order from "../pages/user/Order";
 import SingleOrder from "../pages/user/SingleOrder";
+import Food from "../pages/admin/Food";
 
 const router = createBrowserRouter([
     {
@@ -108,6 +109,10 @@ const router = createBrowserRouter([
                     {
                         path: 'hotel',
                         element: <Hotel />
+                    },
+                    {
+                        path: 'food',
+                        element: <Food />
                     },
                     {
                         path: 'view-user',

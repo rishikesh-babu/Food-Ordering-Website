@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ImageTag, InputTag } from '../../components/admin/InputAdmin'
 import { BackButton, UpdateProfile } from '../../components/user/ButtonUser'
 import { useNavigate } from 'react-router-dom'
@@ -14,6 +14,10 @@ function UserProfileEdit() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
+    useEffect(() => {
+        window.scroll(0, 0)
+    }, [])
+
     function handleProfile(name, value) {
         setProfileDetails({
             ...profileDetails,
@@ -28,16 +32,18 @@ function UserProfileEdit() {
     function handleSubmit(event) {
         event.preventDefault()
 
+        console.log('profileDetails :>> ', profileDetails);
         const formData = new FormData()
-
-        // formData.append('name', hotelDetails.name)
-        // formData.append('address', hotelDetails.address)
         formData.append('image', selectedFile)
+        formData.append('name', profileDetails?.name || '');
+        formData.append('email', profileDetails?.email || '');
+        formData.append('mobile', profileDetails?.mobile || '');
+        formData.append('address', profileDetails?.address || '');
 
         toast.promise(
             axiosInstance({
                 method: 'PUT',
-                url: '/user/update-profile-pic',
+                url: '/user/update-profile',
                 data: formData,
             })
                 .then((res) => {
@@ -58,16 +64,16 @@ function UserProfileEdit() {
 
     return (
 
-        <div className="p-6 md:p-10 max-w-4xl mx-auto bg-white shadow-lg rounded-lg">
+        <div>
             {/* Title */}
-            <div className="text-3xl font-semibold text-center text-gray-800 mb-6">
+            <div className="text-4xl font-semibold text-center mb-7">
                 Edit Profile
             </div>
 
             {/* Form Content */}
-            <div className="flex flex-col gap-6">
-                {/* <div className="space-y-2">
-                    <div className="text-lg font-medium text-gray-700">
+            <div className="p-3 m-3 mb-8 w-fit flex flex-col gap-6 border rounded-lg drop-shadow-2xl sm:bg-gray-100 sm:mx-auto sm:shadow-xl sm:p-9">
+                <div className="space-y-2">
+                    <div className="text-lg font-medium text-gray-700 ">
                         Name
                     </div>
                     <InputTag
@@ -116,7 +122,8 @@ function UserProfileEdit() {
                         type={'text'}
                         className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
-                </div> */}
+                </div>
+
                 {/* Profile Picture Section */}
                 <div className="space-y-2">
                     <div className="text-lg font-medium text-gray-700">
@@ -129,7 +136,7 @@ function UserProfileEdit() {
                 </div>
 
                 {/* Buttons Section */}
-                <div className="mt-6 flex flex-row justify-around sm:justify-start items-center gap-4 sm:gap-x-40">
+                <div className=" flex justify-between">
                     {/* Update Profile Button */}
                     <UpdateProfile
                         handleSubmit={handleSubmit}

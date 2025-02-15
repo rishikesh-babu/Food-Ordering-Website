@@ -16,8 +16,9 @@ function UserHotelCard({ name, image, address, hotelId }) {
 
     return (
         <div
+            // py-6 sm:p-6 w-72 bg-gradient-to-r from-blue-100 to-gray-200 rounded-lg flex flex-col xl:flex-row items-center gap-6 transition-transform transform hover:scale-105 shadow-lg hover:shadow-2xl
             onClick={() => navigate(`/hotel/${hotelId}`)}
-            className="py-6 sm:p-6 min-w-72 bg-gradient-to-r from-blue-100 to-gray-200 rounded-lg flex flex-col xl:flex-row items-center gap-6 transition-transform transform hover:scale-105 shadow-lg hover:shadow-2xl"
+            className="py-6 sm:p-6 min-w-64 bg-gradient-to-r from-blue-100 to-gray-200 rounded-lg flex flex-col items-center gap-6 transition-transform transform sm:hover:scale-105 shadow-lg hover:shadow-2xl cursor-pointer"
         >
             <div className="flex-shrink-0">
                 <img

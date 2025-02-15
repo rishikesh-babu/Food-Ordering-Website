@@ -23,7 +23,7 @@ function AdminHeader() {
                     </svg>
                 </button>
             </div>
-            <div className="">
+            <div>
                 <a className="btn btn-ghost text-3xl font-semibold">Food Express Admin </a>
             </div>
         </div>

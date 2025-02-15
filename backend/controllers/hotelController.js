@@ -6,7 +6,9 @@ async function createHotel(req, res, next) {
     try {
         console.log('Routes: create hotel')
 
-        const { name, address } = req.body
+        let { name, address } = req.body
+        name = name.trim()
+        address = address.trim()
 
         // console.log('name :>> ', name);
         // console.log('address :>> ', address);
@@ -15,7 +17,7 @@ async function createHotel(req, res, next) {
         if (!name || !address || !req.file) {
             return res.status(400).json({ message: 'All fields are required' })
         }
-        
+
         const hotelExist = await Hotel.findOne({ name })
 
         // console.log('hotelExist :>> ', hotelExist);
@@ -25,7 +27,8 @@ async function createHotel(req, res, next) {
         }
 
         const imageUrl = (await cloudinaryInstance.uploader.upload(req.file.path, {
-            folder: `FoodOrderingWebSite/Hotel/${name}/HotelImage`,
+            // folder: `FoodOrderingWebSite/Hotel/${name}/HotelImage`,
+            folder: `FoodOrderingWebSite/Hotel/${name}`,
             public_id: name
         })).url
 
@@ -64,20 +67,24 @@ async function createFood(req, res, next) {
         console.log('Routes: Food')
 
         const { hotelId } = req.params
-        const { name, description, price } = req.body
+        let { name, description, price } = req.body
         const hotelExist = await Hotel.findById(hotelId)
-        
+
+        name = name.trim()
+        description = description.trim()
+
         if (!name || !description || !price || !req.file) {
             return res.status(400).json({ message: 'All filds are required' })
         }
         if (!hotelExist) {
             return res.status(401).json({ message: 'Hotel not found' })
         }
-        
+
         const hotelName = hotelExist.name
 
         const imageUrl = (await cloudinaryInstance.uploader.upload(req.file.path, {
-            folder: `FoodOrderingWebSite/Hotel/${hotelName}/FoodImage`,
+            // folder: `FoodOrderingWebSite/Hotel/${hotelName}/FoodImage`,
+            folder: `FoodOrderingWebSite/Hotel/${hotelName}`,
             public_id: name
         })).url
 
@@ -91,16 +98,14 @@ async function createFood(req, res, next) {
             hotelId
         })
         await newFood.save()
-        
+
         // console.log('newFood._id :>> ', newFood._id);
-        
+
         hotelExist.foodItems.push({
             foodId: newFood._id,
         })
 
         await hotelExist.save()
-        // console.log('hotelExist :>> ', hotelExist);
-
 
         res.status(201).json({ message: 'Food created', data: newFood })
 
@@ -150,8 +155,7 @@ async function getAllFood(req, res, next) {
     try {
         console.log('Routes: All food')
 
-        const foodItems = await Food.find().limit(10)
-        // console.log('foodItems :>> ', foodItems);
+        const foodItems = await Food.find().sort({ _id: -1 }).limit(10)
 
         res.status(200).json({ message: 'Food items fetched', data: foodItems })
     } catch (err) {
@@ -159,4 +163,65 @@ async function getAllFood(req, res, next) {
     }
 }
 
-module.exports = { createHotel, getAllHotel, createFood, singleHotel, singleFood, getAllFood }
+async function getAllFoodAdmin(req, res, next) {
+    try {
+        console.log('Routes: All food')
+
+        const foodItems = await Food.find().sort({ _id: -1 })
+
+        res.status(200).json({ message: 'Food items fetched', data: foodItems })
+    } catch (err) {
+        next(err)
+    }
+}
+
+async function deleteHotel(req, res, next) {
+    try {
+        console.log('Routes: Delete Hotel')
+
+        const { hotelId } = req.params
+
+        if (!hotelId) {
+            return res.status(404).json({ message: 'HotelId is required' })
+        }
+
+        const hotelExist = await Hotel.findOne({ _id: hotelId })
+
+        if (!hotelExist) {
+            return res.status(404).json({ message: 'Hotel does not exist' })
+        }
+
+        await Food.deleteMany({ hotelId })
+        await Hotel.deleteOne({ _id: hotelId })
+        res.status(200).json({ message: 'Hotel Deleted' })
+    } catch (err) {
+        next(err)
+    }
+}
+
+async function deleteFood(req, res, next) {
+    try {
+        console.log('Routes: Delete Food')
+
+        const { foodId } = req.params
+
+        if (!foodId) {
+            return res.status(404).json({ message: 'FoodId is required' })
+        }
+
+        const foodExist = await Food.findOne({ _id: foodId })
+
+        if (!foodExist) {
+            return res.status(400).json({ message: 'Food does not exist' })
+        }
+
+        await Hotel.updateMany({}, { $pull: { foodItems: { foodId } } });
+        await Food.deleteOne({ _id: foodId })
+        res.status(200).json({ message: 'Food item deleted' })
+
+    } catch (err) {
+        next(err)
+    }
+}
+
+module.exports = { createHotel, getAllHotel, createFood, singleHotel, singleFood, getAllFood, getAllFoodAdmin, deleteHotel, deleteFood }

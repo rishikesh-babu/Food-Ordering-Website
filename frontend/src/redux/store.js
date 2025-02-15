@@ -5,6 +5,8 @@ import cartReducer from "./features/cartSlice";
 import wishlistReducer from "./features/wishlistSlice";
 import sideBarReducer from "./features/sideBarSlice";
 import orderReducer from "./features/orderSlice";
+import hotelReducer from "./features/hotelSlice";
+import foodReducer from "./features/foodSlice";
 
 const store = configureStore({
     reducer: {
@@ -14,6 +16,8 @@ const store = configureStore({
         wishlist: wishlistReducer,
         sideBar: sideBarReducer,
         order: orderReducer,
+        hotel: hotelReducer,
+        food: foodReducer,
     }
 })
 

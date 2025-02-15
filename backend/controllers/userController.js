@@ -129,22 +129,43 @@ async function userProfile(req, res, next) {
 
 async function userProfilePicUpdate(req, res, next) {
     try {
-        console.log('Routes: update profile pic')
+        console.log('Routes: update profile')
 
+        let { name, email, mobile, address } = req.body
         const userId = req.user.id
         const userExist = await User.findById(userId).select('-password')
 
         const uniqueName = `${userExist.name}_${userId}`
 
-        // console.log('userId :>> ', userId);
-        // console.log('userExist :>> ', userExist);
-        // console.log('uniqueName :>> ', uniqueName);
-        // console.log('req.file :>> ', req.file);
-    
+        if (!name) {
+            name = userExist.name
+        }
+        if (!email) {
+            email = userExist.email
+        } else {
+            const emailExist = await User.findOne({ email })
+            if (emailExist) {
+                return res.status(400).json({ message: `${email} already exist` })
+            }
+        }
+        if (!mobile) {
+            mobile = userExist.mobile
+        }
+        if (!address) {
+            address = userExist.address
+        }
+
+        userExist.name = name
+        userExist.email = email
+        userExist.mobile = mobile
+        userExist.address = address
+
+        console.log('req.file :>> ', req.file);
+
         if (req.file) {
             const imageExist = userExist.image
 
-            console.log('imageExist :>> ', imageExist);
+            // console.log('imageExist :>> ', imageExist);
 
             if (imageExist) {
                 const publicIdMatch = imageExist.match(/\/([^/]+)\.[^.]+$/);
@@ -155,7 +176,7 @@ async function userProfilePicUpdate(req, res, next) {
                     const publicId = `FoodOrderingWebSite/User/${publicIdMatch[1]}`;
 
                     console.log('publicId :>> ', publicId);
-                    
+
                     const uniqueIdentifier = Date.now()
                     const movedImage = await cloudinaryInstance.uploader.upload(imageExist, {
                         folder: 'FoodOrderingWebSite/ProfileArchieve',
@@ -173,17 +194,15 @@ async function userProfilePicUpdate(req, res, next) {
                 public_id: uniqueName
             })).url
 
-            console.log('newImageUrl :>> ', newImageUrl);   
+            // console.log('newImageUrl :>> ', newImageUrl);   
 
             userExist.image = newImageUrl
-            console.log('userExist :>> ', userExist);
+            // console.log('userExist :>> ', userExist);
 
-            await userExist.save()
-
-            return res.status(200).json({ message: 'Profile updated', data: userExist })
         }
 
-        res.status(200).json({ message: 'Profile pic not updated', data: userExist })
+        await userExist.save()
+        res.status(200).json({ message: 'Profile Updated', data: userExist })
 
     } catch (err) {
         next(err)

@@ -49,7 +49,7 @@ function Cart() {
                 console.log('err :>> ', err);
             })
     }
-
+    
     async function makePayment() {
         addToOrderList()
         const stripe = await loadStripe(
@@ -134,7 +134,7 @@ function Cart() {
                             </div>
 
                             {/* Address section */}
-                            <div className="p-2 border-2 rounded-md shadow-md">
+                            <div className="p-6 mt-8 border-2 rounded-md shadow-xl">
                                 <div className="text-lg font-semibold">
                                     Address
                                 </div>
@@ -144,7 +144,7 @@ function Cart() {
                             </div>
 
                             {/* Total Price Section */}
-                            <div className="mt-8 p-6 bg-gray-50 rounded-lg shadow-md flex flex-col sm:flex-row justify-between items-center">
+                            <div className="p-6 mt-3 bg-gray-50 border-2 rounded-lg shadow-xl flex flex-col sm:flex-row justify-between items-center">
                                 <div className="text-center sm:text-left">
                                     <span className="text-xl font-semibold text-gray-700">
                                         Total Price:

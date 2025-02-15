@@ -17,9 +17,12 @@ function UserProfile() {
         "user/profile",
         saveUserData
     );
-
     const { userData } = useSelector((state) => state.user)
     const [selectedFile, setSelectedFile] = useState();
+
+    useEffect(() => {
+        window.scroll(0, 0)
+    }, [])
 
     function imageModal() {
         document.getElementById("profile_modal").showModal();

@@ -13,10 +13,11 @@ function Order() {
         saveOrderDetails
     );
     const { orderDetails } = useSelector((state) => state.order);
+    console.log('orderDetails?.orderLIst?.length :>> ', orderDetails?.orderLIst?.length);
     return (
         <div>
             <div className="text-3xl font-semibold text-center">Orders</div>
-            {orderDetails?.length === 0 ? (
+            {orderDetails?.orderList?.length  ? (
                 <div className="sm:m-7">
                     {orderDetails?.orderList?.map((items, index) => (
                         <OrderListCard items={items} key={index} />

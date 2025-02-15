@@ -58,7 +58,6 @@ function Home() {
     return (
         <div>
             <div className="p-6 bg-gray-50 rounded-lg shadow-lg">
-                {/* <HomePageCarousel /> */}
                 <div className="text-2xl font-bold text-gray-800 mb-3">
                     Popular Restaurants
                 </div>
@@ -70,7 +69,7 @@ function Home() {
                     isHotelLoading ? (
                         <PopularHotelSkelton />
                     ) : (
-                        <div className="py-4 flex gap-5 overflow-y-hidden overflow-x-visible">
+                        <div className="py-4 flex whitespace-nowrap gap-5 overflow-y-hidden overflow-x-auto scroll-smooth">
                             {hotelDetails?.map((item, index) => (
                                 <UserHotelCard
                                     key={index}
