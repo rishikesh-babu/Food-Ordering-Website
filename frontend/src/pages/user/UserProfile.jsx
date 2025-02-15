@@ -47,7 +47,7 @@ function UserProfile() {
     // }
 
     return (
-        <div className="flex flex-col items-center bg-gray-100 min-h-screen py-8 ">
+        <div className="flex flex-col items-center bg-gray-100 pt-8 sm:py-9">
             <div className="text-3xl font-semibold text-gray-800 mb-8">Profile</div>
             <div className="py-6 sm:p-8 bg-white shadow-lg rounded-xl max-w-fit">
                 {profilePicLoading ? (
@@ -65,7 +65,7 @@ function UserProfile() {
                         </div>
                     </div>
                 )}
-                <div className="flex flex-col bg-gray-100 p-6 rounded-lg shadow-xl space-y-6">
+                <div className="flex flex-col bg-gray-100 p-6 rounded-lg shadow-xl ">
                     <div className="text-2xl font-bold text-gray-800 text-center border-b pb-4">
                         Profile Details
                     </div>
@@ -96,7 +96,7 @@ function UserProfile() {
                 </div>
 
                 {/* Buttons Section */}
-                <div className="flex flex-wrap justify-between items-center mt-6 space-x-4">
+                <div className="flex justify-around sm:justify-between items-center mt-6 space-x-4">
                     <LogoutButton />
                     <Link to="/user/profile/edit">
                         <EditProfileButton />
