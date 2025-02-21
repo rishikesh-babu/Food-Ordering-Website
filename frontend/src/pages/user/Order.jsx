@@ -13,12 +13,12 @@ function Order() {
         saveOrderDetails
     );
     const { orderDetails } = useSelector((state) => state.order);
-    console.log('orderDetails?.orderLIst?.length :>> ', orderDetails?.orderLIst?.length);
+    // console.log('orderDetails?.orderLIst?.length :>> ', orderDetails?.orderLIst?.length);
     return (
         <div>
-            <div className="text-3xl font-semibold text-center">Orders</div>
+            <div className="my-5 text-3xl font-semibold text-center">Orders</div>
             {orderDetails?.orderList?.length  ? (
-                <div className="sm:m-7">
+                <div className="sm:mx-6 flex flex-col-reverse">
                     {orderDetails?.orderList?.map((items, index) => (
                         <OrderListCard items={items} key={index} />
                     ))}

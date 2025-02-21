@@ -253,7 +253,7 @@ function OrderListCard({ items }) {
 
     return (
         <div
-            className="m-1 mt-2 p-2 sm:my-4 border rounded-md shadow-md"
+            className="m-1 mt-2 p-2 border rounded-md shadow-md"
         // onClick={() => navigate(`/user/order/${items?._id}`)}
         >
             <div className="grid grid-cols-[80px_1fr]">
