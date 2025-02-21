@@ -8,6 +8,8 @@ import toast from "react-hot-toast";
 import getFetch from "../../hooks/getFetch";
 import { CartSkelton } from "../../components/user/Skelton";
 import { useNavigate } from "react-router-dom";
+import { Edit } from "lucide-react";
+import { EditAddressModal } from "../admin/ModalAdmin";
 
 function Cart() {
     const [cartData, isCartLoading, cartErr] = getFetch(
@@ -25,7 +27,7 @@ function Cart() {
 
     useEffect(() => {
         if (!isCartLoading) {
-            window.scrollTo(0, 0)
+            // window.scrollTo(0, 0)
         }
     }, [isCartLoading])
 
@@ -49,7 +51,7 @@ function Cart() {
                 console.log('err :>> ', err);
             })
     }
-    
+
     async function makePayment() {
         addToOrderList()
         const stripe = await loadStripe(
@@ -80,6 +82,10 @@ function Cart() {
                 loading: "Please wait",
             }
         );
+    }
+
+    function editAddress() {
+        document.getElementById('editAddessModal').showModal()
     }
 
     return (
@@ -133,13 +139,20 @@ function Cart() {
                                 ))}
                             </div>
 
-                            {/* Address section */}
-                            <div className="p-6 mt-8 border-2 rounded-md shadow-xl">
-                                <div className="text-lg font-semibold">
-                                    Address
+                            <div className="p-6 mt-8 border-2 border-gray-300 rounded-md shadow-xl flex flex-col gap-4 sm:flex-row sm:justify-between bg-white">
+                                {/* Address Section */}
+                                <div>
+                                    <div className="text-lg font-semibold text-gray-800">Address</div>
+                                    <div className="text-lg font-mono text-gray-600">{userData?.address}</div>
                                 </div>
-                                <div className="text-lg font-mono">
-                                    {userData?.address}
+
+                                {/* Edit Button */}
+                                <div className="self-center">
+                                    <EditAddressModal />
+                                    <button className="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md transition duration-300 shadow-md" onClick={editAddress}>
+                                        <Edit size={24} color="white" />
+                                        <span className="text-lg font-semibold">Edit</span>
+                                    </button>
                                 </div>
                             </div>
 
