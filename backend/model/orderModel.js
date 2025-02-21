@@ -29,11 +29,31 @@ const orderSchema = mongoose.Schema(
                 required: true,
             }
         }],
+        total: {
+            type: Number,
+            required: true,
+            default: 0,
+        }
     },
     {
         timestamps: true,
     }
 )
+
+orderSchema.methods.calculateTotal = function () {
+    let total = 0
+
+    this.orderList.forEach((item) => {
+        total += item.price
+    })
+
+    return total
+}
+
+orderSchema.pre('save', function (next) {
+    this.total = this.calculateTotal()
+    next()
+})
 
 const Order = mongoose.model('Order', orderSchema)
 module.exports = { Order }

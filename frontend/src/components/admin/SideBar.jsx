@@ -24,6 +24,11 @@ function  SideBar() {
                         Create Hotel
                     </li>
                 </Link>
+                <Link to={'/admin/orders'}>
+                    <li className="px-4 py-2 hover:bg-gray-400 rounded-2xl cursor-pointer text-lg" >
+                        View Orders
+                    </li>
+                </Link>
                 {/* <Link to={'/admin/view-user'}>
                     <li className="px-4 py-2 hover:bg-gray-400 rounded-2xl cursor-pointer text-lg" >
                         View User

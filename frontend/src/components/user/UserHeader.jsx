@@ -42,7 +42,7 @@ function UserHeader() {
     return (
         <div className="navbar bg-base-100 fixed top-0 left-0 w-full z-10">
             <div className="flex-1">
-                <div className="btn btn-ghost text-2xl font-bold">
+                <div className="btn btn-ghost text-3xl font-bold">
                     <Link to={'/'}>
                         Food Express
                     </Link>

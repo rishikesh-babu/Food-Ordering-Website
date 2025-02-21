@@ -18,7 +18,7 @@ function UserHotelCard({ name, image, address, hotelId }) {
         <div
             // py-6 sm:p-6 w-72 bg-gradient-to-r from-blue-100 to-gray-200 rounded-lg flex flex-col xl:flex-row items-center gap-6 transition-transform transform hover:scale-105 shadow-lg hover:shadow-2xl
             onClick={() => navigate(`/hotel/${hotelId}`)}
-            className="py-6 sm:p-6 min-w-64 bg-gradient-to-r from-blue-100 to-gray-200 rounded-lg flex flex-col items-center gap-6 transition-transform transform sm:hover:scale-105 shadow-lg hover:shadow-2xl cursor-pointer"
+            className="py-6 min-w-64 sm:max-w-[350px] shadow-lg sm:p-6 bg-gradient-to-r from-blue-100 to-gray-200 rounded-lg flex flex-col items-center gap-6 transition-transform transform sm:hover:scale-105 hover:shadow-2xl cursor-pointer"
         >
             <div className="flex-shrink-0">
                 <img
@@ -27,7 +27,7 @@ function UserHotelCard({ name, image, address, hotelId }) {
                     className="size-28 md:h-32 md:w-32 rounded-xl object-cover border-2 border-blue-500 shadow-md"
                 />
             </div>
-            <div className="text-center xl:text-left ">
+            <div className="text-center">
                 <div className="text-lg sm:text-lg text-wrap font-bold text-blue-800">
                     {name ?? "Name"}
                 </div>
@@ -127,7 +127,7 @@ function UserFoodCard({ name, image, price, foodId, addToCart }) {
                     {name ?? "Name"}
                 </div>
                 <div className="flex flex-row items-center justify-between my-3">
-                    <span className="text-lg font-medium text-gray-700">
+                    <span className="text-lg font-medium text-green-600">
                         ${price ?? "price"}
                     </span>
                     <div className="cursor-pointer hover:scale-110">
@@ -188,8 +188,12 @@ function CartCard({ name, price, quantity, image, foodId, updateCartDetails }) {
             </div>
 
             <div className="flex flex-col justify-center items-center sm:ml-4">
-                <h3 className="text-xl font-semibold text-gray-800">{name}</h3>
-                <p className="text-lg font-medium text-gray-600">${price}</p>
+                <h3 className="text-xl sm:text-2xl font-semibold text-gray-800">
+                    {name}
+                </h3>
+                <p className="text-xl sm:text-2xl font-medium text-green-600">
+                    ${price}
+                </p>
             </div>
 
             <div className="flex flex-row justify-center items-center gap-3">
@@ -213,10 +217,9 @@ function CartCard({ name, price, quantity, image, foodId, updateCartDetails }) {
 
 function OrderListCard({ items }) {
     const navigate = useNavigate();
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     function deleteOrder() {
-        
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to undo this!",
@@ -224,30 +227,29 @@ function OrderListCard({ items }) {
             showCancelButton: true,
             confirmButtonColor: "#d33",
             cancelButtonColor: "#3085d6",
-            confirmButtonText: "Yes, delete it!"
-        })
-            .then((result) => {
-                if (result.isConfirmed) {
-                    toast.promise(
-                        axiosInstance({
-                            method: 'DELETE',
-                            url: `order/delete-order/${items?._id}`
-                        })
+            confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                toast.promise(
+                    axiosInstance({
+                        method: "DELETE",
+                        url: `order/delete-order/${items?._id}`,
+                    })
                         .then((res) => {
-                            dispatch(saveOrderDetails(res?.data?.data))
+                            dispatch(saveOrderDetails(res?.data?.data));
                             console.log("Order deleted!"); // Replace with delete logic
                             Swal.fire("Deleted!", "Your item has been removed.", "success");
                         })
                         .catch((err) => {
-                            toast.error("Something went wrong!")
+                            toast.error("Something went wrong!");
                         }),
-                        {
-                            loading: 'Deleting order'
-                        }
-                    )
-                }
-            });
-    };
+                    {
+                        loading: "Deleting order",
+                    }
+                );
+            }
+        });
+    }
 
     return (
         <div
@@ -268,11 +270,9 @@ function OrderListCard({ items }) {
                 <span className="mr-2 text-lg font-semibold">Price:</span>
                 <span className="text-lg">${items?.price}</span>
             </div>
-            <button className="mt-2 hover:scale-105"
-                onClick={deleteOrder}
-            >
+            {/* <button className="mt-2 hover:scale-105" onClick={deleteOrder}>
                 <Trash2 />
-            </button>
+            </button> */}
         </div>
     );
 }

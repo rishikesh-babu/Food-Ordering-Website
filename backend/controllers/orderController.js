@@ -73,4 +73,19 @@ async function deleteOrder(req, res, next) {
     }
 }
 
-module.exports = { addOrder, getOrder, deleteOrder }
+async function getAllOrderAdmin(req, res, next) {
+    try {
+        console.log('Routes: Get all Order Admin')
+
+        const orderExist = await Order.find().populate('userId', '-password')
+        if (!orderExist) {
+            return res.status(400).json({ message: 'Order not found' })
+        }
+
+        res.status(200).json({ message: 'Order fetched', data: orderExist })
+    } catch (err) {
+        next(err)
+    }
+}
+
+module.exports = { addOrder, getOrder, deleteOrder, getAllOrderAdmin }

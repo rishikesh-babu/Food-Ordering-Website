@@ -24,6 +24,7 @@ import UserProfileEdit from "../pages/user/UserProfileEdit";
 import Order from "../pages/user/Order";
 import SingleOrder from "../pages/user/SingleOrder";
 import Food from "../pages/admin/Food";
+import ViewOrder from "../pages/admin/ViewOrder";
 
 const router = createBrowserRouter([
     {
@@ -129,7 +130,11 @@ const router = createBrowserRouter([
                     {
                         path: 'create-food/:hotelId',
                         element: <CreateFood />
-                    }
+                    },
+                    {
+                        path: 'orders',
+                        element: <ViewOrder />
+                    },
                 ]
             }
         ]

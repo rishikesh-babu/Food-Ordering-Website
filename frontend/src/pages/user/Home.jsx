@@ -69,7 +69,7 @@ function Home() {
                     isHotelLoading ? (
                         <PopularHotelSkelton />
                     ) : (
-                        <div className="py-4 flex whitespace-nowrap gap-5 overflow-y-hidden overflow-x-auto scroll-smooth">
+                        <div className="p-4 sm:my-2 flex whitespace-nowrap gap-5 overflow-y-hidden overflow-x-auto scroll-smooth">
                             {hotelDetails?.map((item, index) => (
                                 <UserHotelCard
                                     key={index}
@@ -93,7 +93,7 @@ function Home() {
                     isFoodLoading ? (
                         <PopularFoodSkelton />
                     ) : (
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
                             {foodDetails?.map((item, index) => (
                                 <UserFoodCard
                                     key={index}

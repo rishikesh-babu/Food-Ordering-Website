@@ -17,6 +17,7 @@ function SingleHotelUser() {
 
     useEffect(() => {
         getSingleHotel()
+        // window.scroll(0, 0)
     }, [])
 
     function getSingleHotel() {
@@ -64,8 +65,8 @@ function SingleHotelUser() {
                 !hotelDetails ? (
                     <SingleHotelSkelton />
                 ) : (
-                    <div>
-                        <div className="bg-gray-700 p-2 grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div className='flex flex-col gap-5 m-2 sm:m-5'>
+                        <div className="bg-gray-700 p-2 rounded-lg grid grid-cols-1 md:grid-cols-2 gap-10">
                             <div className="self-stretch flex justify-center">
                                 <img
                                     className="w-full h-auto rounded-xl object-cover"
@@ -82,7 +83,10 @@ function SingleHotelUser() {
                                 </div>
                             </div>
                         </div>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                        <div className='self-center text-3xl font-bold font-mono text-gray-700 sm:hidden tracking-widest'>
+                            Food Items 
+                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
                             {hotelDetails?.foodItems?.map((item, index) => (
                                 <UserFoodCard
                                     key={index}

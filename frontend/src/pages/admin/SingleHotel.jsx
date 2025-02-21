@@ -4,35 +4,38 @@ import axiosInstance from '../../config/axiosInstance'
 import toast from 'react-hot-toast'
 import { FoodCard } from '../../components/admin/CardsAdmin'
 import { AddFoodItem } from '../../components/admin/ButtonAdmin'
+import getFetch from '../../hooks/getFetch'
 
 function SingleHotel() {
 
-    const [hotelDetails, setHotelDetails] = useState({})
-
+    // const [hotelDetails, setHotelDetails] = useState({})
     const { hotelId } = useParams()
     const navigate = useNavigate()
+    const [hotelDetails, isHotelLoading, hotelError] = getFetch(`hotel/single-hotel/${hotelId}`)
+
+
 
     useEffect(() => {
-        getSingleHotelDetails()
-    }, [hotelId])
+        window.scroll(0, 0)
+    }, [])
 
-    function getSingleHotelDetails() {
-        axiosInstance({
-            method: 'GET',
-            url: `hotel/single-hotel/${hotelId}`,
-        })
-            .then((res) => {
-                console.log('res?.data?.data :>> ', res?.data?.data);
-                setHotelDetails(res?.data?.data)
-            })
-            .catch((err) => {
-                console.log('err :>> ', err);
-                toast.error(err?.response?.data?.message)
-                navigate(-1)
-            })
-    }
+    // function getSingleHotelDetails() {
+    //     axiosInstance({
+    //         method: 'GET',
+    //         url: `hotel/single-hotel/${hotelId}`,
+    //     })
+    //         .then((res) => {
+    //             console.log('res?.data?.data :>> ', res?.data?.data);
+    //             setHotelDetails(res?.data?.data)
+    //         })
+    //         .catch((err) => {
+    //             console.log('err :>> ', err);
+    //             toast.error(err?.response?.data?.message)
+    //             navigate(-1)
+    //         })
+    // }
+
     return (
-
         <div className="p-3">
             <div className="bg-gray-700 p-2 grid grid-cols-1 md:grid-cols-2 gap-10 rounded-xl">
                 <div className="flex justify-center items-center">
