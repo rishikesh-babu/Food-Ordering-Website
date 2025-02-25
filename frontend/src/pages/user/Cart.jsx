@@ -120,7 +120,7 @@ function Cart() {
                     ) : (
                         <div className="max-w-screen-lg mx-auto p-6">
                             {/* Title Section */}
-                            <h1 className="text-3xl font-bold text-center mb-8 text-gray-800">
+                            <h1 className="text-3xl font-bold text-center mb-8">
                                 Food Cart
                             </h1>
 
@@ -139,11 +139,11 @@ function Cart() {
                                 ))}
                             </div>
 
-                            <div className="p-6 mt-8 border-2 border-gray-300 rounded-md shadow-xl flex flex-col gap-4 sm:flex-row sm:justify-between bg-white">
+                            <div className="p-6 mt-8 border-2 border-gray-300 rounded-md shadow-xl flex flex-col gap-4 sm:flex-row sm:justify-between bg-white dark:bg-gray-800">
                                 {/* Address Section */}
                                 <div>
-                                    <div className="text-lg font-semibold text-gray-800">Address</div>
-                                    <div className="text-lg font-mono text-gray-600">{userData?.address}</div>
+                                    <div className="text-lg font-semibold ">Address</div>
+                                    <div className="text-lg font-mono text-gray-600 dark:text-gray-500">{userData?.address}</div>
                                 </div>
 
                                 {/* Edit Button */}
@@ -157,12 +157,12 @@ function Cart() {
                             </div>
 
                             {/* Total Price Section */}
-                            <div className="p-6 mt-3 bg-gray-50 border-2 rounded-lg shadow-xl flex flex-col sm:flex-row justify-between items-center">
+                            <div className="p-6 mt-3 bg-gray-50 dark:bg-gray-800 border-2 rounded-lg shadow-xl flex flex-col sm:flex-row justify-between items-center">
                                 <div className="text-center sm:text-left">
-                                    <span className="text-xl font-semibold text-gray-700">
+                                    <span className="text-xl font-semibold text-gray-700 dark:text-gray-300">
                                         Total Price:
                                     </span>
-                                    <span className="text-lg font-medium text-gray-900 ml-2">
+                                    <span className="text-xl font-medium text-green-500 dark:text-green-400 ml-2">
                                         ${cartDetails?.totalPrice}
                                     </span>
                                 </div>

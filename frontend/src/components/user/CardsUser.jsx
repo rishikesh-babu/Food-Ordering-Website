@@ -178,7 +178,7 @@ function UserFoodCard({ name, image, price, foodId, addToCart }) {
 
 function CartCard({ name, price, quantity, image, foodId, updateCartDetails }) {
     return (
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-4 mb-4 border border-gray-300 rounded-lg shadow-md bg-white w-full max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-4 mb-4 border border-gray-300 rounded-lg shadow-md bg-white dark:bg-gray-800 w-full max-w-4xl mx-auto">
             <div className="flex justify-center sm:justify-start">
                 <img
                     src={image}
@@ -188,10 +188,10 @@ function CartCard({ name, price, quantity, image, foodId, updateCartDetails }) {
             </div>
 
             <div className="flex flex-col justify-center items-center sm:ml-4">
-                <h3 className="text-xl sm:text-2xl font-semibold text-gray-800">
+                <h3 className="text-xl sm:text-2xl font-semibold">
                     {name}
                 </h3>
-                <p className="text-xl sm:text-2xl font-medium text-green-600">
+                <p className="text-xl sm:text-2xl font-medium text-green-500 dark:text-green-400">
                     ${price}
                 </p>
             </div>
