@@ -17,7 +17,7 @@ function SingleHotelUser() {
 
     useEffect(() => {
         getSingleHotel()
-        // window.scroll(0, 0)
+        window.scroll(0, 0)
     }, [])
 
     function getSingleHotel() {
