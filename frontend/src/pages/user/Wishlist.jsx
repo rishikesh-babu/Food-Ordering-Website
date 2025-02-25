@@ -57,10 +57,10 @@ function Wishlist() {
                     <WishlistSkelton />
                 ) : (
                     <div className="max-w-screen-lg mx-auto p-6">
-                        <h1 className="text-3xl font-bold text-center mb-8 text-gray-800">
+                        <h1 className="text-3xl font-bold text-center mb-8">
                             Wishlist
                         </h1>
-                        <div className="space-y-6">
+                        <div className="space-y-6 max-w-2xl mx-auto">
                             {wishlistData?.foodItems?.map((item, index) => (
                                 <UserFoodCard
                                     key={index}
