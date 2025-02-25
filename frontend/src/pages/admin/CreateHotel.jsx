@@ -52,13 +52,13 @@ function CreateHotel() {
     }
 
     return (
-        <div className="p-6 max-w-4xl mx-auto bg-white shadow-lg rounded-lg">
-            <div className="text-3xl font-semibold text-center text-gray-800 mb-6">
+        <div className="my-4 mx-auto p-6 max-w-fit shadow-lg rounded-lg dark:bg-gray-700">
+            <div className="text-3xl font-semibold text-center mb-6">
                 Create Hotel
             </div>
             <div className="flex flex-col gap-6">
                 <div className="space-y-2">
-                    <div className="text-lg font-medium text-gray-700">
+                    <div className="text-lg font-medium ">
                         Hotel Name
                     </div>
                     <InputTag
@@ -71,7 +71,7 @@ function CreateHotel() {
                 </div>
 
                 <div className="space-y-2">
-                    <div className="text-lg font-medium text-gray-700">
+                    <div className="text-lg font-medium">
                         Hotel Address
                     </div>
                     <InputTag
@@ -84,7 +84,7 @@ function CreateHotel() {
                 </div>
 
                 <div className="space-y-2">
-                    <div className="text-lg font-medium text-gray-700">
+                    <div className="text-lg font-medium">
                         Hotel Image
                     </div>
                     <ImageTag
@@ -93,7 +93,7 @@ function CreateHotel() {
                     />
                 </div>
 
-                <div className="mt-6 flex justify-center">
+                <div className="mt-6 ">
                     <CreateHotelButton
                         handleSubmit={handleSubmit}
                         className="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"

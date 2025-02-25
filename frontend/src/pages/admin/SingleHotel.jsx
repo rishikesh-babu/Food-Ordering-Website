@@ -36,41 +36,39 @@ function SingleHotel() {
     // }
 
     return (
-        <div className="p-3">
-            <div className="bg-gray-700 p-2 grid grid-cols-1 md:grid-cols-2 gap-10 rounded-xl">
-                <div className="flex justify-center items-center">
+        <div className="p-1 min-h-screen flex flex-col items-center">
+            <div className=" dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden w-full max-w-4xl">
+                <div className="relative">
                     <img
-                        className="size-fit rounded-xl"
                         src={hotelDetails?.image}
                         alt="Hotel Image"
+                        className="w-full h-64 object-cover rounded-lg"
                     />
                 </div>
-                <div className="text-white flex flex-col text-center md:text-left justify-center m-7 space-y-4">
-                    <div className="text-3xl font-semibold">
-                        {hotelDetails?.name}
-                    </div>
-                    <div className="text-lg text-gray-300">
-                        {hotelDetails?.address}
-                    </div>
+                <div className="p-6 text-center">
+                    <h2 className="text-3xl font-semibold ">{hotelDetails?.name}</h2>
+                    <p className="text-lg text-gray-600 dark:text-gray-400 mt-2">{hotelDetails?.address}</p>
                 </div>
             </div>
 
-            <div className="m-7">
+            <div className="mt-6 w-full max-w-4xl">
                 <AddFoodItem hotelId={hotelId} />
             </div>
-            <div className="m-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-7">     
-                {
-                    hotelDetails?.foodItems?.map((item, index) => (
+
+            <div className="mt-6 bg-gray-200 dark:bg-gray-700 w-full max-w-4xl p-4 rounded-lg shadow-md">
+                <h3 className="text-xl text-center dark:text-gray-300 font-semibold mb-4">Food Items</h3>
+                <hr className='border border-gray-400' />
+                <div className="overflow-x-auto">
+                    {hotelDetails?.foodItems?.map((item, index) => (
                         <FoodCard
                             image={item?.foodId?.image}
                             name={item?.foodId?.name}
                             price={item?.foodId?.price}
                             foodId={item?.foodId?._id}
                             key={index}
-                            className="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105"
                         />
-                    ))
-                }
+                    ))}
+                </div>
             </div>
         </div>
     )

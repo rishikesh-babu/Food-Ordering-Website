@@ -15,7 +15,7 @@ function UserProfileEdit() {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        window.scroll(0, 0)
+        // window.scroll(0, 0)
     }, [])
 
     function handleProfile(name, value) {
@@ -63,100 +63,16 @@ function UserProfileEdit() {
     }
 
     return (
-
-        <div>
-            {/* Title */}
-            <div className="text-4xl font-semibold text-center mb-7">
-                Edit Profile
-            </div>
-
-            {/* Form Content */}
-            <div className="p-3 m-3 mb-8 w-fit flex flex-col gap-6 border rounded-lg drop-shadow-2xl sm:bg-gray-100 sm:mx-auto sm:shadow-xl sm:p-9">
-                <div className="space-y-2">
-                    <div className="text-lg font-medium text-gray-700 ">
-                        Name
-                    </div>
-                    <InputTag
-                        onInputChange={handleProfile}
-                        name={'name'}
-                        placeholder={'Enter user name'}
-                        type={'text'}
-                        className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                </div>
-
-                <div className="space-y-2">
-                    <div className="text-lg font-medium text-gray-700">
-                        Email
-                    </div>
-                    <InputTag
-                        onInputChange={handleProfile}
-                        name={'email'}
-                        placeholder={'Enter email'}
-                        type={'email'}
-                        className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                </div>
-
-                <div className="space-y-2">
-                    <div className="text-lg font-medium text-gray-700">
-                        Mobile No.
-                    </div>
-                    <InputTag
-                        onInputChange={handleProfile}
-                        name={'mobile'}
-                        placeholder={'Enter mobile number'}
-                        type={'text'}
-                        className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                </div>
-
-                <div className="space-y-2">
-                    <div className="text-lg font-medium text-gray-700">
-                        Address
-                    </div>
-                    <InputTag
-                        onInputChange={handleProfile}
-                        name={'address'}
-                        placeholder={'Enter address'}
-                        type={'text'}
-                        className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                </div>
-
-                {/* Profile Picture Section */}
-                <div className="space-y-2">
-                    <div className="text-lg font-medium text-gray-700">
-                        Profile Pic
-                    </div>
-                    <ImageTag
-                        onInputChange={handleFile}
-                        className="p-3 border border-gray-300 rounded-lg w-full md:w-1/2"
-                    />
-                </div>
-
-                {/* Buttons Section */}
-                <div className=" flex justify-between">
-                    {/* Update Profile Button */}
-                    <UpdateProfile
-                        handleSubmit={handleSubmit}
-                        className="px-6 py-3 bg-blue-600 text-white font-medium text-lg rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200"
-                    />
-
-                    {/* Back Button */}
-                    <BackButton />
-                </div>
-            </div>
-        </div>
-
-
-        // <div className="p-6 max-w-4xl mx-auto bg-white shadow-lg rounded-lg">
-        //     <div className="text-3xl font-semibold text-center text-gray-800 mb-6">
+        // <div>
+        //     {/* Title */}
+        //     <div className="text-4xl font-semibold text-center mb-7">
         //         Edit Profile
         //     </div>
-        //     <div className="flex flex-col gap-6">
-        //         {/* <div className="space-y-2">
-        //             <div className="text-lg font-medium text-gray-700">
+
+        //     {/* Form Content */}
+        //     <div className="p-3 m-3 mb-8 w-fit flex flex-col gap-6 border rounded-lg drop-shadow-2xl sm:bg-gray-100 sm:mx-auto sm:shadow-xl sm:p-9">
+        //         <div className="space-y-2">
+        //             <div className="text-lg font-medium text-gray-700 ">
         //                 Name
         //             </div>
         //             <InputTag
@@ -196,7 +112,7 @@ function UserProfileEdit() {
 
         //         <div className="space-y-2">
         //             <div className="text-lg font-medium text-gray-700">
-        //                 Address 
+        //                 Address
         //             </div>
         //             <InputTag
         //                 onInputChange={handleProfile}
@@ -205,29 +121,125 @@ function UserProfileEdit() {
         //                 type={'text'}
         //                 className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         //             />
-        //         </div> */}
+        //         </div>
 
+        //         {/* Profile Picture Section */}
         //         <div className="space-y-2">
         //             <div className="text-lg font-medium text-gray-700">
         //                 Profile Pic
         //             </div>
         //             <ImageTag
         //                 onInputChange={handleFile}
-        //                 className="p-3 border border-gray-300 rounded-lg"
+        //                 className="p-3 border border-gray-300 rounded-lg w-full md:w-1/2"
         //             />
         //         </div>
-        //         <div className="mt-6 flex flex-col md:flex-row justify-around items-center gap-4">
+
+        //         {/* Buttons Section */}
+        //         <div className=" flex justify-between">
         //             {/* Update Profile Button */}
         //             <UpdateProfile
         //                 handleSubmit={handleSubmit}
         //                 className="px-6 py-3 bg-blue-600 text-white font-medium text-lg rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200"
         //             />
+
         //             {/* Back Button */}
         //             <BackButton />
         //         </div>
-
         //     </div>
         // </div>
+
+
+        <div className="p-4 sm:p-6 md:p-8">
+            {/* Title */}
+            <div className="text-4xl font-semibold text-center mb-7 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+                Edit Profile
+            </div>
+
+            {/* Form Content */}
+            <div className="p-5 sm:p-9 m-3 mb-8 w-full max-w-lg mx-auto flex flex-col gap-6 border border-gray-300 dark:border-gray-600 
+                    rounded-lg bg-white dark:bg-gray-800 shadow-2xl dark:shadow-lg transition-all duration-300">
+
+                {/* Name Field */}
+                <div className="space-y-2">
+                    <div className="text-lg font-medium text-gray-700 dark:text-gray-300">Name</div>
+                    <InputTag
+                        onInputChange={handleProfile}
+                        name={'name'}
+                        placeholder={'Enter user name'}
+                        type={'text'}
+                        className="p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-100 dark:bg-gray-700 
+                           text-gray-900 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 
+                           transition-all duration-200"
+                    />
+                </div>
+
+                {/* Email Field */}
+                <div className="space-y-2">
+                    <div className="text-lg font-medium text-gray-700 dark:text-gray-300">Email</div>
+                    <InputTag
+                        onInputChange={handleProfile}
+                        name={'email'}
+                        placeholder={'Enter email'}
+                        type={'email'}
+                        className="p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-100 dark:bg-gray-700 
+                           text-gray-900 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 
+                           transition-all duration-200"
+                    />
+                </div>
+
+                {/* Mobile No. Field */}
+                <div className="space-y-2">
+                    <div className="text-lg font-medium text-gray-700 dark:text-gray-300">Mobile No.</div>
+                    <InputTag
+                        onInputChange={handleProfile}
+                        name={'mobile'}
+                        placeholder={'Enter mobile number'}
+                        type={'text'}
+                        className="p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-100 dark:bg-gray-700 
+                           text-gray-900 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 
+                           transition-all duration-200"
+                    />
+                </div>
+
+                {/* Address Field */}
+                <div className="space-y-2">
+                    <div className="text-lg font-medium text-gray-700 dark:text-gray-300">Address</div>
+                    <InputTag
+                        onInputChange={handleProfile}
+                        name={'address'}
+                        placeholder={'Enter address'}
+                        type={'text'}
+                        className="p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-100 dark:bg-gray-700 
+                           text-gray-900 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 
+                           transition-all duration-200"
+                    />
+                </div>
+
+                {/* Profile Picture Section */}
+                <div className="space-y-2">
+                    <div className="text-lg font-medium text-gray-700 dark:text-gray-300">Profile Pic</div>
+                    <ImageTag
+                        onInputChange={handleFile}
+                        className="p-3 border border-gray-300 dark:border-gray-600 rounded-lg w-full md:w-1/2 
+                           bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-200"
+                    />
+                </div>
+
+                {/* Buttons Section */}
+                <div className="flex justify-between">
+                    {/* Update Profile Button */}
+                    <UpdateProfile
+                        handleSubmit={handleSubmit}
+                        className="px-6 py-3text-white font-medium text-lg rounded-lg shadow-md" 
+                    />
+
+                    {/* Back Button */}
+                    <BackButton className="px-6 py-3 bg-gray-400 text-gray-900 font-medium text-lg rounded-lg shadow-md"
+                    />
+                </div>
+            </div>
+        </div>
+
     )
 }
 

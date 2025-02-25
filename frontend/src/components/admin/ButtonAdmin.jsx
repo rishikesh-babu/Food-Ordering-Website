@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../config/axiosInstance";
 import toast from "react-hot-toast";
+import { Delete } from "lucide-react";
+import { DeleteForever } from "@mui/icons-material";
 
 function HotelRemoveButton({ hotelId }) {
 
@@ -77,7 +79,11 @@ function FoodRemoveButton({ foodId }) {
         }
     }
 
-    return <button onClick={() => handleFoodDelete()} className="btn btn-error">Remove</button>;
+    return (
+        <div>
+            <button onClick={() => handleFoodDelete()} className="btn btn-error">Remove</button>
+        </div>
+    )
 }
 
 function AddFoodItem({ hotelId }) {

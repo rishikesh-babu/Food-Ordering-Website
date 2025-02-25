@@ -18,7 +18,7 @@ function UserHotelCard({ name, image, address, hotelId }) {
         <div
             // py-6 sm:p-6 w-72 bg-gradient-to-r from-blue-100 to-gray-200 rounded-lg flex flex-col xl:flex-row items-center gap-6 transition-transform transform hover:scale-105 shadow-lg hover:shadow-2xl
             onClick={() => navigate(`/hotel/${hotelId}`)}
-            className="py-6 min-w-64 sm:max-w-[350px] shadow-lg sm:p-6 bg-gradient-to-r from-blue-100 to-gray-200 rounded-lg flex flex-col items-center gap-6 transition-transform transform sm:hover:scale-105 hover:shadow-2xl cursor-pointer"
+            className="py-6 min-w-64 sm:max-w-[350px] shadow-lg sm:p-6 bg-gradient-to-r from-sky-200 to-gray-200 dark:bg-none hover:shadow-2xl dark:shadow-md dark:shadow-white dark:hover:shadow-white border border-white rounded-lg flex flex-col items-center gap-6 transition-transform transform sm:hover:scale-105 cursor-pointer"
         >
             <div className="flex-shrink-0">
                 <img
@@ -28,10 +28,10 @@ function UserHotelCard({ name, image, address, hotelId }) {
                 />
             </div>
             <div className="text-center">
-                <div className="text-lg sm:text-lg text-wrap font-bold text-blue-800">
+                <div className="text-lg sm:text-lg text-wrap font-bold text-blue-600 ">
                     {name ?? "Name"}
                 </div>
-                <div className="sm:text-lg text-balance font-medium text-gray-700 mt-2">
+                <div className="sm:text-lg text-balance font-medium text-gray-800 dark:text-gray-400 mt-2">
                     {address ?? "address"}
                 </div>
             </div>
@@ -112,7 +112,7 @@ function UserFoodCard({ name, image, price, foodId, addToCart }) {
     }
 
     return (
-        <div className="p-3 sm:p-6 bg-gradient-to-r from-blue-100 to-blue-50 rounded-lg shadow-xl grid grid-cols-2 items-center gap-6">
+        <div className="p-3 sm:p-6 bg-gradient-to-r from-blue-100 to-blue-50 dark:bg-none dark:shadow-md dark:border dark:shadow-white rounded-lg shadow-xl grid grid-cols-2 items-center gap-6">
             <div className="flex-shrink-0">
                 <Link to={`/food/${foodId}`}>
                     <img
@@ -123,11 +123,11 @@ function UserFoodCard({ name, image, price, foodId, addToCart }) {
                 </Link>
             </div>
             <div className="text-left md:text-left ">
-                <div className="text-lg sm:text-xl font-bold text-blue-800">
+                <div className="text-lg sm:text-xl font-bold text-blue-600">
                     {name ?? "Name"}
                 </div>
                 <div className="flex flex-row items-center justify-between my-3">
-                    <span className="text-lg font-medium text-green-600">
+                    <span className="text-lg font-medium text-green-500 dark:text-green-400">
                         ${price ?? "price"}
                     </span>
                     <div className="cursor-pointer hover:scale-110">

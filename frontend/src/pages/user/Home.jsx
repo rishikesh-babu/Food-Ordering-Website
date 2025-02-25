@@ -57,8 +57,8 @@ function Home() {
 
     return (
         <div>
-            <div className="p-6 bg-gray-50 rounded-lg shadow-lg">
-                <div className="text-2xl font-bold text-gray-800 mb-3">
+            <div className="p-6 rounded-lg shadow-lg">
+                <div className="text-2xl font-bold mb-3">
                     Popular Restaurants
                 </div>
                 <div className="text-gray-500">
@@ -82,7 +82,7 @@ function Home() {
                         </div>
                     )
                 }
-                <div className="text-2xl font-bold text-gray-800 mb-3 mt-6">
+                <div className="text-2xl font-bold mb-3 mt-6">
                     Popular Food
                 </div>
                 <div className="text-gray-500">

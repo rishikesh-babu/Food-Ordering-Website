@@ -9,9 +9,10 @@ function Food() {
     const [foodData, isFoodLoading, foodError] = getFetch('/hotel/get-all-food-admin', saveFoodDetails)
     const { foodDetails } = useSelector((state) => state.food)
     return (
-        <div>
-            <div className='text-4xl font-semibold text-center m-10'>Food Items</div>
-            <div className='mx-2 grid grid-cols-1 gap-7 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 xl:gap-7'>
+        <div className='max-w-4xl m-2 sm:mx-auto dark:bg-gray-700 rounded-xl p-5'>
+            <div className='text-4xl font-semibold text-center mb-6'>Food Items</div>
+            <hr />
+            <div>
                 {
                     foodDetails?.map((item, index) => (
                         <FoodCard
@@ -20,7 +21,6 @@ function Food() {
                             price={item?.price}
                             foodId={item?._id}
                             key={index}
-                            className="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105"
                         />
                     ))
                 }

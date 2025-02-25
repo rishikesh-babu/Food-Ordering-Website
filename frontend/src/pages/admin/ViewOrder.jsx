@@ -8,7 +8,7 @@ function ViewOrder() {
 
     return (
         <div>
-            <div className='text-3xl font-semibold text-center'>
+            <div className='my-10 text-3xl font-semibold text-center'>
                 Orders
             </div>
             <div>

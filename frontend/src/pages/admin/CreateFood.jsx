@@ -58,13 +58,13 @@ function CreateFood() {
 
 
     return (
-        <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-lg">
-            <div className="text-3xl font-semibold text-center text-gray-800 mb-8">
+        <div className="max-w-fit my-4 mx-auto p-6 dark:bg-gray-700 rounded-lg shadow-lg">
+            <div className="text-3xl font-semibold text-center mb-8">
                 Create Food
             </div>
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col  gap-6">
                 <div>
-                    <div className="text-lg font-medium text-gray-700">
+                    <div className="text-lg font-medium">
                         Name
                     </div>
                     <InputTag
@@ -76,7 +76,7 @@ function CreateFood() {
                     />
                 </div>
                 <div>
-                    <div className="text-lg font-medium text-gray-700">
+                    <div className="text-lg font-medium">
                         Description
                     </div>
                     <InputTag
@@ -88,7 +88,7 @@ function CreateFood() {
                     />
                 </div>
                 <div>
-                    <div className="text-lg font-medium text-gray-700">
+                    <div className="text-lg font-medium">
                         Price
                     </div>
                     <InputTag
@@ -100,7 +100,7 @@ function CreateFood() {
                     />
                 </div>
                 <div>
-                    <div className="text-lg font-medium text-gray-700">
+                    <div className="text-lg font-medium">
                         Food Image
                     </div>
                     <ImageTag
@@ -108,7 +108,7 @@ function CreateFood() {
                         className="p-3 border border-gray-300 rounded-lg"
                     />
                 </div>
-                <div className="mt-6 grid grid-cols-2 sm:justify-items-start">
+                <div className="mt-6 flex justify-between">
                     <CreateFoodButton
                         handleSubmit={handleSubmit}
                         className="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"

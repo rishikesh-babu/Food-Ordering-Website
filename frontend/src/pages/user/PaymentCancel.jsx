@@ -6,11 +6,11 @@ function PaymentCancel() {
     const navigate = useNavigate();
 
     return (
-        <div className="min-h-screen bg-red-50 flex items-center justify-center">
-            <div className="bg-white rounded-lg shadow-lg p-8 text-center max-w-lg">
-                <XCircle className="text-red-500 w-16 h-16 mx-auto mb-4" />
-                <h1 className="text-3xl font-bold font-serif text-gray-800 mb-4">Payment Cancelled</h1>
-                <p className="text-gray-600 mb-6">
+        <div className="min-h-screen bg-red-50 dark:bg-gray-900 flex items-center justify-center">
+            <div className="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-8 text-center max-w-lg">
+                <XCircle className="text-red-500 animate-bounce w-16 h-16 mx-auto mb-4" />
+                <h1 className="text-3xl font-bold font-serif text-gray-800 dark:text-gray-300 mb-4">Payment Cancelled</h1>
+                <p className="text-gray-600 dark:text-gray-400 mb-6">
                     Unfortunately, your payment was not completed. If this was unintentional,
                     you can try again or contact our support team for assistance.
                 </p>

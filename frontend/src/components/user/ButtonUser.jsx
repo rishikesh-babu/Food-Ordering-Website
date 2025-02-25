@@ -84,32 +84,57 @@ function LogoutButton() {
                 .then((res) => {
                     console.log('res :>> ', res);
                     toast.success(res?.data?.message)
-                    dispatch(clearUserData())                
+                    dispatch(clearUserData())
                 })
                 .catch((err) => {
                     console.log('err :>> ', err);
                 })
         )
     }
-    
+
     return (
-        <div className="mt-3 text-center">
-            <button onClick={logout} className="btn bg-gray-400">
-                <LogOut />
-                <span className="text-lg"> Logout </span>
+        // <div className="mt-3 text-center">
+        //     <button onClick={logout} className="btn ">
+        //         <LogOut />
+        //         <span className="text-lg"> Logout </span>
+        //     </button>
+        // </div>
+
+
+        <div className="mt-3 flex justify-center">
+            <button
+                onClick={logout}
+                className="flex items-center gap-2 px-6 py-3 text-lg font-semibold rounded-lg shadow-lg transition-all duration-300 
+                   bg-gradient-to-r from-red-500 to-red-600 text-white hover:scale-105 hover:shadow-xl active:scale-95 
+                   dark:from-red-600 dark:to-red-700 dark:shadow-md dark:hover:shadow-lg"
+            >
+                <LogOut className="w-6 h-6" />
+                <span>Logout</span>
             </button>
         </div>
     );
 }
 
 function EditProfileButton() {
-    return(
-        <div className="mt-3 text-center">
-            <button className="btn bg-gray-400">
-                <Edit />
-                <span className="text-lg"> Edit </span>
+    return (
+        // <div className="mt-3 text-center">
+        //     <button className="bt">
+        //         <Edit />
+        //         <span className="text-lg"> Edit </span>
+        //     </button>
+        // </div>
+
+        <div className="mt-3 flex justify-center">
+            <button
+                className="flex items-center gap-2 px-6 py-3 text-lg font-semibold rounded-lg shadow-md transition-all duration-300 
+                   bg-gradient-to-r from-gray-300 to-gray-400 text-gray-900 hover:scale-105 hover:shadow-lg hover:from-gray-400 hover:to-gray-500 
+                   active:scale-95 active:shadow-sm dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 dark:shadow-md dark:hover:shadow-lg"
+            >
+                <Edit className="w-6 h-6" />
+                <span>Edit</span>
             </button>
         </div>
+
     )
 }
 
@@ -120,7 +145,7 @@ function UpdateProfile({ handleSubmit }) {
                 onClick={handleSubmit}
                 className="px-6 py-3 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 transition-all duration-200"
             >
-                Update  
+                Update
             </button>
         </div>
     );

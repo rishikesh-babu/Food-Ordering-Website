@@ -7,6 +7,7 @@ import { clearUserData } from "../../redux/features/userSlice";
 import toast from "react-hot-toast";
 import getFetch from "../../hooks/getFetch";
 import { savewishlistData } from "../../redux/features/wishlistSlice";
+import DarkMode from "../shared/DarkMode";
 
 function UserHeader() {
 
@@ -25,8 +26,6 @@ function UserHeader() {
                 url: 'user/logout'
             })
                 .then((res) => {
-
-                    console.log('res :>> ', res);
                     toast.success(res?.data?.message)
                     dispatch(clearUserData())
                 })
@@ -48,6 +47,7 @@ function UserHeader() {
                     </Link>
                 </div>
             </div>
+            <DarkMode />
             <div className="flex-none">
                 <div className="dropdown dropdown-end">
                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">

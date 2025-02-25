@@ -99,7 +99,6 @@ async function adminLogout(req, res, next) {
 
         console.log('req.cookies.token :>> ', req.cookies.token);
         clearCookies(res)
-
         res.status(200).json({ message: 'Logout successfully' })
     } catch (err) {
         next(err)

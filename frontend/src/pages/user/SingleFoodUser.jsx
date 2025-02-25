@@ -89,11 +89,11 @@ function SingleFoodUser() {
                             />
                         </div>
                         <div className="space-y-6">
-                            <h1 className="text-3xl font-bold text-gray-800">
+                            <h1 className="text-3xl font-bold">
                                 {foodDetails?.name}
                             </h1>
                             <div className="flex justify-between items-center">
-                                <p className="text-xl text-green-600 font-semibold">
+                                <p className="text-xl text-green-600 dark:text-green-400 font-semibold">
                                     ₹{foodDetails?.price}
                                 </p>
                                 <div className="text-lg font-semibold">
@@ -127,7 +127,7 @@ function SingleFoodUser() {
                                 </div>
                             </div>
 
-                            <p className="text-gray-600 text-lg leading-relaxed">
+                            <p className="text-gray-600 dark:text-gray-400 text-lg leading-relaxed">
                                 {foodDetails?.description}
                             </p>
 

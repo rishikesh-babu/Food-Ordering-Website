@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import axiosInstance from '../config/axiosInstance'
 import { clearAdminData, saveAdminData } from '../redux/features/adminSilce'
 import toast from 'react-hot-toast'
+import { Menu } from 'lucide-react'
 console.log('This is admin layout')
 
 function AdminLayout() {
@@ -39,51 +40,29 @@ function AdminLayout() {
     }
 
     return (
+        <div className="min-h-screen bg-gray-100d  flex">
+            {/* Sidebar */}
+            <aside className={`bg-white shadow-lg fixed h-full transition-all ${sideBarToggle && isAdminAuth ? 'w-64' : 'w-0 overflow-hidden'} duration-300`}>
+                <SideBar />
+            </aside>
 
-        // <div className="flex h-screen">
-        //     {/* Sidebar - Animated & Scrollable */}
-        //     <div className={`bg-gray-200 border-r shadow-lg overflow-y-auto transition-all duration-300 ${sideBarToggle && isAdminAuth ? "w-64" : "w-0 overflow-hidden"}`}>
-        //         <SideBar />
-        //     </div>
-
-        //     {/* Main Content - Header Fixed, Body Scrollable */}
-        //     <div className="flex flex-col overflow-y-auto">
-        //         {/* Fixed Header */}
-        //         <div className="fixed top-0 w-full bg-white shadow-lg z-10">
-        //             <AdminHeader />
-        //         </div>
-
-        //         {/* Scrollable Content */}
-        //         <div className="mt-16 p-4">
-        //             <Outlet />
-        //         </div>
-
-        //         {/* Footer */}
-        //         <div className="w-full bg-gray-100 shadow-inner">
-        //             <AdminFooter />
-        //         </div>
-        //     </div>
-        // </div>
-
-
-
-        <div className='flex h-screen overflow-hidden'>
-            {
-                <div className={`bg-gray-200 overflow-y-auto  text-nowrap ${(sideBarToggle && isAdminAuth) ? 'w-64' : 'w-0 opacity-0'} duration-300`}>
-                    <SideBar />
-                </div>
-            }
-            <div className='flex flex-col overflow-y-auto w-screen'>
-                <div className='fixed w-full shadow-lg z-10'>
+            {/* Main Content */}
+            <main className="flex flex-col flex-grow ml-auto w-full transition-all duration-300" style={{ marginLeft: sideBarToggle && isAdminAuth ? '16rem' : '0' }}>
+                {/* Admin Header */}
+                <header className="shadow-md items-center">
                     <AdminHeader />
-                </div>
-                <div className='flex-1 mt-20 w-full'>
+                </header>
+
+                {/* Page Content */}
+                <section className="flex-grow p-1">
                     <Outlet />
-                </div>
-                <div className='w-full'>
+                </section>
+
+                {/* Admin Footer */}
+                <footer className=" shadow-inner">
                     <AdminFooter />
-                </div>
-            </div>
+                </footer>
+            </main>
         </div>
     )
 }

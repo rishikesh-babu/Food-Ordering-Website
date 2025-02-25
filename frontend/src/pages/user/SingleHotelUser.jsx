@@ -83,7 +83,7 @@ function SingleHotelUser() {
                                 </div>
                             </div>
                         </div>
-                        <div className='self-center text-3xl font-bold font-mono text-gray-700 sm:hidden tracking-widest'>
+                        <div className='self-center text-3xl font-bold font-mono text-gray-700 dark:text-gray-200 sm:hidden tracking-widest'>
                             Food Items 
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">

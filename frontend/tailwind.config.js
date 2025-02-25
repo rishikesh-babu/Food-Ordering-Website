@@ -10,6 +10,7 @@ export default {
     plugins: [
         require('daisyui'),
     ],
+    darkMode: ['selector', '[data-theme="dark"]'],
     daisyui: {
         themes: ["light", "dark"],
       },
