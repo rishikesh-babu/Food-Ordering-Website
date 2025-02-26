@@ -30,7 +30,9 @@ function HotelRemoveButton({ hotelId }) {
 
     return (
         <div>
-            <button onClick={() => handleHotelRemove()} className="btn btn-error">Delete</button>
+            <button onClick={() => handleHotelRemove()} className="btn btn-error">
+                <DeleteForever />
+            </button>
         </div>
     )
 }

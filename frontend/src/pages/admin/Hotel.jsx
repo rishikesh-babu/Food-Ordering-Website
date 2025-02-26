@@ -33,7 +33,7 @@ function Hotel() {
             <div className='text-4xl font-semibold text-center m-10'>
                 Hotels
             </div>
-            <div className='m-4 sm:mx-6'>
+            <div className='m-4 sm:mx-auto max-w-3xl'>
                 {
                     hotelDetails?.map((item, index) => <HotelCard image={item.image} name={item.name} hotelId={item._id} key={index} />)
                 }

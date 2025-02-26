@@ -1,11 +1,12 @@
 import { useNavigate } from "react-router-dom"
 import { FoodRemoveButton, HotelRemoveButton } from "./ButtonAdmin"
+import { Eye } from "lucide-react"
 
 function HotelCard({ name, image, hotelId }) {
 
     const navigate = useNavigate()
 
-    function gotToSingleHotel() {
+    function goToSingleHotel() {
         navigate(`/admin/hotel/${hotelId}`)
     }
 
@@ -15,18 +16,25 @@ function HotelCard({ name, image, hotelId }) {
         >
             <div className="h-20 w-20">
                 <img
-                    onClick={() => gotToSingleHotel()}
-                    className="h-full w-full rounded-xl object-cover cursor-pointer hover:scale-105"
+                    className="h-full w-full rounded-xl object-cover"
                     src={image}
                     alt="hotel image"
                 />
             </div>
-            <div className="text-medium text-balance text-center sm:flex-grow sm:text-left sm:text-2xl md:text-3xl font-semibold">
+            <div className="sm:text-lg md:text-xl text-balance text-center sm:flex-grow sm:text-left font-semibold">
                 {name}
             </div>
-            <div className="flex justify-center md:justify-end">
-                <HotelRemoveButton hotelId={hotelId} />
+            <div className="flex items-center justify-between gap-1 sm:gap-6">
+                <div>
+                    <button onClick={goToSingleHotel} className="btn btn-primary">
+                        <Eye />
+                    </button>
+                </div>
+                <div>
+                    <HotelRemoveButton hotelId={hotelId} />
+                </div>
             </div>
+
         </div>
     )
 }
