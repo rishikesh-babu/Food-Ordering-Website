@@ -7,6 +7,7 @@ import sideBarReducer from "./features/sideBarSlice";
 import orderReducer from "./features/orderSlice";
 import hotelReducer from "./features/hotelSlice";
 import foodReducer from "./features/foodSlice";
+import darkModeReducer from "./features/darkModeSlice";
 
 const store = configureStore({
     reducer: {
@@ -18,6 +19,7 @@ const store = configureStore({
         order: orderReducer,
         hotel: hotelReducer,
         food: foodReducer,
+        darkMode: darkModeReducer,        
     }
 })
 

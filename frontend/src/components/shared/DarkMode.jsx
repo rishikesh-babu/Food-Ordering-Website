@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { changeDarkMode } from '../../redux/features/darkModeSlice'
 
 export default function DarkMode() {
-    const [darkMode, setDarkMode] = useState(false)
+    const { darkMode } = useSelector((state) => state.darkMode)
+
+    const dispatch = useDispatch()
 
     document.querySelector('html').setAttribute('data-theme', darkMode ? 'dark' : 'light')
     function toggleTheme() {
-        setDarkMode(!darkMode)
+        dispatch(changeDarkMode())
     }
     return (
         <div className='scale-90'>

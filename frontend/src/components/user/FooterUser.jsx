@@ -16,9 +16,9 @@ function Footer() {
                 <a className="link link-hover">About us</a>
                 <a className="link link-hover">Contact</a>
                 <a className="link link-hover">Jobs</a>
-                <a href='/admin/login' className="link link-hover">
+                <Link to={'/admin/login'} className="link link-hover">
                     Admin login 
-                </a>
+                </Link>
             </nav>
             <nav>
                 <h6 className="footer-title">Social</h6>

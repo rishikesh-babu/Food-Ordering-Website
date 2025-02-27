@@ -6,7 +6,7 @@ function Header() {
     return (
         <div className="navbar bg-base-100 shadow-md dark:shadow-lg dark:shadow-blue-200">
             <div className="flex-1">
-                <a href="/" className="btn btn-ghost text-3xl font-bold "> Food Express </a>
+                <Link to={'/'} className="btn btn-ghost text-3xl font-bold "> Food Express </Link>
             </div>
             <div className="flex-none">
                 <DarkMode />

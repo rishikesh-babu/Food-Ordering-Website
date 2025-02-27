@@ -53,11 +53,6 @@ function UserFoodCard({ name, image, price, foodId, addToCart }) {
         (items) => items?.foodId?._id === foodId
     );
 
-    console.log("wishlistData :>> ", wishlistData);
-    console.log("isInWishlist :>> ", isInWishlist);
-
-    useEffect(() => { }, [cartDetails]);
-
     function addToWishlist() {
         toast.promise(
             axiosInstance({
