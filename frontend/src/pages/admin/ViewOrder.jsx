@@ -11,14 +11,17 @@ function ViewOrder() {
             <div className='my-10 text-3xl font-semibold text-center'>
                 Orders
             </div>
-            <div>
+            <div >
                 {
                     orderData?.map((item, index) => (
                         <ViewOrderCard 
                             name={item?.userId?.name}
                             image={item?.userId?.image}
-                            address={item?.userId?.address}
-                            price={item?.total}
+                            totalPrice={item?.totalPrice}
+                            address={item?.address}
+                            foodItems={item?.foodItems}
+                            orderStatus={item?.orderStatus}
+                            orderId={item?._id}
                         />
                     ))
                 }

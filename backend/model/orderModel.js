@@ -7,53 +7,38 @@ const orderSchema = mongoose.Schema(
             ref: 'User',
             required: true,
         },
-        orderList: [{
-            orderItems: [{
-                foodId: {
-                    type: mongoose.Types.ObjectId,
-                    ref: 'Food',
-                    required: true,
-                }
-            }],
+        foodItems: [{
+            foodId: {
+                type: mongoose.Types.ObjectId,
+                ref: 'Food',
+            },
             price: {
                 type: Number,
                 required: true,
             },
-            date: {
-                type: Date,
-                required: true,
-                default: Date.now
-            },
-            address: {
-                type : String,
-                required: true,
+            quantity: {
+                type: Number,
+                default: 1
             }
         }],
-        total: {
+        totalPrice: {
             type: Number,
-            required: true,
-            default: 0,
+            required: true
+        },
+        orderStatus: {
+            type: String,
+            enum: ['pending', 'complete', 'cancel'],
+            default: 'pending',
+        },
+        address: {
+            type: String,
+            required: true
         }
     },
     {
         timestamps: true,
     }
 )
-
-orderSchema.methods.calculateTotal = function () {
-    let total = 0
-
-    this.orderList.forEach((item) => {
-        total += item.price
-    })
-
-    return total
-}
-
-orderSchema.pre('save', function (next) {
-    this.total = this.calculateTotal()
-    next()
-})
 
 const Order = mongoose.model('Order', orderSchema)
 module.exports = { Order }

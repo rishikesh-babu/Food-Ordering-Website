@@ -13,13 +13,17 @@ function Order() {
         saveOrderDetails
     );
     const { orderDetails } = useSelector((state) => state.order);
-    // console.log('orderDetails?.orderLIst?.length :>> ', orderDetails?.orderLIst?.length);
+    console.log('orderDetails :>> ', orderDetails);
+
+    useEffect(() => {
+        window.scroll(0, 0)
+    }, [])
     return (
         <div>
             <div className="my-5 text-3xl font-semibold text-center">Orders</div>
-            {orderDetails?.orderList?.length  ? (
+            {orderDetails?.length ? (
                 <div className="sm:mx-6 flex flex-col-reverse">
-                    {orderDetails?.orderList?.map((items, index) => (
+                    {orderDetails?.map((items, index) => (
                         <OrderListCard items={items} key={index} />
                     ))}
                 </div>

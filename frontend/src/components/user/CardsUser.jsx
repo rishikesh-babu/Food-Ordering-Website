@@ -10,6 +10,7 @@ import { savewishlistData } from "../../redux/features/wishlistSlice";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import { saveOrderDetails } from "../../redux/features/orderSlice";
+import { Tooltip } from "@mui/material";
 
 function UserHotelCard({ name, image, address, hotelId }) {
     const navigate = useNavigate();
@@ -128,7 +129,7 @@ function UserFoodCard({ name, image, price, foodId, addToCart }) {
                 </div>
                 <div className="flex flex-row items-center justify-between my-3">
                     <span className="text-lg font-medium text-green-500 dark:text-green-400">
-                        ${price ?? "price"}
+                    ₹{price ?? "price"}
                     </span>
                     <div className="cursor-pointer hover:scale-110">
                         {isInWishlist?.[0] ? (
@@ -192,7 +193,7 @@ function CartCard({ name, price, quantity, image, foodId, updateCartDetails }) {
                     {name}
                 </h3>
                 <p className="text-xl sm:text-2xl font-medium text-green-500 dark:text-green-400">
-                    ${price}
+                    ₹{price}
                 </p>
             </div>
 
@@ -263,13 +264,17 @@ function OrderListCard({ items }) {
             <div className="grid grid-cols-[80px_1fr]">
                 <span className="mr-2 text-lg font-semibold">Date:</span>
                 <span className="text-lg">
-                    {items?.date.slice(0, 10).split("-").reverse().join("-")}
+                    {items?.createdAt.slice(0, 10).split("-").reverse().join("-")}
                 </span>
             </div>
             <div className="grid grid-cols-[80px_1fr]">
-                <span className="mr-2 text-lg font-semibold">Price:</span>
-                <span className="text-lg">${items?.price}</span>
+                <span className="mr-2 text-lg font-semibold">Total:</span>
+                <span className="text-lg">₹{items?.totalPrice}</span>
             </div>
+            <Tooltip title={`${items?.orderStatus === 'pending' ? 'Contact admin to clear order' : items?.orderStatus === 'complete' ? 'Order delivered successfully' : 'Order cancelled'}`} className={`grid grid-cols-[80px_1fr] cursor-pointer ${items?.orderStatus === 'pending' && 'text-yellow-500 dark:text-yellow-300'} ${items?.orderStatus === 'complete' && 'text-green-500 dark:text-green-400'} ${items?.orderStatus === 'cancel' && 'text-red-500'}`}>
+                <span className="mr-2 text-lg font-semibold">Status:</span>
+                <span className="text-lg font-semibold">{items?.orderStatus}</span>
+            </Tooltip>
             {/* <button className="mt-2 hover:scale-105" onClick={deleteOrder}>
                 <Trash2 />
             </button> */}

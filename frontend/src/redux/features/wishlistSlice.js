@@ -10,7 +10,6 @@ const wishlistSlice = createSlice({
     reducers: {
         savewishlistData: (state, action) => {
             state.wishlistData = action.payload
-            console.log('state.wishlistData :>> ', state.wishlistData);
         },
         clearwishlistData: (state, action) => {
             state.wishlistData = {}

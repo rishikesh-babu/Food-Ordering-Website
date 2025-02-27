@@ -12,7 +12,6 @@ function SideBar() {
     const navigate = useNavigate()
 
     function handleLogout() {
-        return
         toast.promise(
             axiosInstance({
                 method: 'POST',
@@ -20,7 +19,7 @@ function SideBar() {
             })
                 .then((res) => {
                     console.log('res :>> ', res);
-                    toast.success(res?.data?.data?.message)
+                    toast.success(res?.data?.message)
                     dispatch(clearAdminData())
                     navigate('/admin/login')
                 })
@@ -38,7 +37,7 @@ function SideBar() {
     return (
         <div className="h-screen w-64 dark:bg-gray-900 dark:text-white p-5 flex flex-col space-y-6">
             <h2 className="text-2xl font-bold">Dashboard</h2>
-            <nav className="flex-grow flex flex-col gap-y-5">
+            <nav className="flex-grow flex flex-col gap-y-5 font-semibold">
                 <Link to="/admin/hotel" className="flex items-center space-x-2 p-2 hover:bg-gray-400 active:bg-gray-500 dark:active:bg-gray-600 dark:hover:bg-gray-700 rounded-md">
                     <Home size={20} />
                     <span>Hotel</span>

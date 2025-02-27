@@ -27,7 +27,7 @@ function Cart() {
 
     useEffect(() => {
         if (!isCartLoading) {
-            // window.scrollTo(0, 0)
+            window.scrollTo(0, 0)
         }
     }, [isCartLoading])
 
@@ -36,12 +36,18 @@ function Cart() {
     }
 
     function addToOrderList() {
+        const foodItems = cartDetails?.cartItems?.map((item) => ({
+            foodId: item?.foodId?._id,
+            price: item?.price,
+            quantity: item?.quantity
+        }))
         axiosInstance({
             method: 'POST',
             url: '/order/add-order',
             data: {
                 address: userData?.address,
-                price: cartDetails?.totalPrice
+                totalPrice: cartDetails?.totalPrice,
+                foodItems: foodItems,
             }
         })
             .then((res) => {
@@ -163,7 +169,7 @@ function Cart() {
                                         Total Price:
                                     </span>
                                     <span className="text-xl font-medium text-green-500 dark:text-green-400 ml-2">
-                                        ${cartDetails?.totalPrice}
+                                        ₹{cartDetails?.totalPrice}
                                     </span>
                                 </div>
                                 <button

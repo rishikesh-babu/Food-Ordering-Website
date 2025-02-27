@@ -75,7 +75,7 @@ function UserHeader() {
                     >
                         <div className="card-body">
                             <span className="text-lg font-bold">{cartLength} Items</span>
-                            <span className="text-info">Subtotal: ${cartDetails?.totalPrice}</span>
+                            <span className="text-info">Subtotal: ₹{cartDetails?.totalPrice}</span>
                             <div className="card-actions">
                                 <button
                                     onClick={() => navigete("/user/cart")}
