@@ -63,7 +63,7 @@ function Wishlist() {
                         <div className="space-y-6 max-w-2xl mx-auto">
                             {wishlistData?.foodItems?.map((item, index) => (
                                 <UserFoodCard
-                                    key={index}
+                                    key={item.foodId._id}
                                     name={item.foodId.name}
                                     price={item.foodId.price}
                                     image={item.foodId.image}

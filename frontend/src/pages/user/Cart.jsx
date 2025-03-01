@@ -140,7 +140,7 @@ function Cart() {
                                         quantity={item.quantity}
                                         foodId={item?.foodId?._id}
                                         updateCartDetails={updateCartDetails}
-                                        key={index}
+                                        key={item?.foodId?._id}
                                     />
                                 ))}
                             </div>

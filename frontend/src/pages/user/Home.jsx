@@ -72,7 +72,7 @@ function Home() {
                         <div className="p-4 sm:my-2 flex whitespace-nowrap gap-5 overflow-y-hidden overflow-x-auto scroll-smooth">
                             {hotelDetails?.map((item, index) => (
                                 <UserHotelCard
-                                    key={index}
+                                    key={item._id}
                                     name={item.name}
                                     address={item.address}
                                     image={item.image}
@@ -96,7 +96,7 @@ function Home() {
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
                             {foodDetails?.map((item, index) => (
                                 <UserFoodCard
-                                    key={index}
+                                    key={item._id}
                                     name={item.name}
                                     price={item.price}
                                     image={item.image}

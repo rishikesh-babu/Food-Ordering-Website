@@ -24,7 +24,7 @@ function Order() {
             {orderDetails?.length ? (
                 <div className="sm:mx-6 flex flex-col-reverse">
                     {orderDetails?.map((items, index) => (
-                        <OrderListCard items={items} key={index} />
+                        <OrderListCard items={items} key={items?._id} />
                     ))}
                 </div>
             ) : (

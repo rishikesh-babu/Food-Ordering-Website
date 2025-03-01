@@ -161,7 +161,7 @@ function SingleHotelSkelton() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 {[...Array(6)].map((_, index) => (
-                    <div className="p-3 sm:p-6 bg-gradient-to-r from-blue-50 to-white rounded-lg shadow-lg grid grid-cols-2 items-center gap-6">
+                    <div key={index} className="p-3 sm:p-6 bg-gradient-to-r from-blue-50 to-white rounded-lg shadow-lg grid grid-cols-2 items-center gap-6">
                         <div className="flex-shrink-0">
                             <div className="size-28 md:h-32 md:w-32 rounded-xl bg-gray-300 animate-pulse border-2 border-blue-500 shadow-md"></div>
                         </div>
