@@ -139,7 +139,7 @@ function UserLogin() {
                 </div>
 
                 {/* Login Form */}
-                <div className="card bg-white dark:bg-gray-800 w-full max-w-sm shadow-lg rounded-lg p-6 transition-colors duration-300">
+                <div className="card bg-white dark:bg-gray-800 w-full max-w-sm shadow-2xl rounded-lg p-6 transition-colors duration-300">
                     <form onSubmit={handleLogin} className="space-y-4">
                         {/* Email Input */}
                         <div className="form-control">

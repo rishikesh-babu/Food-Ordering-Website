@@ -42,18 +42,16 @@ function UserHeader() {
     return (
         <div className="navbar bg-base-100 fixed top-0 left-0 w-full z-10 shadow-lg dark:shadow-blue-200">
             <div className="flex-1">
-                <div className="btn btn-ghost text-2xl sm:text-3xl font-bold flex gap-1">
-                    <Link to={'/'}>
-                        <img
-                            src="log.jpg"
-                            alt="Logo"
-                            className="size-10 rounded-box"
-                        />
-                    </Link>
+                <Link to={'/'} className="btn btn-ghost text-2xl sm:text-3xl font-bold flex gap-1">
+                    <img
+                        src="log.jpg"
+                        alt="Logo"
+                        className="size-10 rounded-box"
+                    />
                     <div>
                         Food Express
                     </div>
-                </div>
+                </Link>
             </div>
             <DarkMode />
             <div className="flex-none">
