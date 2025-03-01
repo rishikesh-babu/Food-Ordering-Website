@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 import getFetch from "../../hooks/getFetch";
 import { savewishlistData } from "../../redux/features/wishlistSlice";
 import DarkMode from "../shared/DarkMode";
+import FoodExpressLog from "../shared/FoodExpressLog";
 
 function UserHeader() {
 
@@ -39,12 +40,19 @@ function UserHeader() {
     }
 
     return (
-        <div className="navbar bg-base-100 fixed top-0 left-0 w-full z-10 shadow-md">
+        <div className="navbar bg-base-100 fixed top-0 left-0 w-full z-10 shadow-lg dark:shadow-blue-200">
             <div className="flex-1">
-                <div className="btn btn-ghost text-3xl font-bold">
+                <div className="btn btn-ghost text-2xl sm:text-3xl font-bold flex gap-1">
                     <Link to={'/'}>
-                        Food Express
+                        <img
+                            src="log.jpg"
+                            alt="Logo"
+                            className="size-10 rounded-box"
+                        />
                     </Link>
+                    <div>
+                        Food Express
+                    </div>
                 </div>
             </div>
             <DarkMode />

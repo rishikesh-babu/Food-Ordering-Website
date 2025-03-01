@@ -25,23 +25,28 @@ function Footer() {
             <nav>
                 <div className="grid grid-flow-col gap-6">
                     <a href="https://github.com/rishikesh-babu" target="_blank" rel="noreferrer" className="hover:text-primary hover:scale-105">
-                        <GitHub sx={{ fontSize: 30}} />
+                        <GitHub sx={{ fontSize: 30 }} />
                     </a>
                     <a href="https://www.linkedin.com/in/rishikesh-babu" target="_blank" rel="noreferrer" className="hover:text-primary hover:scale-105">
-                        <LinkedIn sx={{ fontSize: 30}} />
+                        <LinkedIn sx={{ fontSize: 30 }} />
                     </a>
                     <a href="https://www.instagram.com/_ri_s_hi_k.e.sh_/" target="_blank" rel="noreferrer" className="hover:text-primary hover:scale-105">
-                        <Instagram sx={{ fontSize: 30}} />
+                        <Instagram sx={{ fontSize: 30 }} />
                     </a>
-                    <a  target="_blank" rel="noreferrer" className="hover:text-primary transition duration-300">
-                        <WhatsApp sx={{ fontSize: 30}} />
+                    <a target="_blank" rel="noreferrer" className="hover:text-primary transition duration-300">
+                        <WhatsApp sx={{ fontSize: 30 }} />
                     </a>
                 </div>
             </nav>
 
             {/* Copyright */}
             <aside>
-                <p>Copyright © {new Date().getFullYear()} - All rights reserved by Food Express 🍔</p>
+                <div className='flex flex-col-reverse items-center gap-2'>
+                    <span>
+                        Copyright © {new Date().getFullYear()} - All rights reserved by Food Express 🍔
+                    </span>
+                    <img src="log.jpg" alt="" className='size-14 rounded-badge' />
+                </div>
             </aside>
         </footer>
     )
