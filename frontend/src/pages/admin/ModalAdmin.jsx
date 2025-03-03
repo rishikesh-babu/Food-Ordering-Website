@@ -45,7 +45,7 @@ function EditAddressModal() {
                 </form>
                 <div className="space-y-4">
                     {/* Title */}
-                    <h3 className="font-bold text-2xl text-gray-800 text-center">Edit Address</h3>
+                    <h3 className="font-bold text-2xl text-center">Edit Address</h3>
 
                     {/* Address Input Field */}
                     <div>

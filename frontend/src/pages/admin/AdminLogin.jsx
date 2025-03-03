@@ -18,6 +18,10 @@ function AdminLogin() {
         isAuthorised()
     }, [isAdminAuth])
 
+    useEffect(() => {
+        window.scroll(0, 0)
+    }, [])
+
     function isAuthorised() {
         if (isAdminAuth) {
             navigate('/admin/hotel')
