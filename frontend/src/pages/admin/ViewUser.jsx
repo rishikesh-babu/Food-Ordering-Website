@@ -51,7 +51,7 @@ function ViewUser() {
                                 alt=""
                             />
                         </div>
-                        <div>{item?.name}</div>
+                        <div className="font-semibold">{item?.name}</div>
                         <div className="flex-grow flex justify-end gap-2">
                             {item?.userStatus === "active" ? (
                                 <button
