@@ -1,4 +1,4 @@
-function InputTag({ placeholder, name, type, onInputChange }) {
+function InputTag({ placeholder, name, type, onInputChange, value }) {
 
     function handleChange(event) {
         const inputValue = event.target.value 
@@ -8,6 +8,7 @@ function InputTag({ placeholder, name, type, onInputChange }) {
         <div className="flex flex-col">
             <input
                 onChange={handleChange}
+                value={value ?? ''}
                 type={type ?? "text"}
                 placeholder={placeholder ?? "placeholder"}
                 className="input input-bordered w-full max-w-xs"

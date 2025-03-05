@@ -4,19 +4,26 @@ import { BackButton, UpdateProfile } from '../../components/user/ButtonUser'
 import { useNavigate } from 'react-router-dom'
 import axiosInstance from '../../config/axiosInstance'
 import toast from 'react-hot-toast'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { saveUserData } from '../../redux/features/userSlice'
 
 function UserProfileEdit() {
 
+    const { userData } = useSelector((state) => state.user);
     const [profileDetails, setProfileDetails] = useState({})
     const [selectedFile, setSelectedFile] = useState()
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
     useEffect(() => {
-        // window.scroll(0, 0)
-    }, [])
+        window.scroll(0, 0)
+        setProfileDetails({
+            name: userData?.name || '',
+            // email: userData?.email || '',
+            address: userData?.address || '',
+            mobile: userData?.mobile || '',
+        })
+    }, [userData])
 
     function handleProfile(name, value) {
         setProfileDetails({
@@ -62,93 +69,9 @@ function UserProfileEdit() {
         )
     }
 
+    console.log('profileDetails :>> ', profileDetails);
+
     return (
-        // <div>
-        //     {/* Title */}
-        //     <div className="text-4xl font-semibold text-center mb-7">
-        //         Edit Profile
-        //     </div>
-
-        //     {/* Form Content */}
-        //     <div className="p-3 m-3 mb-8 w-fit flex flex-col gap-6 border rounded-lg drop-shadow-2xl sm:bg-gray-100 sm:mx-auto sm:shadow-xl sm:p-9">
-        //         <div className="space-y-2">
-        //             <div className="text-lg font-medium text-gray-700 ">
-        //                 Name
-        //             </div>
-        //             <InputTag
-        //                 onInputChange={handleProfile}
-        //                 name={'name'}
-        //                 placeholder={'Enter user name'}
-        //                 type={'text'}
-        //                 className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-        //             />
-        //         </div>
-
-        //         <div className="space-y-2">
-        //             <div className="text-lg font-medium text-gray-700">
-        //                 Email
-        //             </div>
-        //             <InputTag
-        //                 onInputChange={handleProfile}
-        //                 name={'email'}
-        //                 placeholder={'Enter email'}
-        //                 type={'email'}
-        //                 className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-        //             />
-        //         </div>
-
-        //         <div className="space-y-2">
-        //             <div className="text-lg font-medium text-gray-700">
-        //                 Mobile No.
-        //             </div>
-        //             <InputTag
-        //                 onInputChange={handleProfile}
-        //                 name={'mobile'}
-        //                 placeholder={'Enter mobile number'}
-        //                 type={'text'}
-        //                 className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-        //             />
-        //         </div>
-
-        //         <div className="space-y-2">
-        //             <div className="text-lg font-medium text-gray-700">
-        //                 Address
-        //             </div>
-        //             <InputTag
-        //                 onInputChange={handleProfile}
-        //                 name={'address'}
-        //                 placeholder={'Enter address'}
-        //                 type={'text'}
-        //                 className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-        //             />
-        //         </div>
-
-        //         {/* Profile Picture Section */}
-        //         <div className="space-y-2">
-        //             <div className="text-lg font-medium text-gray-700">
-        //                 Profile Pic
-        //             </div>
-        //             <ImageTag
-        //                 onInputChange={handleFile}
-        //                 className="p-3 border border-gray-300 rounded-lg w-full md:w-1/2"
-        //             />
-        //         </div>
-
-        //         {/* Buttons Section */}
-        //         <div className=" flex justify-between">
-        //             {/* Update Profile Button */}
-        //             <UpdateProfile
-        //                 handleSubmit={handleSubmit}
-        //                 className="px-6 py-3 bg-blue-600 text-white font-medium text-lg rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200"
-        //             />
-
-        //             {/* Back Button */}
-        //             <BackButton />
-        //         </div>
-        //     </div>
-        // </div>
-
-
         <div className="p-4 sm:p-6 md:p-8">
             {/* Title */}
             <div className="text-4xl font-semibold text-center mb-7 text-gray-900 dark:text-gray-100 transition-colors duration-300">
@@ -164,6 +87,7 @@ function UserProfileEdit() {
                     <div className="text-lg font-medium text-gray-700 dark:text-gray-300">Name</div>
                     <InputTag
                         onInputChange={handleProfile}
+                        value={profileDetails.name}
                         name={'name'}
                         placeholder={'Enter user name'}
                         type={'text'}
@@ -174,10 +98,11 @@ function UserProfileEdit() {
                 </div>
 
                 {/* Email Field */}
-                <div className="space-y-2">
+                {/* <div className="space-y-2">
                     <div className="text-lg font-medium text-gray-700 dark:text-gray-300">Email</div>
                     <InputTag
                         onInputChange={handleProfile}
+                        // value={userData.email}
                         name={'email'}
                         placeholder={'Enter email'}
                         type={'email'}
@@ -185,13 +110,14 @@ function UserProfileEdit() {
                            text-gray-900 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 
                            transition-all duration-200"
                     />
-                </div>
+                </div> */}
 
                 {/* Mobile No. Field */}
                 <div className="space-y-2">
                     <div className="text-lg font-medium text-gray-700 dark:text-gray-300">Mobile No.</div>
                     <InputTag
                         onInputChange={handleProfile}
+                        value={profileDetails.mobile}
                         name={'mobile'}
                         placeholder={'Enter mobile number'}
                         type={'text'}
@@ -206,6 +132,7 @@ function UserProfileEdit() {
                     <div className="text-lg font-medium text-gray-700 dark:text-gray-300">Address</div>
                     <InputTag
                         onInputChange={handleProfile}
+                        value={profileDetails.address}
                         name={'address'}
                         placeholder={'Enter address'}
                         type={'text'}
@@ -230,7 +157,7 @@ function UserProfileEdit() {
                     {/* Update Profile Button */}
                     <UpdateProfile
                         handleSubmit={handleSubmit}
-                        className="px-6 py-3text-white font-medium text-lg rounded-lg shadow-md" 
+                        className="px-6 py-3text-white font-medium text-lg rounded-lg shadow-md"
                     />
 
                     {/* Back Button */}
