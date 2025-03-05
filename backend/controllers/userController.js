@@ -60,6 +60,10 @@ async function userLogin(req, res, next) {
             return res.status(404).json({ message: 'User does not exist' })
         }
 
+        if (userExist.userStatus === 'blocked') {
+            return res.status(400).json({ message: 'User is blocked by admin' })
+        }
+
         const hashedPassword = userExist.password
 
         const isMatch = await bcrycpt.compare(password, hashedPassword)

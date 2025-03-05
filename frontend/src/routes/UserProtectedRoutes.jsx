@@ -4,7 +4,7 @@ import { Outlet, useNavigate } from 'react-router-dom'
 
 function UserProtectedRoutes() {
 
-    const { isUserAuth } = useSelector((state) => state.user)
+    const { isUserAuth, userData } = useSelector((state) => state.user)
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -12,7 +12,7 @@ function UserProtectedRoutes() {
     }, [isUserAuth])
 
     function checkUser() {
-        if (!isUserAuth) {
+        if (!isUserAuth || userData.userStatus === 'blocked') {
             navigate('/login')
         }
     }

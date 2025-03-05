@@ -5,6 +5,7 @@ import axiosInstance from '../../config/axiosInstance';
 import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { clearAdminData } from '../../redux/features/adminSilce';
+import { People } from '@mui/icons-material';
 
 function SideBar() {
 
@@ -53,6 +54,10 @@ function SideBar() {
                 <Link to="/admin/orders" className="flex items-center space-x-2 p-2 hover:bg-gray-400 active:bg-gray-500 dark:active:bg-gray-600 dark:hover:bg-gray-700 rounded-md">
                     <List size={20} />
                     <span>View Orders</span>
+                </Link>
+                <Link to="/admin/view-user" className="flex items-center space-x-2 p-2 hover:bg-gray-400 active:bg-gray-500 dark:active:bg-gray-600 dark:hover:bg-gray-700 rounded-md">
+                    <People size={20} />
+                    <span>View User</span>
                 </Link>
                 <div onClick={handleLogout} className="mt-auto flex items-center space-x-2 p-2 cursor-pointer bg-red-500 active:bg-red-700 rounded-md">
                     <LogOut size={20} />

@@ -27,7 +27,7 @@ function AdminLayout() {
             url: '/admin/check-admin',
         })
             .then((res) => {
-                console.log('res :>> ', res);
+                // console.log('res :>> ', res);
                 dispatch(saveAdminData(res?.data?.data))
                 navigate('/admin/hotel')
             })

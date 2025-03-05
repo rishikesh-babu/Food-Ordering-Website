@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ImageTag, InputTag } from '../../components/admin/InputAdmin'
 import { CreateHotelButton } from '../../components/admin/ButtonAdmin'
 import axiosInstance from '../../config/axiosInstance'
@@ -10,6 +10,10 @@ function CreateHotel() {
     const [hotelDetails, setHotelDetails] = useState({})
     const [selectedFile, setSelectedFile] = useState()
     const navigate = useNavigate()
+
+    useEffect(() => {
+        window.scroll(0, 0)
+    }, [])
 
     function handleDetails(name, value) {
         setHotelDetails({

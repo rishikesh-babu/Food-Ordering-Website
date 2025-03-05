@@ -1,5 +1,6 @@
 const { cloudinaryInstance } = require("../config/cloudinary")
 const { Admin } = require("../model/adminModel")
+const { User } = require("../model/userModel")
 const { setCookies, clearCookies } = require("../utils/cookies")
 const { generateToken } = require("../utils/token")
 const bcrycpt = require('bcrypt')
@@ -138,7 +139,7 @@ async function adminProfilePicUpdate(req, res, next) {
                 if (publicIdMatch) {
 
                     const publicId = `FoodOrderingWebSite/Admin/${publicIdMatch[1]}`;
-                    
+
                     const uniqueIdentifier = Date.now()
                     const movedImage = await cloudinaryInstance.uploader.upload(imageExist, {
                         folder: 'FoodOrderingWebSite/ProfileArchieve',
@@ -155,7 +156,7 @@ async function adminProfilePicUpdate(req, res, next) {
                 folder: 'FoodOrderingWebSite/Admin',
             })).url
 
-            console.log('newImageUrl :>> ', newImageUrl);   
+            console.log('newImageUrl :>> ', newImageUrl);
 
             adminExist.image = newImageUrl
             console.log('adminExist :>> ', adminExist);
@@ -172,4 +173,72 @@ async function adminProfilePicUpdate(req, res, next) {
     }
 }
 
-module.exports = { adminSignup, adminLogin, checkAdmin, adminLogout, adminProfile, adminProfilePicUpdate }
+async function getAllUser(req, res, next) {
+    try {
+        console.log('Routes: Get all user')
+
+        const userExist = await User.find()
+
+        if (!userExist) {
+            return res.status(400).json({ message: 'Users doesnot exist' })
+        }
+
+        res.status(200).json({ message: 'Users data fetched', data: userExist })
+    } catch (err) {
+        next(err)
+    }
+}
+
+async function activeUserStatus(req, res, next) {
+    try {
+        console.log('Routes: Active User Status')
+
+        const { userId } = req.body
+
+        if (!userId) {
+            return res.status(400).json({ message: 'UserId is required' })
+        }
+
+        const userExist = await User.findById(userId)
+
+        if (!userExist) {
+            return res.status(400).json({ message: 'User does not exist' })
+        }
+
+        userExist.userStatus = 'active'
+        await userExist.save()
+
+        res.status(201).json({ message: 'User activated', data: userExist })
+    } catch (err) {
+        next(err)
+    }
+}
+
+async function blockUserStatus(req, res, next) {
+    try {
+        console.log('Routes: Block user status')
+
+        const { userId } = req.body
+        console.log('req.body :>> ', req.body);
+
+        if (!userId) {
+            return res.status(400).json({ message: 'User Id is required' })
+        }
+
+        const userExist = await User.findById(userId)
+
+        if (!userExist) {
+            return res.status(400).json({ message: 'User does not exist' })
+        }
+
+        userExist.userStatus = 'blocked'
+        await userExist.save()
+
+        res.status(200).json({ message: 'User blocked', data: userExist })
+
+    } catch (err) {
+        next(err)
+    }
+}
+
+module.exports = { adminSignup, adminLogin, checkAdmin, adminLogout, adminProfile, adminProfilePicUpdate, getAllUser, activeUserStatus, blockUserStatus }

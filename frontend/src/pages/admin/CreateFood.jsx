@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { ImageTag, InputTag } from '../../components/admin/InputAdmin'
 import { CreateFoodButton } from '../../components/admin/ButtonAdmin'
@@ -12,6 +12,10 @@ function CreateFood() {
     const [selectedFile, setSelectedFile] = useState()
     const { hotelId } = useParams()
     const navigate = useNavigate()
+
+    useEffect(() => {
+        window.scroll(0, 0)
+    }, [])
 
     function handleDetails(name, value) {
         setFoodDetails({
