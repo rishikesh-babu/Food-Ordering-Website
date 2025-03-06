@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Outlet, useNavigate } from 'react-router-dom'
+import axiosInstance from '../config/axiosInstance'
 
 function UserProtectedRoutes() {
 
@@ -12,7 +13,7 @@ function UserProtectedRoutes() {
     }, [isUserAuth])
 
     function checkUser() {
-        if (!isUserAuth || userData.userStatus === 'blocked') {
+        if (!isUserAuth) {
             navigate('/login')
         }
     }
