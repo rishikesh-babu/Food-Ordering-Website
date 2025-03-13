@@ -183,7 +183,7 @@ function CartCard({ name, price, quantity, image, foodId, updateCartDetails }) {
                 />
             </div>
 
-            <div className="flex flex-col justify-center items-center sm:ml-4">
+            <div className="flex flex-col justify-center items-center sm:items-start sm:ml-4">
                 <h3 className="text-xl sm:text-2xl font-semibold">
                     {name}
                 </h3>
