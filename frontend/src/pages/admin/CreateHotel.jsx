@@ -15,10 +15,10 @@ function CreateHotel() {
         window.scroll(0, 0)
     }, [])
 
-    function handleDetails(name, value) {
+    function handleDetails(event) {
         setHotelDetails({
             ...hotelDetails,
-            [name]: value
+            [event.target.name]: event.target.value
         })
     }
 

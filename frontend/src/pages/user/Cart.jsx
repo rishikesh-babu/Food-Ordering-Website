@@ -9,7 +9,7 @@ import getFetch from "../../hooks/getFetch";
 import { CartSkelton } from "../../components/user/Skelton";
 import { useNavigate } from "react-router-dom";
 import { Edit } from "lucide-react";
-import { EditAddressModal } from "../admin/ModalAdmin";
+import { EditAddressModal } from "../../components/user/Modal";
 
 function Cart() {
     const [cartData, isCartLoading, cartErr] = getFetch(
