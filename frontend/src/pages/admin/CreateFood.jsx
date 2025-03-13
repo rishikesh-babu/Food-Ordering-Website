@@ -17,11 +17,12 @@ function CreateFood() {
         window.scroll(0, 0)
     }, [])
 
-    function handleDetails(name, value) {
+    function handleDetails(event) {
         setFoodDetails({
             ...foodDetails,
-            [name]: value
+            [event.target.name]: event.target.value 
         })
+        console.log('foodDetails :>> ', foodDetails);
     }
 
     function handleFile(value) {
