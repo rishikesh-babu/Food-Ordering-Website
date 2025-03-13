@@ -25,10 +25,10 @@ function UserProfileEdit() {
         })
     }, [userData])
 
-    function handleProfile(name, value) {
+    function handleProfile(event) {
         setProfileDetails({
             ...profileDetails,
-            [name]: value
+            [event.target.name]: event.target.value 
         })
     }
 
