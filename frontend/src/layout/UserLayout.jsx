@@ -35,7 +35,7 @@ function UserLayout() {
             <header className="fixed top-0 left-0 w-full z-10">
                 {isUserAuth ? <UserHeader /> : <Header />}
             </header>
-            <main className="flex-grow mt-20">
+            <main className="flex-grow mt-16">
                 <Outlet />
             </main>
             <footer>

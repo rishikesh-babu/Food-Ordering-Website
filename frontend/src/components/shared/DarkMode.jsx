@@ -1,21 +1,35 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { changeDarkMode } from '../../redux/features/darkModeSlice'
 
 export default function DarkMode() {
-    const { darkMode } = useSelector((state) => state.darkMode)
-
+    // const { darkMode } = useSelector((state) => state.darkMode)
+    const [darkMode, setDarkMode] = useState(JSON.parse(localStorage.getItem('darkTheme')))
     const dispatch = useDispatch()
+
+    useEffect(() => {
+        getDarkModeItem()
+    }, [])
 
     document.querySelector('html').setAttribute('data-theme', darkMode ? 'dark' : 'light')
     function toggleTheme() {
-        dispatch(changeDarkMode())
+        localStorage.setItem('darkTheme', !JSON.parse(localStorage.getItem('darkTheme')))
+        setDarkMode(JSON.parse(localStorage.getItem('darkTheme')))
+    }
+
+    function getDarkModeItem() {
+        const themeItem = localStorage.getItem('darkTheme')
+        console.log('themeItem :>> ', themeItem);
+
+        if (!themeItem) {
+            localStorage.setItem('darkTheme', false)
+        }
     }
     return (
-        <div className='scale-90'>
+        <div className='scale-90 cursor-pointer'>
             <label className="swap swap-rotate" >
                 {/* this hidden checkbox controls the state */}
-                <input type="checkbox" onClick={toggleTheme} />
+                <input type="checkbox" checked={darkMode} onClick={toggleTheme} />
 
                 {/* moon icon */}
                 <svg

@@ -1,6 +1,7 @@
 import { GitHub, Instagram, LinkedIn, WhatsApp } from '@mui/icons-material'
 import React from 'react'
 import { Link } from 'react-router-dom'
+import logo from '../../assets/Images/log.jpg'
 
 function Footer() {
     return (
@@ -45,7 +46,7 @@ function Footer() {
                     <span>
                         Copyright © {new Date().getFullYear()} - All rights reserved by Food Express 🍔
                     </span>
-                    <img src="log.jpg" alt="" className='size-14 rounded-badge' />
+                    <img src={logo} alt="" className='size-14 rounded-badge' />
                 </div>
             </aside>
         </footer>
