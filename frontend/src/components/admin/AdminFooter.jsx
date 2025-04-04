@@ -1,7 +1,7 @@
 import { GitHub, Instagram, LinkedIn, WhatsApp } from '@mui/icons-material'
 import React from 'react'
 import { Link } from 'react-router-dom'
-import logo from '/log.jpg'
+import logo from '/logo.jpg'
 
 function Footer() {
     return (
