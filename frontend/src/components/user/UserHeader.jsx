@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 import getFetch from "../../hooks/getFetch";
 import { savewishlistData } from "../../redux/features/wishlistSlice";
 import DarkMode from "../shared/DarkMode";
-import logo from '../../assets/Images/log.jpg'
+import logo from '/log.jpg'
 
 function UserHeader() {
     const [cartData, isCartLoading, cartErr] = getFetch(

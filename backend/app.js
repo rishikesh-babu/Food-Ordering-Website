@@ -11,7 +11,7 @@ const port = 3000
 connectDB()
 
 app.use(cors({
-    origin: ['http://localhost:5174', 'https://food-express-frontend-yyuz.onrender.com'], // Replace with your frontend's URL
+    origin: process.env.CLIENT_DOMAIN,  // Frontend URL
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
     credentials: true // Allow cookies and authorization headers
 }));
