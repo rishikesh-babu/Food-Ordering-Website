@@ -40,7 +40,7 @@ function AdminLayout() {
     }
 
     return (
-        <div className="min-h-screen bg-gray-100d  flex">
+        <div className="min-h-screen bg-gray-100d overflow-x-hidden flex">
             {/* Sidebar */}
             <aside className={`bg-white shadow-lg fixed h-full transition-all ${sideBarToggle && isAdminAuth ? 'w-64' : 'w-0 overflow-hidden'} duration-300`}>
                 <SideBar />
