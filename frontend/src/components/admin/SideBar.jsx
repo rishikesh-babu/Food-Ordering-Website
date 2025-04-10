@@ -33,32 +33,52 @@ function SideBar() {
             {
                 loading: 'Logout....'
             }
-        )
+        )   
     }
+
+    const sideBarContents = [
+        {
+            link: '/admin/hotel',
+            label: 'Hotel',
+            element: <Home size={20} />
+        }, 
+        {
+            link: '/admin/food',
+            label: 'Food',
+            element: <Utensils size={20} />
+        }, 
+        {
+            link: '/admin/create-hotel',
+            label: 'Create Hotel',
+            element: <PlusSquare size={20} />
+        }, 
+        {
+            link: '/admin/orders',
+            label: 'View Orders',
+            element: <List size={20} />
+        }, 
+        {
+            link: '/admin/view-user',
+            label: 'View User',
+            element: <People size={20} />
+        }, 
+    ]
+    const sideBarContentStyle = 'flex items-center space-x-2 p-2 hover:bg-gray-400 active:bg-gray-500 dark:active:bg-gray-600 dark:hover:bg-gray-700 rounded-md'
+
     return (
-        <div className="h-screen w-64 dark:bg-gray-900 dark:text-white p-5 flex flex-col space-y-6">
+        <div className="h-full w-64 dark:bg-gray-900 dark:text-white p-5 flex flex-col space-y-6">
             <h2 className="text-2xl font-bold">Dashboard</h2>
             <nav className="flex-grow flex flex-col gap-y-5 font-semibold">
-                <Link to="/admin/hotel" className="flex items-center space-x-2 p-2 hover:bg-gray-400 active:bg-gray-500 dark:active:bg-gray-600 dark:hover:bg-gray-700 rounded-md">
-                    <Home size={20} />
-                    <span>Hotel</span>
-                </Link>
-                <Link to="/admin/food" className="flex items-center space-x-2 p-2 hover:bg-gray-400 active:bg-gray-500 dark:active:bg-gray-600 dark:hover:bg-gray-700 rounded-md">
-                    <Utensils size={20} />
-                    <span>Food Items</span>
-                </Link>
-                <Link to="/admin/create-hotel" className="flex items-center space-x-2 p-2 hover:bg-gray-400 active:bg-gray-500 dark:active:bg-gray-600 dark:hover:bg-gray-700 rounded-md">
-                    <PlusSquare size={20} />
-                    <span>Create Hotel</span>
-                </Link>
-                <Link to="/admin/orders" className="flex items-center space-x-2 p-2 hover:bg-gray-400 active:bg-gray-500 dark:active:bg-gray-600 dark:hover:bg-gray-700 rounded-md">
-                    <List size={20} />
-                    <span>View Orders</span>
-                </Link>
-                <Link to="/admin/view-user" className="flex items-center space-x-2 p-2 hover:bg-gray-400 active:bg-gray-500 dark:active:bg-gray-600 dark:hover:bg-gray-700 rounded-md">
-                    <People size={20} />
-                    <span>View User</span>
-                </Link>
+                {
+                    sideBarContents.map((item) => (
+                        <Link to={item.link} className={sideBarContentStyle}>
+                            {item.element}
+                            <span>
+                                {item.label}
+                            </span>
+                        </Link>
+                    ))
+                }
                 <div onClick={handleLogout} className="mt-auto flex items-center space-x-2 p-2 cursor-pointer bg-red-500 active:bg-red-700 rounded-md">
                     <LogOut size={20} />
                     <span className='text-lg font-semibold'>Logout</span>
