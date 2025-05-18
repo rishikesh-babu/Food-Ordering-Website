@@ -58,7 +58,7 @@ function Wishlist() {
                 ) : (
                     <div>
                         {wishlistData ? (
-                            <div className="flex flex-col items-center justify-center min-h-[60vh] text-center px-4 drop-shadow-2xl">
+                            <div className="flex flex-col items-center justify-center min-h-[90vh] text-center px-4 drop-shadow-2xl">
                                 <span className="text-[4em] drop-shadow-[0px_8px_20px] ">
                                     😟
                                 </span>
