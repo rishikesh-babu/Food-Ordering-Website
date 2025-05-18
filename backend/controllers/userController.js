@@ -3,6 +3,7 @@ const bcrycpt = require('bcrypt');
 const { generateToken } = require("../utils/token");
 const { setCookies, clearCookies } = require("../utils/cookies");
 const { cloudinaryInstance } = require("../config/cloudinary");
+const nodemailer = require('nodemailer')
 
 async function userSignup(req, res, next) {
     try {

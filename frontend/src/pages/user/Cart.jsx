@@ -93,94 +93,174 @@ function Cart() {
     function editAddress() {
         document.getElementById('editAddessModal').showModal()
     }
+    // {isCartLoading ? (
+    //     <CartSkelton />
+    // ) : (
+    //     <div>
+    //         {!cartDetails ? (
+    //             <div className="flex flex-col items-center justify-center min-h-screen p-6 bg-red-50 dark:bg-gray-900">
+    //                 <div className="flex flex-col items-center justify-center space-y-6 bg-white dark:bg-gray-800 p-8 rounded-xl shadow-xl max-w-lg w-full">
+    //                     {/* Title */}
+    //                     <div className="text-2xl md:text-3xl font-serif text-gray-800 dark:text-gray-100 text-center">
+    //                         Oops! Your cart is empty
+    //                     </div>
 
+    //                     {/* Subtitle */}
+    //                     <p className="text-gray-500 dark:text-gray-300 text-pretty md:text-lg text-center px-4">
+    //                         It seems like you haven’t added anything to your cart yet.
+    //                         Explore our products and start adding your favorites!
+    //                     </p>
+
+    //                     {/* Button */}
+    //                     <button
+    //                         onClick={() => navigate("/")}
+    //                         className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-medium px-6 md:px-8 py-2 md:py-3 rounded-full shadow-lg transition-transform duration-300 transform hover:scale-105"
+    //                     >
+    //                         Buy Products
+    //                     </button>
+    //                 </div>
+    //             </div>
+    //         ) : (
+    //             <div className="max-w-screen-lg mx-auto p-6">
+    //                 {/* Title Section */}
+    //                 <h1 className="text-3xl font-bold text-center mb-8">
+    //                     Food Cart
+    //                 </h1>
+
+    //                 {/* Cart Items List */}
+    //                 <div className="space-y-6">
+    //                     {cartDetails?.cartItems?.map((item, index) => (
+    //                         <CartCard
+    //                             name={item?.foodId?.name}
+    //                             image={item?.foodId?.image}
+    //                             price={item?.foodId?.price}
+    //                             quantity={item.quantity}
+    //                             foodId={item?.foodId?._id}
+    //                             updateCartDetails={updateCartDetails}
+    //                             key={item?.foodId?._id}
+    //                         />
+    //                     ))}
+    //                 </div>
+
+    //                 <div className="p-6 mt-8 border-2 border-gray-300 rounded-md shadow-xl flex flex-col gap-4 sm:flex-row sm:justify-between bg-white dark:bg-gray-800">
+    //                     {/* Address Section */}
+    //                     <div>
+    //                         <div className="text-lg font-semibold ">Address</div>
+    //                         <div className="text-lg font-mono text-gray-600 dark:text-gray-500">{userData?.address}</div>
+    //                     </div>
+
+    //                     {/* Edit Button */}
+    //                     <div className="self-center">
+    //                         <EditAddressModal />
+    //                         <button className="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md transition duration-300 shadow-md" onClick={editAddress}>
+    //                             <Edit size={24} color="white" />
+    //                             <span className="text-lg font-semibold">Edit</span>
+    //                         </button>
+    //                     </div>
+    //                 </div>
+
+    //                 {/* Total Price Section */}
+    //                 <div className="p-6 mt-3 bg-gray-50 dark:bg-gray-800 border-2 rounded-lg shadow-xl flex flex-col sm:flex-row justify-between items-center">
+    //                     <div className="text-center sm:text-left">
+    //                         <span className="text-xl font-semibold text-gray-700 dark:text-gray-300">
+    //                             Total Price:
+    //                         </span>
+    //                         <span className="text-xl font-medium text-green-500 dark:text-green-400 ml-2">
+    //                             ₹{cartDetails?.totalPrice}
+    //                         </span>
+    //                     </div>
+    //                     <button
+    //                         onClick={makePayment}
+    //                         className="btn bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 mt-4 sm:mt-0 rounded-lg shadow-md transition-all"
+    //                     >
+    //                         Make Payment
+    //                     </button>
+    //                 </div>
+    //             </div>
+    //         )}
+    //     </div>
+    // )}
     return (
         <div>
-            {isCartLoading ? (
-                <CartSkelton />
+            {!cartDetails ? (
+                <div className="flex flex-col items-center justify-center min-h-screen p-6 bg-red-50 dark:bg-gray-900">
+                    <div className="flex flex-col items-center justify-center space-y-6 bg-white dark:bg-gray-800 p-8 rounded-xl shadow-xl max-w-lg w-full">
+                        {/* Title */}
+                        <div className="text-2xl md:text-3xl font-serif text-gray-800 dark:text-gray-100 text-center">
+                            Oops! Your cart is empty
+                        </div>
+
+                        {/* Subtitle */}
+                        <p className="text-gray-500 dark:text-gray-300 text-pretty md:text-lg text-center px-4">
+                            It seems like you haven’t added anything to your cart yet.
+                            Explore our products and start adding your favorites!
+                        </p>
+
+                        {/* Button */}
+                        <button
+                            onClick={() => navigate("/")}
+                            className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-medium px-6 md:px-8 py-2 md:py-3 rounded-full shadow-lg transition-transform duration-300 transform hover:scale-105"
+                        >
+                            Buy Products
+                        </button>
+                    </div>
+                </div>
             ) : (
-                <div>
-                    {!cartDetails ? (
-                        <div className="flex flex-col items-center justify-center min-h-screen p-6 bg-red-50 dark:bg-gray-900">
-                            <div className="flex flex-col items-center justify-center space-y-6 bg-white dark:bg-gray-800 p-8 rounded-xl shadow-xl max-w-lg w-full">
-                                {/* Title */}
-                                <div className="text-2xl md:text-3xl font-serif text-gray-800 dark:text-gray-100 text-center">
-                                    Oops! Your cart is empty
-                                </div>
+                <div className="max-w-screen-lg mx-auto p-6">
+                    {/* Title Section */}
+                    <h1 className="text-3xl font-bold text-center mb-8">
+                        Food Cart
+                    </h1>
 
-                                {/* Subtitle */}
-                                <p className="text-gray-500 dark:text-gray-300 text-pretty md:text-lg text-center px-4">
-                                    It seems like you haven’t added anything to your cart yet.
-                                    Explore our products and start adding your favorites!
-                                </p>
+                    {/* Cart Items List */}
+                    <div className="space-y-6">
+                        {cartDetails?.cartItems?.map((item, index) => (
+                            <CartCard
+                                name={item?.foodId?.name}
+                                image={item?.foodId?.image}
+                                price={item?.foodId?.price}
+                                quantity={item.quantity}
+                                foodId={item?.foodId?._id}
+                                updateCartDetails={updateCartDetails}
+                                key={item?.foodId?._id}
+                            />
+                        ))}
+                    </div>
 
-                                {/* Button */}
-                                <button
-                                    onClick={() => navigate("/")}
-                                    className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-medium px-6 md:px-8 py-2 md:py-3 rounded-full shadow-lg transition-transform duration-300 transform hover:scale-105"
-                                >
-                                    Buy Products
-                                </button>
-                            </div>
+                    <div className="p-6 mt-8 border-2 border-gray-300 rounded-md shadow-xl flex flex-col gap-4 sm:flex-row sm:justify-between bg-white dark:bg-gray-800">
+                        {/* Address Section */}
+                        <div>
+                            <div className="text-lg font-semibold ">Address</div>
+                            <div className="text-lg font-mono text-gray-600 dark:text-gray-500">{userData?.address}</div>
                         </div>
-                    ) : (
-                        <div className="max-w-screen-lg mx-auto p-6">
-                            {/* Title Section */}
-                            <h1 className="text-3xl font-bold text-center mb-8">
-                                Food Cart
-                            </h1>
 
-                            {/* Cart Items List */}
-                            <div className="space-y-6">
-                                {cartDetails?.cartItems?.map((item, index) => (
-                                    <CartCard
-                                        name={item?.foodId?.name}
-                                        image={item?.foodId?.image}
-                                        price={item?.foodId?.price}
-                                        quantity={item.quantity}
-                                        foodId={item?.foodId?._id}
-                                        updateCartDetails={updateCartDetails}
-                                        key={item?.foodId?._id}
-                                    />
-                                ))}
-                            </div>
-
-                            <div className="p-6 mt-8 border-2 border-gray-300 rounded-md shadow-xl flex flex-col gap-4 sm:flex-row sm:justify-between bg-white dark:bg-gray-800">
-                                {/* Address Section */}
-                                <div>
-                                    <div className="text-lg font-semibold ">Address</div>
-                                    <div className="text-lg font-mono text-gray-600 dark:text-gray-500">{userData?.address}</div>
-                                </div>
-
-                                {/* Edit Button */}
-                                <div className="self-center">
-                                    <EditAddressModal />
-                                    <button className="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md transition duration-300 shadow-md" onClick={editAddress}>
-                                        <Edit size={24} color="white" />
-                                        <span className="text-lg font-semibold">Edit</span>
-                                    </button>
-                                </div>
-                            </div>
-
-                            {/* Total Price Section */}
-                            <div className="p-6 mt-3 bg-gray-50 dark:bg-gray-800 border-2 rounded-lg shadow-xl flex flex-col sm:flex-row justify-between items-center">
-                                <div className="text-center sm:text-left">
-                                    <span className="text-xl font-semibold text-gray-700 dark:text-gray-300">
-                                        Total Price:
-                                    </span>
-                                    <span className="text-xl font-medium text-green-500 dark:text-green-400 ml-2">
-                                        ₹{cartDetails?.totalPrice}
-                                    </span>
-                                </div>
-                                <button
-                                    onClick={makePayment}
-                                    className="btn bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 mt-4 sm:mt-0 rounded-lg shadow-md transition-all"
-                                >
-                                    Make Payment
-                                </button>
-                            </div>
+                        {/* Edit Button */}
+                        <div className="self-center">
+                            <EditAddressModal />
+                            <button className="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md transition duration-300 shadow-md" onClick={editAddress}>
+                                <Edit size={24} color="white" />
+                                <span className="text-lg font-semibold">Edit</span>
+                            </button>
                         </div>
-                    )}
+                    </div>
+
+                    {/* Total Price Section */}
+                    <div className="p-6 mt-3 bg-gray-50 dark:bg-gray-800 border-2 rounded-lg shadow-xl flex flex-col sm:flex-row justify-between items-center">
+                        <div className="text-center sm:text-left">
+                            <span className="text-xl font-semibold text-gray-700 dark:text-gray-300">
+                                Total Price:
+                            </span>
+                            <span className="text-xl font-medium text-green-500 dark:text-green-400 ml-2">
+                                ₹{cartDetails?.totalPrice}
+                            </span>
+                        </div>
+                        <button
+                            onClick={makePayment}
+                            className="btn bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 mt-4 sm:mt-0 rounded-lg shadow-md transition-all"
+                        >
+                            Make Payment
+                        </button>
+                    </div>
                 </div>
             )}
         </div>

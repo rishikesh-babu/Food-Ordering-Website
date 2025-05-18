@@ -93,14 +93,6 @@ function LogoutButton() {
     }
 
     return (
-        // <div className="mt-3 text-center">
-        //     <button onClick={logout} className="btn ">
-        //         <LogOut />
-        //         <span className="text-lg"> Logout </span>
-        //     </button>
-        // </div>
-
-
         <div className="mt-3 flex justify-center">
             <button
                 onClick={logout}
@@ -126,9 +118,9 @@ function EditProfileButton() {
 
         <div className="mt-3 flex justify-center">
             <button
-                className="flex items-center gap-2 px-6 py-3 text-lg font-semibold rounded-lg shadow-md transition-all duration-300 
+                className="flex items-center gap-2 px-6 py-3 text-lg font-semibold rounded-lg shadow-md transition-all duration-300 ease-in-out
                    bg-gradient-to-r from-gray-300 to-gray-400 text-gray-900 hover:scale-105 hover:shadow-lg hover:from-gray-400 hover:to-gray-500 
-                   active:scale-95 active:shadow-sm dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 dark:shadow-md dark:hover:shadow-lg"
+                   active:scale-95 active:shadow-sm dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700 dark:shadow-md dark:hover:shadow-lg dark:bg-none"
             >
                 <Edit className="w-6 h-6" />
                 <span>Edit</span>

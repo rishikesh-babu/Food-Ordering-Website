@@ -13,7 +13,7 @@ function Order() {
         saveOrderDetails
     );
     const { orderDetails } = useSelector((state) => state.order);
-    console.log('orderDetails :>> ', orderDetails);
+    // console.log('orderDetails :>> ', orderDetails);
 
     useEffect(() => {
         window.scroll(0, 0)
