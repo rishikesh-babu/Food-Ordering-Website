@@ -110,13 +110,13 @@ function Food() {
             <div className='mb-6'>
                 <label
                     htmlFor="hotelSelect"
-                    className='block mb-2 text-sm sm:text-lg font-medium text-gray-700 dark:text-gray-200'
+                    className='block mb-2 text-xl font-medium text-gray-700 dark:text-gray-200'
                 >
                     Select Hotel
                 </label>
                 <select
                     id="hotelSelect"
-                    className='w-full p-2.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm text-sm sm:text-lg text-gray-700 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500'
+                    className='w-full p-2.5 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm text-lg sm:text-lg text-gray-700 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500'
                     value={selectedHotel}
                     onChange={(e) => setSelectedHotel(e.target.value)}
                 >
