@@ -11,7 +11,7 @@ function HotelCard({ name, image, hotelId, address, hotel, openUpdateHotelModal 
         <div className="py-2 flex justify-between items-center gap-2 border-b-2 border-gray-400 flex-nowrap">
             <div className="h-20 w-20 flex-shrink-0">
                 <img
-                    className="h-full w-full rounded-xl object-cover"
+                    className="h-full w-full border-2 border-blue-500 rounded-xl object-cover"
                     src={image}
                     alt="hotel image"
                 />
@@ -61,7 +61,7 @@ function FoodCard({ name, image, price, foodId, food, openUpdateFoodModal }) {
             </table> */}
             <div className="h-20 w-20 flex-shrink-0">
                 <img
-                    className="h-full w-full rounded-xl object-cover"
+                    className="h-full w-full border-2 border-blue-500 rounded-xl object-cover"
                     src={image}
                     alt="hotel image"
                 />
