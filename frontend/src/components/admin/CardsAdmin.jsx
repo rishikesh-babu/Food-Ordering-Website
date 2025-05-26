@@ -16,7 +16,7 @@ function HotelCard({ name, image, hotelId, address, hotel, openUpdateHotelModal 
                     alt="hotel image"
                 />
             </div>
-            <div className="text-sm font-semibold font-mono text-left flex-grow sm:text-lg sm:text-left md:text-xl">
+            <div className="text-[1.2em] font-semibold font-mono text-left flex-grow sm:text-lg sm:text-left md:text-xl">
                 {name}
             </div>
             <div className="flex-shrink-0 flex items-center justify-between gap-4 sm:gap-6">
