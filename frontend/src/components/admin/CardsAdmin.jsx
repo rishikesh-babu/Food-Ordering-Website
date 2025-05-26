@@ -7,8 +7,6 @@ import toast from "react-hot-toast"
 import { DeleteForeverRounded, Edit } from "@mui/icons-material"
 
 function HotelCard({ name, image, hotelId, address, hotel, openUpdateHotelModal }) {
-    const navigate = useNavigate()
-
     return (
         <div className="py-2 flex justify-between items-center gap-2 border-b-2 border-gray-400 flex-nowrap">
             <div className="h-20 w-20 flex-shrink-0">
@@ -38,7 +36,7 @@ function FoodCard({ name, image, price, foodId, food, openUpdateFoodModal }) {
         toast.promise(
             axiosInstance({
                 method: 'DELETE', 
-                
+
             })
         )
     }
@@ -61,7 +59,7 @@ function FoodCard({ name, image, price, foodId, food, openUpdateFoodModal }) {
                     </tr>
                 </tbody>
             </table> */}
-            <div className="h-20 w-20">
+            <div className="h-20 w-20 flex-shrink-0">
                 <img
                     className="h-full w-full rounded-xl object-cover"
                     src={image}
