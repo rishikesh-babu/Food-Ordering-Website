@@ -6,6 +6,7 @@ import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { clearAdminData } from '../../redux/features/adminSlice';
 import { People } from '@mui/icons-material';
+import { toggleSideBar } from '../../redux/features/sideBarSlice';
 
 function SideBar() {
 
@@ -34,6 +35,14 @@ function SideBar() {
                 loading: 'Logout....'
             }
         )   
+    }
+
+    console.log('window.innerWidth :>> ', window.innerWidth);
+
+    function closeSideBar() {
+        if (window.innerWidth < 571) {
+            dispatch(toggleSideBar())
+        }
     }
 
     const sideBarContents = [
@@ -76,7 +85,7 @@ function SideBar() {
             <nav className="flex-grow flex flex-col gap-y-5 font-semibold">
                 {
                     sideBarContents.map((item, index) => (
-                        <Link to={item.link} className={sideBarContentStyle} key={index}>
+                        <Link to={item.link} className={sideBarContentStyle} key={index} onClick={closeSideBar} >
                             {item.element}
                             <span>
                                 {item.label}
