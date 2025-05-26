@@ -85,7 +85,7 @@ function UserProfile() {
                 <div className="flex justify-around sm:justify-between items-center mt-6 space-x-4">
                     <LogoutButton />
                     <Link to="/user/profile/edit">
-                        <EditProfileButton className="dark:bg-blue-600 dark:hover:bg-blue-500 dark:text-white transition-colors duration-300" />
+                        <EditProfileButton />
                     </Link>
                 </div>
             </div>

@@ -4,7 +4,7 @@ import { Home, Utensils, PlusSquare, List, LogOut } from "lucide-react";
 import axiosInstance from '../../config/axiosInstance';
 import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
-import { clearAdminData } from '../../redux/features/adminSilce';
+import { clearAdminData } from '../../redux/features/adminSlice';
 import { People } from '@mui/icons-material';
 
 function SideBar() {
@@ -53,6 +53,11 @@ function SideBar() {
             element: <PlusSquare size={20} />
         }, 
         {
+            link: '/admin/create-food',
+            label: 'Create Food',
+            element: <PlusSquare size={20} />
+        }, 
+        {
             link: '/admin/orders',
             label: 'View Orders',
             element: <List size={20} />
@@ -66,12 +71,12 @@ function SideBar() {
     const sideBarContentStyle = 'flex items-center space-x-2 p-2 hover:bg-gray-400 active:bg-gray-500 dark:active:bg-gray-600 dark:hover:bg-gray-700 rounded-md'
 
     return (
-        <div className="h-full w-64 dark:bg-gray-900 dark:text-white p-5 flex flex-col space-y-6">
+        <div className="h-full w-64 rounded-md bg-gray-300 dark:bg-gray-900 dark:text-white p-5 flex flex-col space-y-6">
             <h2 className="text-2xl font-bold">Dashboard</h2>
             <nav className="flex-grow flex flex-col gap-y-5 font-semibold">
                 {
-                    sideBarContents.map((item) => (
-                        <Link to={item.link} className={sideBarContentStyle}>
+                    sideBarContents.map((item, index) => (
+                        <Link to={item.link} className={sideBarContentStyle} key={index}>
                             {item.element}
                             <span>
                                 {item.label}

@@ -3,7 +3,7 @@ import axiosInstance from "../../config/axiosInstance";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { saveAdminData } from "../../redux/features/adminSilce";
+import { saveAdminData } from "../../redux/features/adminSlice";
 import { Eye, EyeOff } from "lucide-react";
 
 function AdminLogin() {

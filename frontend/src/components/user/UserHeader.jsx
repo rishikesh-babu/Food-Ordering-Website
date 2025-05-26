@@ -50,7 +50,7 @@ function UserHeader() {
     }
 
     return (
-        <div className="navbar bg-base-100 fixed top-0 left-0 w-full z-10 shadow-lg dark:shadow-blue-200">
+        <div className="navbar fixed top-0 left-0 w-full z-10 shadow-md bg-white dark:bg-gray-800">
             <div className="flex-1">
                 <Link
                     to={"/"}

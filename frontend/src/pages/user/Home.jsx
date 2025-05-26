@@ -9,6 +9,8 @@ import getFetch from "../../hooks/getFetch";
 import { PopularFoodSkelton, PopularHotelSkelton } from "../../components/user/Skelton";
 import { savewishlistData } from "../../redux/features/wishlistSlice";
 import HomePageCarousel from "../../components/user/Carousel";
+import { saveHotelDetails } from "../../redux/features/hotelSlice";
+import { clearUserData } from "../../redux/features/userSlice";
 
 function Home() {
     // console.log('Home render')
@@ -17,11 +19,12 @@ function Home() {
     const dispatch = useDispatch();
 
     const { wishlistData } = useSelector((state) => state.wishlist)
-    const [hotelDetails, isHotelLoading, hotelErr] = getFetch("hotel/get-all-hotels");
+    const {hotelDetails} = useSelector((state) => state.hotel)
+    const [hotelData, isHotelLoading, hotelErr] = getFetch("hotel/get-all-hotels", saveHotelDetails);
     const [wishlistDetails, isWishloading, wishlistErr] = getFetch('/wishlist/get-wishlist', savewishlistData)
-    const [foodDetails, isFoodLoading, foodErr] = getFetch("hotel/get-all-food");
+    const [foodDetails, isFoodLoading, foodErr] = getFetch("hotel/get-all-food", );
     const [cartDetails, isCartLoading, cartErr] = getFetch('/cart/get-cart-items', saveCartDetails)
-
+    
     useEffect(() => {
         window.scroll(0, 0)
     }, [])
@@ -40,12 +43,14 @@ function Home() {
                     toast.success(res?.data?.message);
                 })
                 .catch((err) => {
-                    // console.log("err :>> ", err);
+                    console.log("err :>> ", err);
                     toast.error(err?.response?.data?.message);
                     if (
                         err?.response?.data?.message === "Unauthorized user" ||
                         "jwt expired"
                     ) {
+                        console.log('Call error function')
+                        clearUserData()
                         navigate("/login");
                     }
                 }),
@@ -57,7 +62,7 @@ function Home() {
 
     return (
         <div>
-            <div className="p-6 rounded-lg shadow-lg">
+            <div className="py-6 px-2 rounded-lg shadow-lg">
                 <div className="text-2xl font-bold mb-3">
                     Popular Restaurants
                 </div>
@@ -66,7 +71,7 @@ function Home() {
                 </div>
                 <hr />
                 {
-                    isHotelLoading ? (
+                    hotelDetails.length === 0 && isHotelLoading ? (
                         <PopularHotelSkelton />
                     ) : (
                         <div className="p-4 sm:my-2 flex whitespace-nowrap gap-5 overflow-y-hidden overflow-x-auto scroll-smooth">
@@ -90,7 +95,7 @@ function Home() {
                 </div>
                 <hr className="my-3" />
                 {
-                    isFoodLoading ? (
+                    !foodDetails && isFoodLoading ? (
                         <PopularFoodSkelton />
                     ) : (
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">

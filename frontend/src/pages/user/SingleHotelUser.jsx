@@ -4,35 +4,25 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { UserFoodCard } from '../../components/user/CardsUser'
 import toast from 'react-hot-toast'
 import { saveCartDetails } from '../../redux/features/cartSlice'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { SingleHotelSkelton } from '../../components/user/Skelton'
 import getFetch from '../../hooks/getFetch'
+import { saveHotelDetails } from '../../redux/features/hotelSlice'
 
 function SingleHotelUser() {
-
-    const [hotelDetails, setHotelDetails] = useState()
+    
     const { hotelId } = useParams()
+    const [hotelDetails, hotelDetailsLoading, hotelDetailsError] = getFetch(`/hotel/single-hotel/${hotelId}`)
+    const [foodDetails, setFoodDetails] = useState([])
+    const [foodData, foodDataLoading, foodDataError] = getFetch(`/hotel/single-hotel-food/${hotelId}`)
+    
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
+
     useEffect(() => {
-        getSingleHotel()
         window.scroll(0, 0)
     }, [])
-
-    function getSingleHotel() {
-        axiosInstance({
-            method: 'GET',
-            url: `/hotel/single-hotel/${hotelId}`
-        })
-            .then((res) => {
-                console.log('res :>> ', res);
-                setHotelDetails(res?.data?.data)
-            })
-            .catch((err) => {
-                console.log('err :>> ', err);
-            })
-    }
 
     function addToCart(foodId) {
         toast.promise(
@@ -59,6 +49,7 @@ function SingleHotelUser() {
         )
     }
 
+
     return (
         <div>
             {
@@ -84,16 +75,16 @@ function SingleHotelUser() {
                             </div>
                         </div>
                         <div className='self-center text-3xl font-bold font-mono text-gray-700 dark:text-gray-200 sm:hidden tracking-widest'>
-                            Food Items 
+                            Food Items
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-                            {hotelDetails?.foodItems?.map((item, index) => (
+                            {foodData?.map((item, index) => (
                                 <UserFoodCard
                                     key={index}
-                                    name={item?.foodId?.name}
-                                    price={item?.foodId.price}
-                                    image={item?.foodId?.image}
-                                    foodId={item?.foodId?._id}
+                                    name={item?.name}
+                                    price={item?.price}
+                                    image={item?.image}
+                                    foodId={item?._id}
                                     addToCart={addToCart}
                                 />
                             ))}

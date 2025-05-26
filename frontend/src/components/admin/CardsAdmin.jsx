@@ -1,52 +1,51 @@
 import { useNavigate } from "react-router-dom"
-import { FoodRemoveButton, HotelRemoveButton } from "./ButtonAdmin"
-import { Eye } from "lucide-react"
-import { Button, Card, CardContent, FormControl, InputLabel, MenuItem, Select } from "@mui/material"
+import { HotelRemoveButton } from "./ButtonAdmin"
+import { Button, FormControl, InputLabel, MenuItem, Select } from "@mui/material"
 import { useState } from "react"
 import axiosInstance from "../../config/axiosInstance"
 import toast from "react-hot-toast"
+import { DeleteForeverRounded, Edit } from "@mui/icons-material"
 
-function HotelCard({ name, image, hotelId }) {
-
+function HotelCard({ name, image, hotelId, address, hotel, openUpdateHotelModal }) {
     const navigate = useNavigate()
 
-    function goToSingleHotel() {
-        navigate(`/admin/hotel/${hotelId}`)
-    }
-
     return (
-        <div
-            className="my-5 p-4  hover:bg-gray-300 dark:hover:bg-gray-600 hover:shadow-md transition-all duration-200 border rounded-lg shadow-md flex items-center justify-between sm:gap-8"
-        >
-            <div className="h-20 w-20">
+        <div className="py-2 flex justify-between items-center gap-2 border-b-2 border-gray-400 flex-nowrap">
+            <div className="h-20 w-20 flex-shrink-0">
                 <img
                     className="h-full w-full rounded-xl object-cover"
                     src={image}
                     alt="hotel image"
                 />
             </div>
-            <div className="sm:text-lg md:text-xl text-balance text-center sm:flex-grow sm:text-left font-semibold">
+            <div className="text-sm font-semibold font-mono text-left flex-grow sm:text-lg sm:text-left md:text-xl">
                 {name}
             </div>
-            <div className="flex items-center justify-between gap-1 sm:gap-6">
-                <div>
-                    <button onClick={goToSingleHotel} className="btn btn-primary">
-                        <Eye />
-                    </button>
-                </div>
-                <div>
-                    <HotelRemoveButton hotelId={hotelId} />
-                </div>
+            <div className="flex-shrink-0 flex items-center justify-between gap-4 sm:gap-6">
+                <button onClick={() => openUpdateHotelModal(hotel)} className="hover:scale-110">
+                    {/* <Eye /> */}
+                    <Edit className="text-blue-500" />
+                </button>
+                <HotelRemoveButton hotelId={hotelId} />
             </div>
-
         </div>
     )
 }
 
-function FoodCard({ name, image, price, foodId }) {
+function FoodCard({ name, image, price, foodId, food, openUpdateFoodModal }) {
+
+    function deleteFood() {
+        toast.promise(
+            axiosInstance({
+                method: 'DELETE', 
+                
+            })
+        )
+    }
+
     return (
-        <div className="w-full rounded-lg overflow-hidden">
-            <table className="w-full border-collapse">
+        <div className="border-b-2 border-gray-400 py-2 flex flex-row justify-between items-center gap-3">
+            {/* <table className="w-full border-collapse">
                 <tbody>
                     <tr className="border-b border-gray-400">
                         <td className="p-4 w-1/4">
@@ -61,7 +60,28 @@ function FoodCard({ name, image, price, foodId }) {
                         </td>
                     </tr>
                 </tbody>
-            </table>
+            </table> */}
+            <div className="h-20 w-20">
+                <img
+                    className="h-full w-full rounded-xl object-cover"
+                    src={image}
+                    alt="hotel image"
+                />
+            </div>
+            <div className="flex-grow flex flex-col ">
+                <div className=" text-[1.2em] font-mono font-[600]">
+                    {name}
+                </div>
+                <div className="text-[1.2em] text-green-500 dark:text-green-400">
+                    ₹ {price}
+                </div>
+            </div>
+            <div className="flex gap-4">
+                <button className="text-blue-500" onClick={() => openUpdateFoodModal(food)}>
+                    <Edit />
+                </button>
+                <DeleteForeverRounded className="text-red-600" />
+            </div>
         </div>
     );
 }

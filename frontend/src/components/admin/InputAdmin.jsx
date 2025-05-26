@@ -1,4 +1,6 @@
-function InputTag({ placeholder, name, type, onInputChange, value }) {
+import React from "react";
+
+function InputTag({ placeholder, name, type, onInputChange, value, classname }) {
     return (
         <div className="flex flex-col">
             <input
@@ -7,25 +9,47 @@ function InputTag({ placeholder, name, type, onInputChange, value }) {
                 name={name}
                 type={type ?? "text"}
                 placeholder={placeholder ?? "placeholder"}
-                className="input input-bordered w-full max-w-xs"
+                className={classname ?? classname}
             />
         </div>
     );
 }
 
-function ImageTag({ onInputChange }) {
-
-    function handleFile(event) {
-        const selectedFile = event.target.files[0]
-        if (selectedFile) {
-            onInputChange(selectedFile)
-        }
-    }
+export function TextArea({ placeholder, name, onInputChange, value, classname }) {
     return (
         <div className="flex flex-col">
-            <input onChange={handleFile} type="file" className="file-input file-input-bordered w-full max-w-xs" />
+            <textarea
+                name={name}
+                id="foodDescriptionArea"
+                onChange={onInputChange}
+                value={value}
+                placeholder={placeholder ?? "placeholder"}
+                className={classname}
+            ></textarea>
         </div>
     )
 }
+
+const ImageTag = React.forwardRef(function ImageTag({ onInputChange, classname }, ref) {
+
+    function handleFile(event) {
+        const selectedFile = event?.target?.files[0] || ''
+        console.log('selectedFile :>> ', selectedFile);
+        if (selectedFile) {
+            onInputChange(selectedFile)
+        } else {
+            onInputChange(null)
+        }
+    }
+    return (
+        <input
+            onChange={handleFile}
+            type="file"
+            ref={ref}
+            className={"file-input file-input-bordered w-full"}
+        />
+    )
+})
+
 
 export { InputTag, ImageTag };

@@ -85,7 +85,7 @@ async function checkAdmin(req, res, next) {
         const adminId = req.user.id
         const adminExist = await Admin.findById(adminId).select('-password')
 
-        console.log('adminExist :>> ', adminExist);
+        // console.log('adminExist :>> ', adminExist);
 
         res.status(200).json({ message: 'Admin checked', data: adminExist })
 

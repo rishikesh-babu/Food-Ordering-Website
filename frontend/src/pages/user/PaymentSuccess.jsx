@@ -30,7 +30,7 @@ function PaymentSuccess() {
     }
 
     return (
-        <div className="min-h-screen bg-green-50 dark:bg-gray-900 flex items-center justify-center">
+        <div className="min-h-[80vh] bg-green-50 dark:bg-gray-900 flex items-center justify-center">
             <div className="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-8 text-center max-w-lg">
                 <CheckCircle className="text-green-400 animate-bounce w-16 h-16 mx-auto mb-4" />
                 <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-300 mb-4">Payment Successful!</h1>

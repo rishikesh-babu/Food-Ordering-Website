@@ -8,7 +8,7 @@ function AdminHeader() {
     const dispatch = useDispatch()
 
     return (
-        <div className="p-4 flex items-center justify-between bg-white dark:bg-gray-800 shadow-md">
+        <div className="p-4 flex items-center justify-between bg-white dark:bg-gray-800 shadow-md rounded-md">
             {/* Sidebar Toggle Button */}
             <div className="flex items-center">
                 <button

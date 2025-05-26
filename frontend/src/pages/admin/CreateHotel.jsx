@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom'
 
 function CreateHotel() {
 
+    const classname = "p-2.5 text-lg text-gray-500 dark:text-gray-200 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 focus:outline-none focus:ring-1 focus:ring-blue-500"
     const [hotelDetails, setHotelDetails] = useState({})
     const [selectedFile, setSelectedFile] = useState()
     const navigate = useNavigate()
@@ -56,7 +57,7 @@ function CreateHotel() {
     }
 
     return (
-        <div className="my-4 mx-auto p-6 max-w-fit shadow-lg rounded-lg dark:bg-gray-700">
+        <div className="my-4 mx-auto p-6 sm:max-w-xl shadow-lg rounded-lg dark:bg-gray-700">
             <div className="text-3xl font-semibold text-center mb-6">
                 Create Hotel
             </div>
@@ -70,7 +71,7 @@ function CreateHotel() {
                         name={'name'}
                         placeholder={'Enter hotel name'}
                         type={'text'}
-                        className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        classname={classname}
                     />
                 </div>
 
@@ -83,7 +84,7 @@ function CreateHotel() {
                         name={'address'}
                         placeholder={'Enter hotel address'}
                         type={'text'}
-                        className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        classname={classname}
                     />
                 </div>
 

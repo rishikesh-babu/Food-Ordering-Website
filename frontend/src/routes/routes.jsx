@@ -124,6 +124,10 @@ const router = createBrowserRouter([
                         element: <CreateHotel />
                     },
                     {
+                        path: 'create-food',
+                        element: <CreateFood />
+                    },
+                    {
                         path: 'hotel/:hotelId',
                         element: <SingleHotel />
                     },

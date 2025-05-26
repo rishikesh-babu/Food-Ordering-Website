@@ -17,7 +17,7 @@ function Footer() {
                 <Link className="link link-hover">
                     Jobs
                 </Link>
-                <Link to="/admin" className="link link-hover">
+                <Link to="/admin/hotel" className="link link-hover">
                     Admin Login
                 </Link>
             </nav>

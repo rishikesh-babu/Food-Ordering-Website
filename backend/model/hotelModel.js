@@ -16,15 +16,16 @@ const hotelSchema = mongoose.Schema(
         },
         image: {
             type: String,
-            default: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKEaCERtHT4SbUVufKRaxOmxJ4aUHuNHwqqA&s'
+            required: true,
+            // default: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKEaCERtHT4SbUVufKRaxOmxJ4aUHuNHwqqA&s'
         },
-        foodItems: [{
-            foodId: {
-                type: mongoose.Types.ObjectId,
-                ref: 'Food',
-                required: true,
-            }
-        }]
+        // foodItems: [{
+        //     foodId: {
+        //         type: mongoose.Types.ObjectId,
+        //         ref: 'Food',
+        //         required: true,
+        //     }
+        // }]
     },
     {
         timestamps: true

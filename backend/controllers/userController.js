@@ -137,7 +137,7 @@ async function userProfilePicUpdate(req, res, next) {
         console.log('Routes: update profile')
 
         let { name, email, mobile, address } = req.body
-         const userId = req.user.id
+        const userId = req.user.id
         const userExist = await User.findById(userId).select('-password')
 
         const uniqueName = `${userExist.name}_${userId}`
@@ -196,7 +196,7 @@ async function userProfilePicUpdate(req, res, next) {
             const newImageUrl = (await cloudinaryInstance.uploader.upload(req.file.path, {
                 folder: 'FoodOrderingWebSite/User',
                 public_id: uniqueName
-            })).url
+            })).secure_url
 
             // console.log('newImageUrl :>> ', newImageUrl);   
 

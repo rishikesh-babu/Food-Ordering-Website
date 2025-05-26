@@ -12,7 +12,7 @@ function SingleHotel() {
     const { hotelId } = useParams()
     const navigate = useNavigate()
     const [hotelDetails, isHotelLoading, hotelError] = getFetch(`hotel/single-hotel/${hotelId}`)
-
+    const [foodDetails, isFoodloading, foodError] = getFetch(`hotel/single-hotel-food/${hotelId}`)
 
 
     useEffect(() => {
@@ -56,16 +56,16 @@ function SingleHotel() {
             </div>
 
             <div className="mt-6 bg-gray-200 dark:bg-gray-700 w-full max-w-4xl p-4 rounded-lg shadow-md">
-                <h3 className="text-xl text-center dark:text-gray-300 font-semibold mb-4">Food Items</h3>
+                <h3 className="text-xl text-center dark:text-gray-300 font-semibold mb-4 sm:text-2xl md:text-3xl">Food Items</h3>
                 <hr className='border border-gray-400' />
                 <div className="overflow-x-auto">
-                    {hotelDetails?.foodItems?.map((item, index) => (
+                    {foodDetails?.map((item, index) => (
                         <FoodCard
-                            image={item?.foodId?.image}
-                            name={item?.foodId?.name}
-                            price={item?.foodId?.price}
-                            foodId={item?.foodId?._id}
-                            key={index}
+                            image={item?.image}
+                            name={item?.name}
+                            price={item?.price}
+                            foodId={item?._id}
+                            key={item?._id}
                         />
                     ))}
                 </div>

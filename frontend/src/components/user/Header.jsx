@@ -5,11 +5,11 @@ import logo from '/logo.jpg'
 
 function Header() {
     return (
-        <div className="navbar bg-base-100 shadow-md dark:shadow-lg dark:shadow-blue-200">
-            <div className="flex-1">
+        <div className="navbar shadow-md bg-white dark:bg-gray-900 rounded-md">
+            <div className="flex-1">    
                 <Link
                     to={"/"}
-                    className="btn btn-ghost text-2xl sm:text-3xl font-bold flex gap-1"
+                    className="btn btn-ghost text-2xl sm:text-3xl font-bold flex gap-3"
                 >
                     <img src={logo} alt="Logo" className="size-10 rounded-box" />
                     <div>Food Express</div>

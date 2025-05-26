@@ -5,10 +5,8 @@ import AdminFooter from '../components/admin/AdminFooter'
 import SideBar from '../components/admin/SideBar'
 import { useDispatch, useSelector } from 'react-redux'
 import axiosInstance from '../config/axiosInstance'
-import { clearAdminData, saveAdminData } from '../redux/features/adminSilce'
+import { clearAdminData, saveAdminData } from '../redux/features/adminSlice'
 import toast from 'react-hot-toast'
-import { Menu } from 'lucide-react'
-console.log('This is admin layout')
 
 function AdminLayout() {
 
@@ -29,7 +27,7 @@ function AdminLayout() {
             .then((res) => {
                 // console.log('res :>> ', res);
                 dispatch(saveAdminData(res?.data?.data))
-                navigate('/admin/hotel')
+                // navigate('/admin/hotel')
             })
             .catch((err) => {
                 console.log('err :>> ', err);
@@ -40,16 +38,16 @@ function AdminLayout() {
     }
 
     return (
-        <div className="min-h-screen bg-gray-100d overflow-x-hidden flex">
+        <div className="min-h-screen overflow-x-hidden flex">
             {/* Sidebar */}
-            <aside className={`bg-white shadow-lg fixed h-full transition-all ${sideBarToggle && isAdminAuth ? 'w-64' : 'w-0 overflow-hidden'} duration-300`}>
+            <aside className={`shadow-lg fixed h-full transition-all ${sideBarToggle && isAdminAuth ? 'w-64' : 'w-0 overflow-hidden'} duration-300`}>
                 <SideBar />
             </aside>
 
             {/* Main Content */}
             <main className="flex flex-col flex-grow ml-auto w-full transition-all duration-300" style={{ marginLeft: sideBarToggle && isAdminAuth ? '16rem' : '0' }}>
                 {/* Admin Header */}
-                <header className="shadow-md items-center">
+                <header>
                     <AdminHeader />
                 </header>
 

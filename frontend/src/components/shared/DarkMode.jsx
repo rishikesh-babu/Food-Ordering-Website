@@ -29,7 +29,7 @@ export default function DarkMode() {
         <div className='scale-90 cursor-pointer'>
             <label className="swap swap-rotate" >
                 {/* this hidden checkbox controls the state */}
-                <input type="checkbox" checked={darkMode} onClick={toggleTheme} />
+                <input type="checkbox" checked={darkMode} onChange={toggleTheme} />
 
                 {/* moon icon */}
                 <svg

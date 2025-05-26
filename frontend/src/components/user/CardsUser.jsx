@@ -11,6 +11,7 @@ import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import { saveOrderDetails } from "../../redux/features/orderSlice";
 import { Tooltip } from "@mui/material";
+import { clearUserData } from "../../redux/features/userSlice";
 
 function UserHotelCard({ name, image, address, hotelId }) {
     const navigate = useNavigate();
@@ -19,7 +20,7 @@ function UserHotelCard({ name, image, address, hotelId }) {
         <div
             // py-6 sm:p-6 w-72 bg-gradient-to-r from-blue-100 to-gray-200 rounded-lg flex flex-col xl:flex-row items-center gap-6 transition-transform transform hover:scale-105 shadow-lg hover:shadow-2xl
             onClick={() => navigate(`/hotel/${hotelId}`)}
-            className="py-6 min-w-64 sm:max-w-[350px] shadow-lg sm:p-6 bg-gradient-to-r from-sky-200 to-gray-200 dark:bg-none hover:shadow-2xl dark:shadow-md dark:shadow-white dark:hover:shadow-white border border-white rounded-lg flex flex-col items-center gap-6 transition-transform transform sm:hover:scale-105 cursor-pointer"
+            className="py-6 sm:p-6 min-w-64 sm:max-w-[350px] bg-sky-100 dark:bg-gray-600 rounded-xl flex flex-col items-center gap-6 transition-transform transform hover:scale-105 cursor-pointer" // sm:hover:scale-105 border-white shadow-lg  dark:bg-none hover:shadow-2xl dark:shadow-md dark:shadow-white dark:hover:shadow-white
         >
             <div className="flex-shrink-0">
                 <img
@@ -32,7 +33,7 @@ function UserHotelCard({ name, image, address, hotelId }) {
                 <div className="text-lg sm:text-lg text-wrap font-bold text-blue-600 ">
                     {name ?? "Name"}
                 </div>
-                <div className="sm:text-lg text-balance font-medium text-gray-800 dark:text-gray-400 mt-2">
+                <div className="sm:text-lg text-balance font-medium mt-2">
                     {address ?? "address"}
                 </div>
             </div>
@@ -68,10 +69,8 @@ function UserFoodCard({ name, image, price, foodId, addToCart }) {
                 .catch((err) => {
                     console.log("err :>> ", err);
                     toast.error(err?.response?.data?.message);
-                    if (
-                        err?.response?.data?.message === "Unauthorized User" ||
-                        "jwt expired"
-                    ) {
+                    if (err?.response?.data?.message === "Unauthorized User" || "jwt expired") {
+                        // clearUserData()
                         navigate("/login");
                     }
                 }),
@@ -96,6 +95,10 @@ function UserFoodCard({ name, image, price, foodId, addToCart }) {
                 .catch((err) => {
                     console.log("err :>> ", err);
                     toast.error(err?.response?.data?.message);
+                    if (err?.response?.data?.message === "Unauthorized User" || "jwt expired") {
+                        // clearUserData()
+                        navigate("/login");
+                    }
                 }),
             {
                 loading: "Removing from wishlist.....",
@@ -108,7 +111,7 @@ function UserFoodCard({ name, image, price, foodId, addToCart }) {
     }
 
     return (
-        <div className="p-3 sm:p-6 bg-gradient-to-r from-blue-100 to-blue-50 dark:bg-none dark:shadow-md dark:border dark:shadow-white rounded-lg shadow-xl grid grid-cols-2 items-center gap-6">
+        <div className="p-3 sm:p-6 bg-sky-100 dark:bg-gray-700 dark:shadow-md rounded-lg shadow-xl grid grid-cols-2 items-center gap-6">
             <div className="flex-shrink-0">
                 <Link to={`/food/${foodId}`}>
                     <img
@@ -119,12 +122,12 @@ function UserFoodCard({ name, image, price, foodId, addToCart }) {
                 </Link>
             </div>
             <div className="text-left md:text-left ">
-                <div className="text-lg sm:text-xl font-bold text-blue-600">
+                <div className="text-lg sm:text-xl font-bold text-blue-500">
                     {name ?? "Name"}
                 </div>
                 <div className="flex flex-row items-center justify-between my-3">
                     <span className="text-lg font-medium text-green-500 dark:text-green-400">
-                    ₹{price ?? "price"}
+                        ₹{price ?? "price"}
                     </span>
                     <div className="cursor-pointer hover:scale-110">
                         {isInWishlist?.[0] ? (
@@ -160,7 +163,7 @@ function UserFoodCard({ name, image, price, foodId, addToCart }) {
                         </div>
                     ) : (
                         <button
-                            className="btn bg-blue-500 hover:bg-blue-600 text-white font-medium px-6 py-2 rounded-lg shadow-md transition-all duration-200 ease-in-out transform hover:scale-105"
+                            className="btn border-none bg-blue-500 hover:bg-blue-600 text-white font-medium px-6 py-2 rounded-lg shadow-md transition-all duration-200 ease-in-out transform hover:scale-105"
                             onClick={() => addToCart(foodId)}
                         >
                             Add
@@ -174,17 +177,18 @@ function UserFoodCard({ name, image, price, foodId, addToCart }) {
 
 function CartCard({ name, price, quantity, image, foodId, updateCartDetails }) {
     return (
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-4 mb-4 border border-gray-300 rounded-lg shadow-md bg-white dark:bg-gray-800 w-full max-w-4xl mx-auto">
-            <div className="flex justify-center sm:justify-start">
-                <img
-                    src={image}
-                    alt="image"
-                    className="w-24 h-24 sm:w-32 sm:h-32 object-cover rounded-lg"
-                />
+        <div className="py-2 flex justify-between items-center gap-2 border-b-2 border-gray-400 flex-nowrap">
+            <div className="h-20 w-20 flex-shrink-0">
+                <Link to={`/food/${foodId}`} >
+                    <img
+                        src={image}
+                        alt="image"
+                        className="h-full w-full rounded-xl object-cover border-2 border-blue-600"
+                    />
+                </Link>
             </div>
-
-            <div className="flex flex-col justify-center items-center sm:items-start sm:ml-4">
-                <h3 className="text-xl sm:text-2xl font-semibold">
+            <div className="flex-grow flex flex-col sm:items-start sm:ml-4">
+                <h3 className="text-lg sm:text-left md:text-xl font-semibold font-mono text-left flex-grow ">
                     {name}
                 </h3>
                 <p className="text-xl sm:text-2xl font-medium text-green-500 dark:text-green-400">

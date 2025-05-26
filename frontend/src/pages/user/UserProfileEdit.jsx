@@ -39,7 +39,7 @@ function UserProfileEdit() {
     function handleSubmit(event) {
         event.preventDefault()
 
-        console.log('profileDetails :>> ', profileDetails);
+        // console.log('profileDetails :>> ', profileDetails);
         const formData = new FormData()
         formData.append('image', selectedFile)
         formData.append('name', profileDetails?.name || '');
@@ -91,7 +91,7 @@ function UserProfileEdit() {
                         name={'name'}
                         placeholder={'Enter user name'}
                         type={'text'}
-                        className="p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-100 dark:bg-gray-700 
+                        classname="p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-100 dark:bg-gray-700 
                            text-gray-900 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 
                            transition-all duration-200"
                     />
@@ -121,7 +121,7 @@ function UserProfileEdit() {
                         name={'mobile'}
                         placeholder={'Enter mobile number'}
                         type={'text'}
-                        className="p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-100 dark:bg-gray-700 
+                        classname="p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-100 dark:bg-gray-700 
                            text-gray-900 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 
                            transition-all duration-200"
                     />
@@ -136,7 +136,7 @@ function UserProfileEdit() {
                         name={'address'}
                         placeholder={'Enter address'}
                         type={'text'}
-                        className="p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-100 dark:bg-gray-700 
+                        classname="p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-100 dark:bg-gray-700 
                            text-gray-900 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 
                            transition-all duration-200"
                     />
