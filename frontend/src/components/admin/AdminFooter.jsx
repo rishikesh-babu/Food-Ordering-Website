@@ -4,47 +4,79 @@ import { Link } from 'react-router-dom'
 import logo from '/logo.jpg'
 
 function Footer() {
+    const navigationLink = [
+        {
+            name: 'About Us',
+            link: 'about',
+        },
+        {
+            name: 'Contact',
+            link: 'contact',
+        },
+        {
+            name: 'Jobs',
+            link: 'jobs',
+        },
+        {
+            name: 'Home',
+            link: '/'
+        },
+    ]
+
+    const socialLink = [
+        {
+            name: 'Github',
+            link: 'https://github.com/rishikesh-babu',
+            icon: <GitHub sx={{ fontSize: 30 }} />,
+        },
+        {
+            name: 'LinkedIn',
+            link: 'https://www.linkedin.com/in/rishikesh-babu',
+            icon: <LinkedIn sx={{ fontSize: 30 }} />
+        },
+        {
+            name: 'Instagram',
+            link: 'https://www.instagram.com/_ri_s_hi_k.e.sh_/',
+            icon: <Instagram sx={{ fontSize: 30 }} />
+        },
+        {
+            name: 'Whatsapp',
+            icon: <WhatsApp sx={{ fontSize: 30 }} />
+        }
+    ]
+
     return (
-        <footer className="footer footer-center bg-neutral text-neutral-content rounded p-10">
+        <footer className="p-10 text-neutral-content bg-gray-800 rounded flex flex-col justify-center items-center gap-10">
             {/* Navigation Links */}
-            <nav className="grid grid-flow-col gap-4">
-                <Link className="link link-hover">
-                    About Us
-                </Link>
-                <Link className="link link-hover">
-                    Contact
-                </Link>
-                <Link className="link link-hover">
-                    Jobs
-                </Link>
-                <Link to="/" className="link link-hover">
-                    Home
-                </Link>
+            <nav className="text-lg flex gap-4">
+                {navigationLink?.map((item, index) => (
+                    <Link to={item?.link} key={index} >
+                        {item?.name}
+                    </Link>
+                ))}
             </nav>
 
             {/* Social Media Links */}
             <nav>
-                <div className="grid grid-flow-col gap-6">
-                    <a href="https://github.com/rishikesh-babu" target="_blank" rel="noreferrer" className="hover:text-primary hover:scale-105">
-                        <GitHub sx={{ fontSize: 30 }} />
-                    </a>
-                    <a href="https://www.linkedin.com/in/rishikesh-babu" target="_blank" rel="noreferrer" className="hover:text-primary hover:scale-105">
-                        <LinkedIn sx={{ fontSize: 30 }} />
-                    </a>
-                    <a href="https://www.instagram.com/_ri_s_hi_k.e.sh_/" target="_blank" rel="noreferrer" className="hover:text-primary hover:scale-105">
-                        <Instagram sx={{ fontSize: 30 }} />
-                    </a>
-                    <a target="_blank" rel="noreferrer" className="hover:text-primary transition duration-300">
-                        <WhatsApp sx={{ fontSize: 30 }} />
-                    </a>
+                <div className="flex gap-9">
+                    {socialLink?.map((item, index) => (
+                        <a href={item?.link} key={index} target="_blank" rel="noreferrer" className="relative group flex justify-center items-center">
+                            <i className='text-3xl sm:text-4xl text-[#00ffff] hover:text-[#3563ff] transition-all duration-300 hover:scale-125'>
+                                {item?.icon}
+                            </i>
+                            <span className="text-lg sm:text-xl capitalize text-[#00ffff] group-hover:text-lime-300 scale-0 group-hover:scale-100 absolute bottom-2 group-hover:bottom-11 sm:group-hover:bottom-14 transition-all duration-[400ms] delay-[50ms]">
+                                {item?.name}
+                            </span>
+                        </a>
+                    ))}
                 </div>
             </nav>
 
             {/* Copyright */}
             <aside>
                 <div className='flex flex-col-reverse items-center gap-2'>
-                    <span>
-                        Copyright © {new Date().getFullYear()} - All rights reserved by Food Express 🍔
+                    <span className='text-center'>
+                        Copyright © {new Date().getFullYear()} - All rights reserved by <br /> Food Express 🍔
                     </span>
                     <img src={logo} alt="" className='size-14 rounded-badge' />
                 </div>

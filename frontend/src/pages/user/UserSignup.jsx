@@ -26,7 +26,7 @@ function UserSignup() {
         if ((signupData.name || signupData.mobile || signupData.email || signupData.address || signupData.address || signupData.password) === undefined) {
             toast.error('All fields are required ')
             return
-        }      
+        }
 
         if (signupData.password !== signupData.confirmPassword) {
             toast.error("Enter correct password")
@@ -55,17 +55,20 @@ function UserSignup() {
         )
     }
 
+    const labelStyle = 'mb-2 text-xl font-medium block dark:text-gray-300'
+    const inputStyle = "p-3 w-full border border-gray-300 focus:border-blue-400 dark:border-gray-600 rounded-lg text-gray-900 dark:text-gray-200 bg-gray-100 dark:bg-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:ring-offset-1 dark:focus:ring-offset-gray-700 transition-all duration-200"
+
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gray-100">
-            <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-lg">
-                <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">
+        <div className="sm:py-8 flex justify-center items-center">
+            <div className="p-8 w-full max-w-md dark:text-gray-100 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg shadow-2xl dark:shadow-gray-700">
+                <h1 className="text-3xl font-bold text-center mb-6">
                     Signup
                 </h1>
-                <form className="flex flex-col gap-4">
+                <form className="flex flex-col gap-5">
                     <div>
                         <label
                             htmlFor="name"
-                            className="block text-sm font-medium text-gray-600 mb-2"
+                            className={labelStyle}
                         >
                             Name
                         </label>
@@ -74,13 +77,13 @@ function UserSignup() {
                             name={'name'}
                             type="text"
                             placeholder="Enter Name"
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className={inputStyle}
                         />
                     </div>
                     <div>
                         <label
                             htmlFor="email"
-                            className="block text-sm font-medium text-gray-600 mb-2"
+                            className={labelStyle}
                         >
                             Email
                         </label>
@@ -89,13 +92,13 @@ function UserSignup() {
                             name={'email'}
                             type="email"
                             placeholder="Enter Email"
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className={inputStyle}
                         />
                     </div>
                     <div>
                         <label
                             htmlFor="phone"
-                            className="block text-sm font-medium text-gray-600 mb-2"
+                            className={labelStyle}
                         >
                             Phone No
                         </label>
@@ -104,13 +107,13 @@ function UserSignup() {
                             name={'mobile'}
                             type="text"
                             placeholder="Enter phone number"
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className={inputStyle}
                         />
                     </div>
                     <div>
                         <label
                             htmlFor="address"
-                            className="block text-sm font-medium text-gray-600 mb-2"
+                            className={labelStyle}
                         >
                             Address
                         </label>
@@ -119,13 +122,13 @@ function UserSignup() {
                             name={'address'}
                             type="text"
                             placeholder="Enter Address"
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className={inputStyle}
                         />
                     </div>
                     <div>
                         <label
                             htmlFor="password"
-                            className="block text-sm font-medium text-gray-600 mb-2"
+                            className={labelStyle}
                         >
                             Password
                         </label>
@@ -134,13 +137,13 @@ function UserSignup() {
                             name={'password'}
                             type="password"
                             placeholder="Enter Password"
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className={inputStyle}
                         />
                     </div>
                     <div>
                         <label
                             htmlFor="confirmPassword"
-                            className="block text-sm font-medium text-gray-600 mb-2"
+                            className={labelStyle}
                         >
                             Confirm Password
                         </label>
@@ -149,7 +152,7 @@ function UserSignup() {
                             name={'confirmPassword'}
                             type="password"
                             placeholder="Re-enter password"
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className={inputStyle}
                         />
                     </div>
                     <div className="mt-3">

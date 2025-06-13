@@ -34,10 +34,8 @@ function SideBar() {
             {
                 loading: 'Logout....'
             }
-        )   
+        )
     }
-
-    console.log('window.innerWidth :>> ', window.innerWidth);
 
     function closeSideBar() {
         if (window.innerWidth < 571) {
@@ -50,32 +48,32 @@ function SideBar() {
             link: '/admin/hotel',
             label: 'Hotel',
             element: <Home size={20} />
-        }, 
+        },
         {
             link: '/admin/food',
             label: 'Food',
             element: <Utensils size={20} />
-        }, 
+        },
         {
             link: '/admin/create-hotel',
             label: 'Create Hotel',
             element: <PlusSquare size={20} />
-        }, 
+        },
         {
             link: '/admin/create-food',
             label: 'Create Food',
             element: <PlusSquare size={20} />
-        }, 
+        },
         {
             link: '/admin/orders',
             label: 'View Orders',
             element: <List size={20} />
-        }, 
+        },
         {
             link: '/admin/view-user',
             label: 'View User',
             element: <People size={20} />
-        }, 
+        },
     ]
     const sideBarContentStyle = 'flex items-center space-x-2 p-2 hover:bg-gray-400 active:bg-gray-500 dark:active:bg-gray-600 dark:hover:bg-gray-700 rounded-md'
 
@@ -83,19 +81,23 @@ function SideBar() {
         <div className="h-full w-64 rounded-md bg-gray-300 dark:bg-gray-900 dark:text-white p-5 flex flex-col space-y-6">
             <h2 className="text-2xl font-bold">Dashboard</h2>
             <nav className="flex-grow flex flex-col gap-y-5 font-semibold">
-                {
-                    sideBarContents.map((item, index) => (
-                        <Link to={item.link} className={sideBarContentStyle} key={index} onClick={closeSideBar} >
-                            {item.element}
-                            <span>
-                                {item.label}
-                            </span>
-                        </Link>
-                    ))
-                }
-                <div onClick={handleLogout} className="mt-auto flex items-center space-x-2 p-2 cursor-pointer bg-red-500 active:bg-red-700 rounded-md">
+                {sideBarContents.map((item, index) => (
+                    <Link
+                        to={item.link}
+                        className="p-2 flex items-center gap-2 transition-all duration-200 hover:bg-gray-400 active:bg-gray-500 dark:active:bg-gray-600 dark:hover:bg-gray-700 rounded-md"
+                        key={index}
+                        onClick={closeSideBar}
+                    >
+                        {item.element}
+                        <span>{item.label}</span>
+                    </Link>
+                ))}
+                <div
+                    onClick={handleLogout}
+                    className="mt-auto flex items-center space-x-2 p-2 cursor-pointer bg-red-500 hover:bg-red-600 active:bg-red-700 rounded-md"
+                >
                     <LogOut size={20} />
-                    <span className='text-lg font-semibold'>Logout</span>
+                    <span className="text-lg font-semibold">Logout</span>
                 </div>
             </nav>
         </div>

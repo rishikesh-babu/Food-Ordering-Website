@@ -79,8 +79,7 @@ function UserProfileEdit() {
             </div>
 
             {/* Form Content */}
-            <div className="p-5 sm:p-9 m-3 mb-8 w-full max-w-lg mx-auto flex flex-col gap-6 border border-gray-300 dark:border-gray-600 
-                    rounded-lg bg-white dark:bg-gray-800 shadow-2xl dark:shadow-lg transition-all duration-300">
+            <div className="p-5 sm:p-9 m-3 mb-8 w-full max-w-lg mx-auto flex flex-col gap-6 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 shadow-2xl dark:shadow-gray-700 transition-all duration-300">
 
                 {/* Name Field */}
                 <div className="space-y-2">
@@ -91,26 +90,9 @@ function UserProfileEdit() {
                         name={'name'}
                         placeholder={'Enter user name'}
                         type={'text'}
-                        classname="p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-100 dark:bg-gray-700 
-                           text-gray-900 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 
-                           transition-all duration-200"
+                        classname="p-3 border border-gray-300 focus:border-blue-400 dark:border-gray-600 rounded-lg text-gray-900 dark:text-gray-200 bg-gray-100 dark:bg-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:ring-offset-1 dark:focus:ring-offset-gray-700 transition-all duration-200"
                     />
                 </div>
-
-                {/* Email Field */}
-                {/* <div className="space-y-2">
-                    <div className="text-lg font-medium text-gray-700 dark:text-gray-300">Email</div>
-                    <InputTag
-                        onInputChange={handleProfile}
-                        // value={userData.email}
-                        name={'email'}
-                        placeholder={'Enter email'}
-                        type={'email'}
-                        className="p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-100 dark:bg-gray-700 
-                           text-gray-900 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 
-                           transition-all duration-200"
-                    />
-                </div> */}
 
                 {/* Mobile No. Field */}
                 <div className="space-y-2">
@@ -121,9 +103,7 @@ function UserProfileEdit() {
                         name={'mobile'}
                         placeholder={'Enter mobile number'}
                         type={'text'}
-                        classname="p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-100 dark:bg-gray-700 
-                           text-gray-900 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 
-                           transition-all duration-200"
+                        classname="p-3 border border-gray-300 focus:border-blue-400 dark:border-gray-600 rounded-lg text-gray-900 dark:text-gray-200 bg-gray-100 dark:bg-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:ring-offset-1 dark:focus:ring-offset-gray-700 transition-all duration-200"
                     />
                 </div>
 
@@ -136,9 +116,7 @@ function UserProfileEdit() {
                         name={'address'}
                         placeholder={'Enter address'}
                         type={'text'}
-                        classname="p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-100 dark:bg-gray-700 
-                           text-gray-900 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 
-                           transition-all duration-200"
+                        classname="p-3 border border-gray-300 focus:border-blue-400 dark:border-gray-600 rounded-lg text-gray-900 dark:text-gray-200 bg-gray-100 dark:bg-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:ring-offset-1 dark:focus:ring-offset-gray-700 transition-all duration-200"
                     />
                 </div>
 

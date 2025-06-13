@@ -97,7 +97,7 @@ function Hotel() {
     }
 
     return (
-        <div className="bg-gray-200 dark:bg-gray-700 rounded-2xl max-w-3xl mx-auto my-5 p-2 pb-3 pt-3 sm:px-3 md:px-5 shadow-xl">
+        <div className="mx-auto my-5 p-2 pb-3 pt-3 sm:px-3 md:px-5 max-w-3xl bg-gray-200 dark:bg-gray-700 rounded-2xl shadow-xl">
             <div className="text-2xl font-semibold text-center my-3 sm:text-3xl md:text-4xl">
                 Hotels
             </div>
@@ -113,7 +113,7 @@ function Hotel() {
                 />
             )}
 
-            <div className="border-t-2 border-gray-400 flex flex-col sm:mx-auto">
+            <div className="sm:mx-auto border-t-2 border-gray-400 flex flex-col">
                 {hotelDetails?.map((item, index) => (
                     <HotelCard
                         image={item?.image}

@@ -8,7 +8,7 @@ import { DeleteForeverRounded, Edit } from "@mui/icons-material"
 
 function HotelCard({ name, image, hotelId, address, hotel, openUpdateHotelModal }) {
     return (
-        <div className="py-2 flex justify-between items-center gap-2 border-b-2 border-gray-400 flex-nowrap">
+        <div className="py-2 border-b-2 border-gray-400 flex justify-between items-center gap-2 flex-nowrap">
             <div className="h-20 w-20 flex-shrink-0">
                 <img
                     className="h-full w-full border-2 border-blue-500 rounded-xl object-cover"
