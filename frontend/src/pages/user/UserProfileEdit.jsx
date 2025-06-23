@@ -69,18 +69,15 @@ function UserProfileEdit() {
         )
     }
 
-    console.log('profileDetails :>> ', profileDetails);
-
     return (
-        <div className="p-4 sm:p-6 md:p-8">
+        <div className="p-4 sm:p-6 md:p-8 bg-gray-100s dark:bg-gray-900">
             {/* Title */}
             <div className="text-4xl font-semibold text-center mb-7 text-gray-900 dark:text-gray-100 transition-colors duration-300">
                 Edit Profile
             </div>
 
             {/* Form Content */}
-            <div className="p-5 sm:p-9 m-3 mb-8 w-full max-w-lg mx-auto flex flex-col gap-6 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 shadow-2xl dark:shadow-gray-700 transition-all duration-300">
-
+            <div className="p-5 sm:p-9 m-3 mb-8 w-full max-w-lg mx-auto flex flex-col gap-6 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 shadow-2xl transition-all duration-300">
                 {/* Name Field */}
                 <div className="space-y-2">
                     <div className="text-lg font-medium text-gray-700 dark:text-gray-300">Name</div>
