@@ -1,5 +1,5 @@
-```markdown
 # 🌐 Food Ordering Website 
+
 A simple food ordering website built with modern web technologies.
 
 This project aims to provide a user-friendly platform for browsing and ordering food online.
@@ -73,21 +73,24 @@ The key technologies used likely include JavaScript for front-end interactivity,
 ## 🚀 Quick Start
 
 Clone and run in 3 steps:
+
 ```bash
 git clone https://github.com/rishikesh-babu/Food-Ordering-Website.git
 cd Food-Ordering-Website
 npm install && npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Open [localhost]() to view it in your browser.
 
 ## 📦 Installation
 
 ### Prerequisites
+
 - Node.js 18+ and npm
 - Git
 
 ### Option 1: From Source
+
 ```bash
 # Clone repository
 git clone https://github.com/rishikesh-babu/Food-Ordering-Website.git
@@ -212,7 +215,7 @@ API_KEY=your_api_key_here
 
 ## 📁 Project Structure
 
-```
+```markdown
 Food-Ordering-Website/
 ├── 📁 src/
 │   ├── 📁 components/          # Reusable UI components (e.g., MenuCard, OrderForm)
