@@ -31,7 +31,7 @@ function UserLayout() {
     }
 
     return (
-        <div className="flex flex-col min-h-screen">
+        <div className="flex flex-col min-h-screen bg-gray-200 dark:bg-gray-900">
             <header className="fixed top-0 left-0 w-full z-10">
                 {isUserAuth ? <UserHeader /> : <Header />}
             </header>

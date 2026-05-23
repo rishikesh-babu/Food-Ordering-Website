@@ -24,7 +24,9 @@ function getFetch(url, savedata) {
             .then((res) => {
                 setData(res?.data?.data)
                 setIsLoading(false)
-                dispatch(savedata(res?.data?.data))
+                if (savedata) {
+                    dispatch(savedata(res?.data?.data))
+                }
             })
             .catch((err) => {
                 console.log('err :>> ', err);
@@ -36,7 +38,6 @@ function getFetch(url, savedata) {
     }
 
     return [data, isloading, err]
-
 }
 
 export default getFetch

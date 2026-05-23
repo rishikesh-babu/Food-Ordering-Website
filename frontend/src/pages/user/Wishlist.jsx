@@ -92,6 +92,7 @@ function Wishlist() {
                                             image={item.foodId.image}
                                             foodId={item.foodId._id}
                                             addToCart={addToCart}
+                                            description={item.foodId.description}
                                         />
                                     ))}
                                 </div>

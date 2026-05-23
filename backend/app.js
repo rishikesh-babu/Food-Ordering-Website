@@ -24,7 +24,7 @@ app.use(cookieParser())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-app.listen(port, (err) => {
+app.listen(port, "0.0.0.0", (err) => {
     if (err) {
         console.log('err :>> ', err);
     } else {

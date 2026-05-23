@@ -86,6 +86,7 @@ function SingleHotelUser() {
                                     image={item?.image}
                                     foodId={item?._id}
                                     addToCart={addToCart}
+                                    description={item?.description}
                                 />
                             ))}
                         </div>
