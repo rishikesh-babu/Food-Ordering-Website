@@ -111,7 +111,7 @@ function UserHeader() {
                     </div>
                     <ul
                         tabIndex={1}
-                        className="menu menu-sm dropdown-content bg-white dark:bg-gray-800 rounded-2xl z-50 mt-3 min-w-56 p-2 shadow-2xl border border-gray-100 dark:border-gray-750 gap-1"
+                        className="menu menu-sm dropdown-content bg-white dark:bg-gray-800 rounded-2xl z-50 mt-3 min-w-56 p-2 shadow-2xl border border-gray-100 dark:border-gray-700 gap-1"
                     >
                         <div className="px-3 py-2 border-b border-gray-100 dark:border-gray-700 mb-1">
                             <p className="text-xs text-gray-400 font-semibold uppercase tracking-wider">Signed in as</p>

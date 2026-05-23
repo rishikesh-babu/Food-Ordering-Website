@@ -95,7 +95,7 @@ function Home() {
     return (
         <div className="bg-gray-50s sdark:bg-gray-900 min-h-screen pb-12 transition-colors duration-300">
             {/* Hero Section */}
-            <div className="relative overflow-hidden bg-gradient-to-r from-amber-500 to-rose-500 dark:from-amber-900/60 dark:to-rose-900/60 py-20 px-6 sm:px-12 text-center text-white">
+            <div className="relative px-6 sm:px-12 py-20 text-center text-white overflow-hidden bg-gradient-to-br from-amber-500 to-rose-500 dark:from-amber-900/60 dark:to-rose-900/60">
                 {/* Decorative background circles */}
                 <div className="absolute top-0 left-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
                 <div className="absolute bottom-0 right-0 w-80 h-80 bg-rose-300/20 rounded-full blur-3xl translate-x-1/3 translate-y-1/3"></div>
@@ -139,9 +139,9 @@ function Home() {
                         <button
                             key={cat.name}
                             onClick={() => setActiveCategory(cat.name)}
-                            className={`flex items-center gap-2 px-5 py-3 rounded-full font-bold text-sm transition-all duration-300 shadow-sm border whitespace-nowrap ${
+                            className={`px-5 py-3 font-bold text-sm border rounded-full shadow-sm active:scale-95 transition-all duration-300 whitespace-nowrap flex items-center gap-2  ${
                                 activeCategory === cat.name
-                                    ? "bg-amber-500 text-white border-amber-500 scale-105 shadow-md shadow-amber-500/20"
+                                    ? "bg-amber-500 text-white border-amber-500 shadow-md shadow-amber-500/20"
                                     : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-gray-100 dark:border-gray-700 hover:border-amber-500/50"
                             }`}
                         >

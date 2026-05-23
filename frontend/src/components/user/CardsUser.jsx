@@ -255,40 +255,52 @@ function UserFoodCard({ name, image, price, foodId, addToCart, description }) {
 }
 
 function CartCard({ name, price, quantity, image, foodId, updateCartDetails }) {
+    const isNonVeg = name.toLowerCase().match(/(chicken|beef|meat|fish|egg|mutton|kode|pork|kabab)/);
+
     return (
-        <div className="py-2 flex justify-between items-center gap-2 border-b-2 border-gray-400 flex-nowrap">
-            <div className="h-20 w-20 flex-shrink-0">
-                <Link to={`/food/${foodId}`} >
+        <div className="py-4 flex justify-between items-center gap-4 flex-nowrap group">
+            {/* Food Image */}
+            <div className="h-20 w-20 sm:h-24 sm:w-24 flex-shrink-0 relative overflow-hidden rounded-2xl border border-gray-100 dark:border-gray-800 shadow-md">
+                <Link to={`/food/${foodId}`} className="w-full h-full block">
                     <img
                         src={image}
-                        alt="image"
-                        className="h-full w-full rounded-xl object-cover border-2 border-blue-600"
+                        alt={name}
+                        className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                 </Link>
             </div>
-            <div className="flex-grow flex flex-col sm:items-start sm:ml-4">
-                <h3 className="text-lg sm:text-left md:text-xl font-semibold font-mono text-left flex-grow ">
+
+            {/* Food Details */}
+            <div className="flex-grow flex flex-col sm:items-start">
+                <div className="flex items-center gap-1.5 mb-1">
+                    <div className={`w-3.5 h-3.5 border ${isNonVeg ? 'border-red-500' : 'border-emerald-500'} flex items-center justify-center rounded p-0.5`}>
+                        <div className={`w-1 h-1 rounded-full ${isNonVeg ? 'bg-red-500' : 'bg-emerald-500'}`} />
+                    </div>
+                    <span className="text-[10px] font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                        {isNonVeg ? 'Non-Veg' : 'Veg'}
+                    </span>
+                </div>
+                <h3 className="text-base sm:text-lg font-bold text-gray-800 dark:text-gray-100 group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors">
                     {name}
                 </h3>
-                <p className="text-xl sm:text-2xl font-medium text-green-500 dark:text-green-400">
+                <p className="text-lg font-extrabold text-amber-500 dark:text-amber-400 mt-1">
                     ₹{price}
                 </p>
             </div>
 
-            <div className="flex flex-row justify-center items-center gap-3">
-                <div className="flex items-center">
-                    <DecreaseQuantityButton
-                        foodId={foodId}
-                        updateCartDetails={updateCartDetails}
-                    />
-                </div>
-                <div className="text-lg font-medium"> {quantity}</div>
-                <div className="flex items-center">
-                    <IncreaseQuantityButton
-                        foodId={foodId}
-                        updateCartDetails={updateCartDetails}
-                    />
-                </div>
+            {/* Quantity Controls */}
+            <div className="flex items-center gap-3 select-none">
+                <DecreaseQuantityButton
+                    foodId={foodId}
+                    updateCartDetails={updateCartDetails}
+                />
+                <span className="text-lg font-extrabold text-gray-800 dark:text-gray-100 min-w-[20px] text-center">
+                    {quantity}
+                </span>
+                <IncreaseQuantityButton
+                    foodId={foodId}
+                    updateCartDetails={updateCartDetails}
+                />
             </div>
         </div>
     );
