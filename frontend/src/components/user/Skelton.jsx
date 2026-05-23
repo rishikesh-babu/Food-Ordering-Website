@@ -149,38 +149,57 @@ function WishlistSkelton() {
 
 function SingleHotelSkelton() {
     return (
-        <div>
-            <div className="bg-gray-700 p-2 grid grid-cols-1 md:grid-cols-2 gap-10">
-                <div className="self-stretch flex justify-center">
-                    <div className="w-full h-60 rounded-xl bg-gray-500 animate-pulse"></div>
-                </div>
-                <div className="text-white flex flex-col justify-center m-7 space-y-4">
-                    <div className="text-3xl font-semibold bg-gray-600 h-8 w-1/2 animate-pulse"></div>
-                    <div className="text-lg text-gray-500 h-6 w-3/4 animate-pulse"></div>
-                </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            {/* Hero Banner Skeleton */}
+            <div className="relative overflow-hidden rounded-3xl bg-gray-200 dark:bg-gray-800/80 animate-pulse h-64 sm:h-80 mb-10 flex flex-col justify-end p-6 sm:p-8">
+                <div className="h-8 sm:h-12 w-1/2 sm:w-1/3 bg-gray-300 dark:bg-gray-700/60 rounded-2xl mb-3"></div>
+                <div className="h-4 sm:h-6 w-1/3 sm:w-1/4 bg-gray-300 dark:bg-gray-700/60 rounded-xl"></div>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+            {/* Menu Header Skeleton */}
+            <div className="h-8 w-48 bg-gray-200 dark:bg-gray-800/80 rounded-xl mb-6 animate-pulse"></div>
+
+            {/* Food Items Grid Skeleton */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
                 {[...Array(6)].map((_, index) => (
-                    <div key={index} className="p-3 sm:p-6 bg-gradient-to-r from-blue-50 to-white rounded-lg shadow-lg grid grid-cols-2 items-center gap-6">
-                        <div className="flex-shrink-0">
-                            <div className="size-28 md:h-32 md:w-32 rounded-xl bg-gray-300 animate-pulse border-2 border-blue-500 shadow-md"></div>
+                    <div
+                        key={index}
+                        className="p-4 bg-white dark:bg-gray-800/80 rounded-2xl shadow-md border border-gray-100 dark:border-gray-700/50 flex justify-between gap-4 relative overflow-hidden animate-pulse"
+                    >
+                        {/* Left Section: Details */}
+                        <div className="flex-1 flex flex-col justify-between">
+                            <div>
+                                {/* Veg/Non-Veg & Rating Badge Skeleton */}
+                                <div className="flex items-center gap-2 mb-2">
+                                    <div className="w-5 h-5 bg-gray-200 dark:bg-gray-700 rounded"></div>
+                                    <div className="h-5 w-12 bg-gray-200 dark:bg-gray-700 rounded"></div>
+                                </div>
+
+                                {/* Food Name Skeleton */}
+                                <div className="h-6 w-3/4 bg-gray-200 dark:bg-gray-700 rounded-lg mb-2"></div>
+
+                                {/* Description Skeleton */}
+                                <div className="space-y-1.5 mt-2">
+                                    <div className="h-3 w-full bg-gray-200 dark:bg-gray-700 rounded"></div>
+                                    <div className="h-3 w-5/6 bg-gray-200 dark:bg-gray-700 rounded"></div>
+                                </div>
+                            </div>
+
+                            {/* Price & Action Skeleton */}
+                            <div className="flex items-center justify-between mt-4">
+                                <div className="h-6 w-12 bg-gray-200 dark:bg-gray-700 rounded-lg"></div>
+                                <div className="h-8 w-20 bg-gray-200 dark:bg-gray-700 rounded-xl"></div>
+                            </div>
                         </div>
-                        <div className="text-left md:text-left">
-                            <div className="text-lg sm:text-xl font-bold bg-gray-300 h-6 w-1/2 animate-pulse rounded"></div>
-                            <div className="flex flex-row items-center justify-between my-3">
-                                <span className="text-lg font-medium bg-gray-300 h-6 w-1/4 animate-pulse rounded"></span>
-                                <div className="h-6 w-6 bg-gray-300 rounded-full animate-pulse"></div>
-                            </div>
-                            <div className="text-lg font-semibold">
-                                <div className="btn bg-gray-300 h-10 w-24 rounded-lg animate-pulse"></div>
-                            </div>
+
+                        {/* Right Section: Image */}
+                        <div className="relative flex-shrink-0">
+                            <div className="w-24 h-24 sm:w-28 sm:h-28 bg-gray-200 dark:bg-gray-700 rounded-2xl"></div>
                         </div>
                     </div>
-
                 ))}
             </div>
         </div>
-
     )
 }
 
