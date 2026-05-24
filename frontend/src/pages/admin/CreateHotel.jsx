@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { ImageTag, InputTag } from '../../components/admin/InputAdmin'
 import { CreateHotelButton } from '../../components/admin/ButtonAdmin'
+import { Building2 } from 'lucide-react'
 import axiosInstance from '../../config/axiosInstance'
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 
 function CreateHotel() {
 
-    const classname = "p-2.5 text-lg text-gray-500 dark:text-gray-200 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 focus:outline-none focus:ring-1 focus:ring-blue-500"
+    const classname = "w-full px-4 py-3 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-sm focus:outline-none focus:border-orange-500/50 dark:focus:border-orange-500/50 focus:ring-2 focus:ring-orange-500/10 dark:focus:ring-orange-500/10 text-slate-600 dark:text-slate-200 transition-all font-semibold font-outfit"
     const [hotelDetails, setHotelDetails] = useState({})
     const [selectedFile, setSelectedFile] = useState()
     const navigate = useNavigate()
@@ -57,52 +58,67 @@ function CreateHotel() {
     }
 
     return (
-        <div className="my-4 mx-auto p-6 sm:max-w-xl shadow-lg rounded-lg dark:bg-gray-700">
-            <div className="text-3xl font-semibold text-center mb-6">
-                Create Hotel
-            </div>
-            <div className="flex flex-col gap-6">
-                <div className="space-y-2">
-                    <div className="text-lg font-medium ">
-                        Hotel Name
-                    </div>
-                    <InputTag
-                        onInputChange={handleDetails}
-                        name={'name'}
-                        placeholder={'Enter hotel name'}
-                        type={'text'}
-                        classname={classname}
-                    />
-                </div>
+        <div className="min-h-screen py-12 transition-colors duration-300 relative overflow-hidden w-full">
+            {/* Decorative background blobs */}
+            <div className="absolute top-1/4 left-10 w-96 h-96 bg-orange-400/5 dark:bg-orange-600/5 rounded-full blur-3xl pointer-events-none"></div>
+            <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-rose-400/5 dark:bg-rose-600/5 rounded-full blur-3xl pointer-events-none"></div>
 
-                <div className="space-y-2">
-                    <div className="text-lg font-medium">
-                        Hotel Address
+            <div className="container mx-auto px-4 max-w-xl relative z-10">
+                <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-100 dark:border-slate-800/80 p-8 rounded-3xl shadow-xl">
+                    {/* Header */}
+                    <div className="text-center mb-8">
+                        <div className="inline-flex p-3 bg-orange-500/10 rounded-2xl text-orange-500 mb-3">
+                            <Building2 size={28} />
+                        </div>
+                        <h2 className="text-2xl font-black text-slate-800 dark:text-white tracking-tight font-outfit">
+                            Add New Hotel
+                        </h2>
+                        <p className="text-xs text-slate-450 dark:text-slate-500 mt-1.5">
+                            Register a new branch location into the food delivery network
+                        </p>
                     </div>
-                    <InputTag
-                        onInputChange={handleDetails}
-                        name={'address'}
-                        placeholder={'Enter hotel address'}
-                        type={'text'}
-                        classname={classname}
-                    />
-                </div>
 
-                <div className="space-y-2">
-                    <div className="text-lg font-medium">
-                        Hotel Image
+                    <div className="flex flex-col gap-6">
+                        <div className="space-y-1.5">
+                            <label className="block font-extrabold text-sm text-slate-600 dark:text-slate-400 uppercase tracking-wider font-outfit">
+                                Hotel Name
+                            </label>
+                            <InputTag
+                                onInputChange={handleDetails}
+                                name={'name'}
+                                placeholder={'Enter hotel name'}
+                                type={'text'}
+                                classname={classname}
+                            />
+                        </div>
+
+                        <div className="space-y-1.5">
+                            <label className="block font-extrabold text-sm text-slate-600 dark:text-slate-400 uppercase tracking-wider font-outfit">
+                                Hotel Address
+                              </label>
+                            <InputTag
+                                onInputChange={handleDetails}
+                                name={'address'}
+                                placeholder={'Enter hotel address'}
+                                type={'text'}
+                                classname={classname}
+                            />
+                        </div>
+
+                        <div className="space-y-1.5">
+                            <label className="block font-extrabold text-sm text-slate-600 dark:text-slate-400 uppercase tracking-wider font-outfit">
+                                Hotel Image
+                            </label>
+                            <ImageTag
+                                onInputChange={handleFile}
+                                className="w-full p-4 bg-slate-50 dark:bg-slate-950 border border-dashed border-slate-200 dark:border-slate-800 rounded-2xl text-sm transition-all focus:outline-none cursor-pointer"
+                            />
+                        </div>
+
+                        <div className="mt-4">
+                            <CreateHotelButton handleSubmit={handleSubmit} />
+                        </div>
                     </div>
-                    <ImageTag
-                        onInputChange={handleFile}
-                        className="p-3 border border-gray-300 rounded-lg"
-                    />
-                </div>
-
-                <div className="mt-6 ">
-                    <CreateHotelButton
-                        handleSubmit={handleSubmit}
-                        className="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
                 </div>
             </div>
         </div>

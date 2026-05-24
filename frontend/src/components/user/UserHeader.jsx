@@ -51,7 +51,7 @@ function UserHeader() {
     }
 
     return (
-        <div className="navbar fixed top-0 left-0 w-full z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-800/80 px-4 sm:px-8 transition-all duration-300">
+        <div className="navbar fixed top-0 left-0 w-full z-50 bg-white/10 dark:bg-gray-900/60 backdrop-blur-md border-b border-gray-100 dark:border-gray-800/80 px-4 sm:px-8 transition-all duration-300">
             <div className="flex-1">
                 <Link
                     to={"/"}
@@ -111,7 +111,7 @@ function UserHeader() {
                     </div>
                     <ul
                         tabIndex={1}
-                        className="menu menu-sm dropdown-content bg-white dark:bg-gray-800 rounded-2xl z-50 mt-3 min-w-56 p-2 shadow-2xl border border-gray-100 dark:border-gray-700 gap-1"
+                        className="menu menu-sm dropdown-content z-50 mt-3 min-w-56 p-2 bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-100 dark:border-gray-700 gap-1"
                     >
                         <div className="px-3 py-2 border-b border-gray-100 dark:border-gray-700 mb-1">
                             <p className="text-xs text-gray-400 font-semibold uppercase tracking-wider">Signed in as</p>

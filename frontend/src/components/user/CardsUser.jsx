@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { DecreaseQuantityButton, IncreaseQuantityButton } from "./ButtonUser";
 import { saveCartDetails } from "../../redux/features/cartSlice";
 import { Link, useNavigate } from "react-router-dom";
-import { Heart, Trash2 } from "lucide-react";
+import { Heart, Trash2, MapPin, Calendar, CheckCircle2, Clock, XCircle, ShoppingBag } from "lucide-react";
 import axiosInstance from "../../config/axiosInstance";
 import { useEffect, useState } from "react";
 import getFetch from "../../hooks/getFetch";
@@ -310,64 +310,121 @@ function OrderListCard({ items }) {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    function deleteOrder() {
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to undo this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#d33",
-            cancelButtonColor: "#3085d6",
-            confirmButtonText: "Yes, delete it!",
-        }).then((result) => {
-            if (result.isConfirmed) {
-                toast.promise(
-                    axiosInstance({
-                        method: "DELETE",
-                        url: `order/delete-order/${items?._id}`,
-                    })
-                        .then((res) => {
-                            dispatch(saveOrderDetails(res?.data?.data));
-                            console.log("Order deleted!"); // Replace with delete logic
-                            Swal.fire("Deleted!", "Your item has been removed.", "success");
-                        })
-                        .catch((err) => {
-                            toast.error("Something went wrong!");
-                        }),
-                    {
-                        loading: "Deleting order",
-                    }
-                );
-            }
-        });
+    const formattedDate = new Date(items?.createdAt).toLocaleDateString("en-IN", {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit"
+    });
+
+    const displayId = items?._id ? `#${items._id.substring(items._id.length - 8).toUpperCase()}` : "";
+
+    // Status config
+    let statusLabel = "Pending";
+    let statusClass = "bg-amber-50 text-amber-700 dark:bg-amber-950/40 dark:text-amber-400 border border-amber-100 dark:border-amber-900/35";
+    let StatusIcon = Clock;
+
+    if (items?.orderStatus === "complete") {
+        statusLabel = "Delivered";
+        statusClass = "bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-400 border border-emerald-100 dark:border-emerald-900/35";
+        StatusIcon = CheckCircle2;
+    } else if (items?.orderStatus === "cancel") {
+        statusLabel = "Cancelled";
+        statusClass = "bg-rose-50 text-rose-700 dark:bg-rose-950/40 dark:text-rose-400 border border-rose-100 dark:border-rose-900/35";
+        StatusIcon = XCircle;
     }
 
     return (
-        <div
-            className="m-1 mt-2 p-2 border rounded-md shadow-md"
-        // onClick={() => navigate(`/user/order/${items?._id}`)}
-        >
-            <div className="grid grid-cols-[80px_1fr]">
-                <span className="mr-2 text-lg font-semibold">Address:</span>
-                <span className="text-lg">{items?.address}</span>
+        <div className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm rounded-3xl p-5 sm:p-6 transition-all duration-300 hover:shadow-md hover:border-orange-500/10 dark:hover:border-orange-500/10 w-full">
+            {/* Card Header: ID, Date, Status */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 dark:border-slate-800 pb-4 mb-4">
+                <div className="flex items-center gap-3">
+                    <div className="bg-slate-100 dark:bg-slate-800 p-2 rounded-xl text-slate-500 dark:text-slate-400">
+                        <ShoppingBag size={18} />
+                    </div>
+                    <div>
+                        <h4 className="text-sm font-black text-slate-850 dark:text-white tracking-wide">
+                            Order {displayId}
+                        </h4>
+                        <div className="flex items-center gap-1 text-[11px] text-slate-405 dark:text-slate-500 mt-0.5">
+                            <Calendar size={12} />
+                            <span>{formattedDate}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div className={`self-start sm:self-center px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1.5 ${statusClass}`}>
+                    <StatusIcon size={13} className="animate-pulse" />
+                    <span>{statusLabel}</span>
+                </div>
             </div>
-            <div className="grid grid-cols-[80px_1fr]">
-                <span className="mr-2 text-lg font-semibold">Date:</span>
-                <span className="text-lg">
-                    {items?.createdAt.slice(0, 10).split("-").reverse().join("-")}
-                </span>
+
+            {/* Card Body: List of food items ordered */}
+            <div className="space-y-4 mb-4">
+                {items?.foodItems?.map((foodItem, index) => {
+                    const food = foodItem?.foodId;
+                    if (!food) return null;
+                    const isNonVeg = food.name.toLowerCase().match(/(chicken|beef|meat|fish|egg|mutton|kode|pork|kabab)/);
+
+                    return (
+                        <div key={index} className="flex items-center gap-4">
+                            {/* Food Thumbnail */}
+                            <div className="h-14 w-14 rounded-xl overflow-hidden border border-slate-100 dark:border-slate-800 flex-shrink-0 bg-slate-100 dark:bg-slate-850">
+                                <img
+                                    src={food.image}
+                                    alt={food.name}
+                                    className="h-full w-full object-cover"
+                                />
+                            </div>
+
+                            {/* Food Text Info */}
+                            <div className="flex-grow min-w-0">
+                                <div className="flex items-center gap-1.5">
+                                    <div className={`w-3 h-3 border ${isNonVeg ? 'border-red-500' : 'border-emerald-500'} flex items-center justify-center rounded-[3px] p-0.5`}>
+                                        <div className={`w-1 h-1 rounded-full ${isNonVeg ? 'bg-red-500' : 'bg-emerald-500'}`} />
+                                    </div>
+                                    <span className="font-bold text-sm text-slate-800 dark:text-slate-200 truncate">
+                                        {food.name}
+                                    </span>
+                                </div>
+                                <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">
+                                    Qty: {foodItem.quantity} · Price: ₹{foodItem.price}
+                                </p>
+                            </div>
+                        </div>
+                    );
+                })}
             </div>
-            <div className="grid grid-cols-[80px_1fr]">
-                <span className="mr-2 text-lg font-semibold">Total:</span>
-                <span className="text-lg">₹{items?.totalPrice}</span>
+
+            {/* Card Footer: Delivery Address, Total Price, Actions */}
+            <div className="border-t border-slate-100 dark:border-slate-800 pt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div className="flex items-start gap-2 max-w-sm">
+                    <MapPin size={16} className="text-slate-400 dark:text-slate-500 flex-shrink-0 mt-0.5" />
+                    <div>
+                        <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 block uppercase tracking-wider">Delivery Address</span>
+                        <p className="text-xs text-slate-650 dark:text-slate-350 leading-relaxed truncate max-w-[280px]" title={items?.address}>
+                            {items?.address}
+                        </p>
+                    </div>
+                </div>
+
+                <div className="flex items-center justify-between sm:justify-end gap-6 border-t border-dashed border-slate-100 dark:border-slate-800 sm:border-t-0 pt-3 sm:pt-0">
+                    <div>
+                        <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 block uppercase tracking-wider text-left sm:text-right">Amount Paid</span>
+                        <span className="text-lg font-black text-emerald-600 dark:text-emerald-400">
+                            ₹{items?.totalPrice}
+                        </span>
+                    </div>
+
+                    <button
+                        onClick={() => navigate("/")}
+                        className="px-4 py-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700/80 text-slate-800 dark:text-slate-200 text-xs font-bold rounded-xl transition-all active:scale-95 cursor-pointer border-none"
+                    >
+                        Order Again
+                    </button>
+                </div>
             </div>
-            <Tooltip title={`${items?.orderStatus === 'pending' ? 'Contact admin to clear order' : items?.orderStatus === 'complete' ? 'Order delivered successfully' : 'Order cancelled'}`} className={`grid grid-cols-[80px_1fr] cursor-pointer ${items?.orderStatus === 'pending' && 'text-yellow-500 dark:text-yellow-300'} ${items?.orderStatus === 'complete' && 'text-green-500 dark:text-green-400'} ${items?.orderStatus === 'cancel' && 'text-red-500'}`}>
-                <span className="mr-2 text-lg font-semibold">Status:</span>
-                <span className="text-lg font-semibold">{items?.orderStatus}</span>
-            </Tooltip>
-            {/* <button className="mt-2 hover:scale-105" onClick={deleteOrder}>
-                <Trash2 />
-            </button> */}
         </div>
     );
 }

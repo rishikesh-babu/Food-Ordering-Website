@@ -1,46 +1,73 @@
 function CartSkelton() {
     return (
-        <div className="max-w-screen-lg mx-auto p-6">
-            {/* Title Section */}
-            <div className="animate-pulse mb-8">
-                <div className="h-8 w-48 bg-gray-300 mx-auto rounded"></div>
-            </div>
+        <div className="min-h-screen bg-gray-50 dark:bg-slate-950 py-10 transition-colors duration-300 animate-pulse relative">
+            <div className="container mx-auto px-4 max-w-5xl">
+                {/* Header Placeholder */}
+                <div className="flex items-center gap-3 mb-8">
+                    <div className="h-8 w-8 bg-gray-200 dark:bg-gray-800 rounded-lg"></div>
+                    <div className="h-10 w-48 bg-gray-200 dark:bg-gray-800 rounded-lg"></div>
+                    <div className="h-6 w-16 bg-gray-200 dark:bg-gray-800 rounded-full"></div>
+                </div>
 
-            {/* Cart Items Skeleton */}
-            <div className="space-y-6">
-                {[...Array(3)].map((_, index) => (
-                    <div
-                        key={index}
-                        className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-4 border border-gray-300 rounded-lg shadow-md bg-white w-full max-w-4xl mx-auto animate-pulse"
-                    >
-                        <div className="flex justify-center sm:justify-start">
-                            <div className="w-24 h-24 sm:w-32 sm:h-32 bg-gray-300 rounded-lg"></div>
-                        </div>
+                {/* Main Content Layout Placeholder */}
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                    {/* Left Column: Cart Items list */}
+                    <div className="lg:col-span-2 space-y-4">
+                        <div className="bg-white dark:bg-slate-900/40 rounded-3xl p-6 border border-slate-100 dark:border-slate-800 space-y-4">
+                            {[...Array(3)].map((_, index) => (
+                                <div key={index} className="py-4 first:pt-0 flex justify-between items-center gap-4 border-b border-slate-100 dark:border-slate-800/40 last:border-0 last:pb-0">
+                                    {/* Image block */}
+                                    <div className="h-20 w-20 sm:h-24 sm:w-24 bg-gray-200 dark:bg-gray-800 rounded-2xl flex-shrink-0"></div>
 
-                        <div className="flex flex-col justify-center items-center sm:ml-4">
-                            <div className="h-6 w-32 bg-gray-300 rounded mb-2"></div>
-                            <div className="h-5 w-20 bg-gray-300 rounded"></div>
-                        </div>
+                                    {/* Details block */}
+                                    <div className="flex-grow flex flex-col space-y-2">
+                                        <div className="h-3 w-12 bg-gray-200 dark:bg-gray-800 rounded"></div>
+                                        <div className="h-5 w-36 bg-gray-200 dark:bg-gray-800 rounded"></div>
+                                        <div className="h-4 w-16 bg-gray-200 dark:bg-gray-800 rounded"></div>
+                                    </div>
 
-                        <div className="flex flex-row justify-center items-center gap-3">
-                            <div className="h-8 w-8 bg-gray-300 rounded"></div>
-                            <div className="h-6 w-8 bg-gray-300 rounded"></div>
-                            <div className="h-8 w-8 bg-gray-300 rounded"></div>
+                                    {/* Quantity controls block */}
+                                    <div className="h-9 w-24 bg-gray-200 dark:bg-gray-800 rounded-xl"></div>
+                                </div>
+                            ))}
                         </div>
                     </div>
-                ))}
-            </div>
 
-            {/* Total Price Section Skeleton */}
-            <div className="mt-8 p-6 bg-gray-50 rounded-lg shadow-md flex flex-col sm:flex-row justify-between items-center animate-pulse">
-                <div className="text-center sm:text-left">
-                    <div className="h-6 w-32 bg-gray-300 rounded mb-2"></div>
-                    <div className="h-6 w-20 bg-gray-300 rounded"></div>
+                    {/* Right Column: Summaries */}
+                    <div className="space-y-6">
+                        {/* Address Card Placeholder */}
+                        <div className="bg-white dark:bg-slate-900/40 rounded-3xl p-6 border border-slate-100 dark:border-slate-800 space-y-4">
+                            <div className="flex justify-between items-center">
+                                <div className="h-5 w-32 bg-gray-200 dark:bg-gray-800 rounded"></div>
+                                <div className="h-4 w-12 bg-gray-200 dark:bg-gray-800 rounded"></div>
+                            </div>
+                            <div className="h-16 w-full bg-gray-200 dark:bg-gray-800/40 rounded-2xl"></div>
+                        </div>
+
+                        {/* Order Summary Card Placeholder */}
+                        <div className="bg-white dark:bg-slate-900/40 rounded-3xl p-6 border border-slate-100 dark:border-slate-800 space-y-4">
+                            <div className="h-5 w-32 bg-gray-200 dark:bg-gray-800 rounded border-b border-slate-100 dark:border-slate-800 pb-3"></div>
+                            <div className="space-y-2.5">
+                                <div className="flex justify-between">
+                                    <div className="h-4 w-16 bg-gray-200 dark:bg-gray-800 rounded"></div>
+                                    <div className="h-4 w-12 bg-gray-200 dark:bg-gray-800 rounded"></div>
+                                </div>
+                                <div className="flex justify-between">
+                                    <div className="h-4 w-20 bg-gray-200 dark:bg-gray-800 rounded"></div>
+                                    <div className="h-4 w-10 bg-gray-200 dark:bg-gray-800 rounded"></div>
+                                </div>
+                                <div className="border-t border-dashed border-slate-200 dark:border-slate-800 pt-3 flex justify-between">
+                                    <div className="h-5 w-12 bg-gray-200 dark:bg-gray-800 rounded"></div>
+                                    <div className="h-6 w-16 bg-gray-200 dark:bg-gray-800 rounded"></div>
+                                </div>
+                            </div>
+                            <div className="h-12 w-full bg-gray-200 dark:bg-gray-800 rounded-2xl mt-4"></div>
+                        </div>
+                    </div>
                 </div>
-                <div className="btn bg-gray-300 w-36 h-10 mt-4 sm:mt-0 rounded-lg shadow-md"></div>
             </div>
         </div>
-    )
+    );
 }
 
 function PopularHotelSkelton() {
@@ -116,35 +143,51 @@ function ProfilePicSkelton() {
 
 function WishlistSkelton() {
     return (
-        <div className="max-w-screen-lg mx-auto p-6">
-        <h1 className="text-3xl font-bold text-center mb-8 text-gray-800">
-          Wishlist
-        </h1>
-        <div className="space-y-6">
-          {Array(4) // Assuming 4 skeleton cards for demonstration
-            .fill(0)
-            .map((_, index) => (
-              <div
-                key={index}
-                className="p-3 sm:p-6 bg-gradient-to-r from-gray-100 to-gray-50 rounded-lg shadow-xl grid grid-cols-2 items-center gap-6 animate-pulse"
-              >
-                <div className="flex-shrink-0">
-                  <div className="h-28 w-28 md:h-32 md:w-32 bg-gray-300 rounded-xl"></div>
-                </div>
-                <div className="space-y-3">
-                  <div className="h-6 bg-gray-300 rounded w-3/4"></div>
-                  <div className="flex items-center justify-between">
-                    <div className="h-6 bg-gray-300 rounded w-1/4"></div>
-                    <div className="h-6 w-6 bg-gray-300 rounded-full"></div>
-                  </div>
-                  <div className="h-10 bg-gray-300 rounded w-1/2"></div>
-                </div>
-              </div>
-            ))}
+        <div className="container mx-auto px-4 max-w-6xl py-6 animate-pulse z-10 relative">
+            {/* Title Section Placeholder */}
+            <div className="text-center mb-10 flex flex-col items-center">
+                <div className="h-10 w-64 bg-gray-200 dark:bg-gray-800 rounded-lg"></div>
+                <div className="h-4 w-80 bg-gray-200 dark:bg-gray-800 rounded mt-3"></div>
+            </div>
+
+            {/* Grid Placeholder */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                {Array(6)
+                    .fill(0)
+                    .map((_, index) => (
+                        <div
+                            key={index}
+                            className="bg-white dark:bg-slate-900/40 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-md flex flex-col justify-between h-[380px] overflow-hidden"
+                        >
+                            {/* Image Placeholder */}
+                            <div className="h-48 w-full bg-gray-200 dark:bg-gray-800/60"></div>
+
+                            {/* Content Placeholder */}
+                            <div className="p-4 flex flex-col flex-grow justify-between">
+                                <div className="space-y-2">
+                                    {/* Title */}
+                                    <div className="h-5 w-2/3 bg-gray-200 dark:bg-gray-800/60 rounded"></div>
+                                    {/* Description */}
+                                    <div className="space-y-1.5 mt-2">
+                                        <div className="h-3 w-full bg-gray-200 dark:bg-gray-800/60 rounded"></div>
+                                        <div className="h-3 w-5/6 bg-gray-200 dark:bg-gray-800/60 rounded"></div>
+                                    </div>
+                                </div>
+
+                                {/* Price and Action Placeholder */}
+                                <div className="flex items-center justify-between mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/40">
+                                    <div className="space-y-1">
+                                        <div className="h-2 w-8 bg-gray-200 dark:bg-gray-800/60 rounded"></div>
+                                        <div className="h-5 w-16 bg-gray-200 dark:bg-gray-800/60 rounded"></div>
+                                    </div>
+                                    <div className="h-9 w-28 bg-gray-200 dark:bg-gray-800/60 rounded-xl"></div>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+            </div>
         </div>
-      </div>
-      
-    )
+    );
 }
 
 function SingleHotelSkelton() {
@@ -205,38 +248,60 @@ function SingleHotelSkelton() {
 
 function SingleFoodSkelton() {
     return (
-        <div className="container mx-auto p-5">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                {/* Image Placeholder */}
-                <div className="flex">
-                    <div className="w-full max-w-lg h-64 bg-gray-300 rounded-lg shadow-lg animate-pulse"></div>
-                </div>
+        <div className="container mx-auto px-4 max-w-6xl relative z-10 animate-pulse">
+            {/* Back Button Link Placeholder */}
+            <div className="mb-6 h-6 w-24 bg-gray-200 dark:bg-gray-800/60 rounded-md"></div>
 
-                {/* Content Placeholder */}
-                <div className="space-y-6">
-                    {/* Title Placeholder */}
-                    <div className="h-8 w-1/2 bg-gray-300 rounded animate-pulse"></div>
+            {/* Main Card Placeholder */}
+            <div className="bg-white/50 dark:bg-slate-900/40 backdrop-blur-md rounded-3xl border border-slate-200/40 dark:border-slate-800/40 shadow-lg p-6 sm:p-8 lg:p-10">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+                    {/* Left Column: Image Area */}
+                    <div className="lg:col-span-6 flex flex-col justify-start">
+                        <div className="w-full aspect-[4/3] sm:aspect-video lg:aspect-[4/3] bg-gray-200 dark:bg-gray-800/60 rounded-2xl"></div>
+                    </div>
 
-                    {/* Price and Cart Controls */}
-                    <div className="flex justify-between items-center">
-                        <div className="h-6 w-1/4 bg-gray-300 rounded animate-pulse"></div>
-                        <div className="flex flex-row items-center gap-3">
-                            <div className="h-10 w-10 bg-gray-300 rounded-full animate-pulse"></div>
-                            <div className="h-6 w-6 bg-gray-300 animate-pulse"></div>
-                            <div className="h-10 w-10 bg-gray-300 rounded-full animate-pulse"></div>
+                    {/* Right Column: Content Area */}
+                    <div className="lg:col-span-6 flex flex-col justify-between space-y-6">
+                        <div className="space-y-3">
+                            {/* Category tag */}
+                            <div className="h-5 w-24 bg-gray-200 dark:bg-gray-800/60 rounded-md"></div>
+                            {/* Food Name */}
+                            <div className="h-10 w-3/4 bg-gray-200 dark:bg-gray-800/60 rounded-lg"></div>
+                            {/* Rating row */}
+                            <div className="h-4 w-1/3 bg-gray-200 dark:bg-gray-800/60 rounded-md"></div>
                         </div>
-                    </div>
 
-                    {/* Description Placeholder */}
-                    <div className="space-y-3">
-                        <div className="h-6 w-full bg-gray-300 rounded animate-pulse"></div>
-                        <div className="h-6 w-3/4 bg-gray-300 rounded animate-pulse"></div>
-                        <div className="h-6 w-2/3 bg-gray-300 rounded animate-pulse"></div>
-                    </div>
+                        {/* Food Metadata Badges */}
+                        <div className="grid grid-cols-3 gap-3 py-4 border-y border-slate-100 dark:border-slate-800/40">
+                            <div className="h-16 bg-gray-100 dark:bg-slate-800/30 rounded-2xl"></div>
+                            <div className="h-16 bg-gray-100 dark:bg-slate-800/30 rounded-2xl"></div>
+                            <div className="h-16 bg-gray-100 dark:bg-slate-800/30 rounded-2xl"></div>
+                        </div>
 
-                    {/* Go Back Button Placeholder */}
-                    <div className="my-3">
-                        <div className="btn h-10 w-32 bg-gray-200 rounded-lg animate-pulse"></div>
+                        {/* Price and Add-to-cart layout */}
+                        <div className="bg-slate-50/50 dark:bg-slate-800/10 rounded-2xl p-4 sm:p-5 border border-slate-100 dark:border-slate-800/30 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                            <div className="space-y-2">
+                                <div className="h-3 w-10 bg-gray-200 dark:bg-gray-800/60 rounded"></div>
+                                <div className="h-8 w-32 bg-gray-200 dark:bg-gray-800/60 rounded-md"></div>
+                            </div>
+                            <div className="h-12 w-full sm:w-36 bg-gray-200 dark:bg-gray-800/60 rounded-xl"></div>
+                        </div>
+
+                        {/* About Section */}
+                        <div className="space-y-2">
+                            <div className="h-4 w-28 bg-gray-200 dark:bg-gray-800/60 rounded"></div>
+                            <div className="space-y-2">
+                                <div className="h-3.5 w-full bg-gray-200 dark:bg-gray-800/60 rounded"></div>
+                                <div className="h-3.5 w-5/6 bg-gray-200 dark:bg-gray-800/60 rounded"></div>
+                                <div className="h-3.5 w-2/3 bg-gray-200 dark:bg-gray-800/60 rounded"></div>
+                            </div>
+                        </div>
+
+                        {/* Quality Checks */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 border-t border-slate-100 dark:border-slate-800/40">
+                            <div className="h-4 w-1/2 bg-gray-200 dark:bg-gray-800/60 rounded"></div>
+                            <div className="h-4 w-1/2 bg-gray-200 dark:bg-gray-800/60 rounded"></div>
+                        </div>
                     </div>
                 </div>
             </div>

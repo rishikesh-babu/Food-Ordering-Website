@@ -8,6 +8,7 @@ function HotelRemoveButton({ hotelId }) {
         // window.confirm("Temperarly closed");
         // return;
         const isConfirmed = window.confirm("Are you sure want to delete the hotel");
+        return
         if (isConfirmed) {
             toast.promise(
                 axiosInstance({
@@ -34,7 +35,7 @@ function HotelRemoveButton({ hotelId }) {
             onClick={() => handleHotelRemove()}
             className="hover:scale-110 text-red-600"
         >
-            <DeleteForever />
+            <DeleteForever fontSize="medium" />
         </button>
     );
 }
@@ -43,21 +44,21 @@ function CreateHotelButton({ handleSubmit, value }) {
     return (
         <button
             onClick={handleSubmit}
-            className="px-6 py-3 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 transition-all duration-200"
+            className="w-full py-3.5 bg-gradient-to-r from-orange-500 to-rose-500 hover:from-orange-600 hover:to-rose-600 text-white rounded-2xl font-black text-sm tracking-wider transition-all duration-300 hover:scale-[1.02] active:scale-95 shadow-md shadow-orange-500/10 cursor-pointer focus:outline-none focus:ring-2 focus:ring-orange-500/20"
         >
-            {value ?? "Create"}
+            {value ?? "Create Hotel"}
         </button>
     );
 }
 
 function CreateFoodButton({ handleSubmit, value }) {
     return (
-            <button
-                onClick={handleSubmit}
-                className="px-6 py-3 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 transition-all duration-200"
-            >
-                {value ?? 'Create'}
-            </button>
+        <button
+            onClick={handleSubmit}
+            className="w-full py-3.5 bg-gradient-to-r from-orange-500 to-rose-500 hover:from-orange-600 hover:to-rose-600 text-white rounded-2xl font-black text-sm tracking-wider transition-all duration-300 hover:scale-[1.02] active:scale-95 shadow-md shadow-orange-500/10 cursor-pointer focus:outline-none focus:ring-2 focus:ring-orange-500/20"
+        >
+            {value ?? 'Create Food Item'}
+        </button>
     );
 }
 
@@ -82,7 +83,7 @@ function FoodRemoveButton({ foodId }) {
     }
 
     return (
-        <button onClick={() => handleFoodDelete()} className="">
+        <button onClick={() => handleFoodDelete()} className="hover:scale-110 text-red-600 ">
             <DeleteForever />
         </button>
     );
